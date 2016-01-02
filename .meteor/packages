@@ -17,3 +17,5 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 react
 static-html
 tracker
+semantic:ui
+flemay:less-autoprefixer
