@@ -19,3 +19,5 @@ static-html
 tracker
 semantic:ui
 flemay:less-autoprefixer
+kadira:flow-router-ssr
+kadira:react-layout
