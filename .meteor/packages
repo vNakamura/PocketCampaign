@@ -21,3 +21,9 @@ semantic:ui
 flemay:less-autoprefixer
 kadira:flow-router-ssr
 kadira:react-layout
+jagi:astronomy
+accounts-password
+jagi:astronomy-validators
+jagi:astronomy-relations
+jagi:astronomy-timestamp-behavior
+jagi:astronomy-slug-behavior
