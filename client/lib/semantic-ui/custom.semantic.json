@@ -4,7 +4,7 @@
     "ad": false,
     "api": false,
     "breadcrumb": false,
-    "button": false,
+    "button": true,
     "card": false,
     "checkbox": false,
     "colorize": false,

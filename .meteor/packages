@@ -27,3 +27,8 @@ jagi:astronomy-validators
 jagi:astronomy-relations
 jagi:astronomy-timestamp-behavior
 jagi:astronomy-slug-behavior
+meteorhacks:npm
+
+
+npm-container
+cosmos:browserify
