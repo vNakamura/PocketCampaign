@@ -5,15 +5,21 @@ MessageInput = React.createClass({
   handleChange(e) {
     this.setState({message: e.target.value.trim()});
   },
+  handleSubmit(e) {
+    Meteor.call("sendMessage", this.state.message);
+    ReactDOM.findDOMNode(this.refs.textInput).value = "";
+  },
   render() {
     const buttonClasses = classNames(
-      "ui", "primary", "button",
+      "ui", "primary", "icon", "button",
       {disabled: (this.state.message.length === 0)}
     );
     return (
-      <div className="ui action input">
-        <input placeholder="Mensagem..." type="text" onChange={this.handleChange} />
-        <div  className={buttonClasses}>Enviar</div>
+      <div className="ui form">
+        <textarea placeholder="Mensagem..." ref="textInput" onChange={this.handleChange}></textarea>
+        <div className={buttonClasses} onClick={this.handleSubmit}>
+          <i className="comment icon"></i>
+        </div>
       </div>
     );
   }
