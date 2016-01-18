@@ -1,9 +1,9 @@
 Meteor.methods({
   sendMessage(text) {
     check(text, String);
-    Messages.insert({
-      text,
-      created_at: new Date()
+    var m = new Message({
+      text
     });
+    m.save();
   }
 });
