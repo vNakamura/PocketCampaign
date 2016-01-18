@@ -1,9 +1,12 @@
 Chat = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
-    return {
-      messages: Messages.find({}).fetch()
+    var data = {};
+    var msgs = Meteor.subscribe('messages');
+    if(msgs.ready()) {
+      data.messages = Messages.find({}).fetch();
     }
+    return data;
   },
   renderMessages() {
     return this.data.messages.map((message) => {
