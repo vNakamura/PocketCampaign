@@ -8,7 +8,7 @@
     "card": false,
     "checkbox": false,
     "colorize": false,
-    "comment": false,
+    "comment": true,
     "container": false,
     "dimmer": false,
     "divider": false,
