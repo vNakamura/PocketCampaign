@@ -7,17 +7,12 @@ Chat = React.createClass({
   },
   renderMessages() {
     return this.data.messages.map((message) => {
-      return <div className="comment" key={message._id}>
-          <div className="content">
-            <a className="author">Author name</a>
-            <div className="metadata">
-              <div className="date">
-                {moment(message.created_at).fromNow(true)}
-              </div>
-            </div>
-            <div className="text">{message.text}</div>
-          </div>
-        </div>
+      const dt = moment(message.createdAt).format('HH:mm');
+      return (
+        <ChatMessage key={message._id} authorName="Fulano" dateTime={dt}>
+          {message.text}
+        </ChatMessage>
+      );
     });
   },
   render() {
