@@ -20,11 +20,11 @@ Chat = React.createClass({
   },
   render() {
     return (
-      <div>
+      <div className="chatWindow">
         <div className="ui comments">
           {this.renderMessages()}
         </div>
-        <div className="ui bottom fixed menu">
+        <div className="messageInputBox ui bottom fixed menu">
           <MessageInput />
         </div>
       </div>
