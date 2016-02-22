@@ -24,7 +24,7 @@ MessageInput = React.createClass({
     window.scrollTo(0,document.body.scrollHeight);
   },
   render() {
-    const buttonClasses = classNames(
+    const buttonClasses = ClassNames(
       "ui", "primary", "icon", "button",
       {disabled: (this.state.message.length === 0)}
     );
