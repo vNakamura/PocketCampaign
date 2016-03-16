@@ -19,7 +19,6 @@ static-html
 tracker
 semantic:ui
 flemay:less-autoprefixer
-kadira:flow-router-ssr
 kadira:react-layout
 jagi:astronomy
 accounts-password
@@ -33,3 +32,9 @@ meteorhacks:npm
 npm-container
 cosmos:browserify
 momentjs:moment
+gwendall:blaze-to-react
+kadira:blaze-layout
+useraccounts:semantic-ui
+useraccounts:flow-routing
+blaze
+kadira:flow-router

@@ -16,7 +16,7 @@ MainLayout = React.createClass({
     return (
       <main className="fillHeight">
         <div className={navBarClasses}>
-          <h1>Testando</h1>
+          <p>Testando</p>
         </div>
         {this.props.content}
       </main>
