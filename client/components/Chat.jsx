@@ -22,9 +22,6 @@ Chat = React.createClass({
         <div className="ui comments">
           {this.data.messages.map(this.renderMessage)}
         </div>
-        <div className="messageInputBox ui bottom fixed menu">
-          <MessageInput />
-        </div>
       </div>
     );
   }

@@ -1,11 +1,16 @@
-#react-root {
-  min-height: 100%;
+#react-root, .wrapper {
+  height: 100%;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 .navBar {
   /* background: */
   background-image: linear-gradient(-269deg, #F3C7A1 25%, #E87975 82%);
-  height: 44px;
+  flex-basis: 44px;
   /* Trending: */
   font-family: 'Titillium Web';
   font-size: 20px;
@@ -13,8 +18,33 @@
   color: #FFFFFF;
   line-height: 31px;
 
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
   &.statusPadding {
     padding-top: 20px;
-    height: 64px;
+    flex-basis: 64px;
   }
+
+  p.title {
+    flex: 1;
+  }
+}
+
+.content {
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  flex: 1;
+}
+
+.messageInputBox {
+  flex-shrink: 0;
+  padding: 4px;
+  .ui.fluid.input {
+    width: 100%;
+  }
+  margin: 0 !important;
 }

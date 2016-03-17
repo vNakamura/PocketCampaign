@@ -14,11 +14,18 @@ MainLayout = React.createClass({
   render() {
     const navBarClasses = ClassNames('navBar', {statusPadding: this.state.isStandalone});
     return (
-      <main className="fillHeight">
+      <main className="wrapper">
         <div className={navBarClasses}>
-          <p>Testando</p>
+          <p className="title">Testando</p>
         </div>
-        {this.props.content}
+
+        <div className="content">
+          {this.props.content}
+        </div>
+
+        <div className="messageInputBox ui menu">
+          <MessageInput />
+        </div>
       </main>
     );
   }
