@@ -7,37 +7,47 @@
   flex-direction: column;
 }
 
+@statusBarSize: 20px;
+@navBarHeight: 2em;
 .navBar {
-  /* background: */
-  background-image: linear-gradient(-269deg, #F3C7A1 25%, #E87975 82%);
-  flex-basis: 44px;
-  /* Trending: */
-  font-family: 'Titillium Web';
-  font-size: 20px;
+  user-select: none;
+  background-image: linear-gradient(269deg, #F3C7A1 25%, #E87975 82%);
+  flex-basis: @navBarHeight;
+
+  font-size: 1.5rem;
   text-align: center;
   color: #FFFFFF;
-  line-height: 31px;
 
   flex-shrink: 0;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  padding: 0 .5em;
 
-  &.statusPadding {
-    padding-top: 20px;
-    flex-basis: 64px;
+  &.withStatus {
+    padding-top: @statusBarSize;
+    flex-basis: calc(~"@{navBarHeight} + @{statusBarSize}");
   }
 
   p.title {
     flex: 1;
+    margin: 0;
+  }
+
+  i.icon {
+    display: block;
+    text-align: center;
+    min-width: 1.5em;
+    margin: 0;
   }
 }
 
-.content {
+.layoutContent {
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   flex: 1;
+  padding: 10px;
 }
 
 .messageInputBox {

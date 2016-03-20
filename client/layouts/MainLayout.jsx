@@ -12,14 +12,16 @@ MainLayout = React.createClass({
   },
 
   render() {
-    const navBarClasses = ClassNames('navBar', {statusPadding: this.state.isStandalone});
+    const navBarClasses = ClassNames('navBar', {withStatus: this.state.isStandalone});
     return (
       <main className="wrapper">
         <div className={navBarClasses}>
+          <i className="sidebar link icon"></i>
           <p className="title">Testando</p>
+          <i className="info circle link icon"></i>
         </div>
 
-        <div className="content">
+        <div className="layoutContent">
           {this.props.content}
         </div>
 
