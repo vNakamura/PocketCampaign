@@ -16,7 +16,7 @@ NavBar = React.createClass({
     return (
       <div className={navBarClasses}>
         <i className="sidebar link icon"></i>
-        <p className="title">Testando</p>
+      <p className="title">{this.props.title}</p>
         <i className="info circle link icon"></i>
       </div>
     )

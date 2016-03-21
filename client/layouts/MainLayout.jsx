@@ -2,7 +2,7 @@ MainLayout = React.createClass({
   render() {
     return (
       <main className="wrapper">
-        <NavBar/>
+        <NavBar title={this.props.title}/>
 
         <div className="layoutContent">
           {this.props.content}
