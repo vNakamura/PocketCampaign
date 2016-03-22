@@ -1,10 +1,42 @@
-#react-root, .wrapper {
+#react-root, .fullSize {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   height: 100%;
+}
+
+.sideBar {
+  display: none;
+  width: 260px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 21;
+  &.open {
+    display: block;
+  }
 }
 
 .wrapper {
   display: flex;
   flex-direction: column;
+  position: relative;
+  .overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 20;
+    background-color: rgba(0, 0, 0, .4);
+    display: none;
+  }
+  &.dimmed .overlay {
+    display: block;
+  }
 }
 
 @statusBarSize: 20px;
