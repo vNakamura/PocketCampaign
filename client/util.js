@@ -1,3 +1,5 @@
+injectTapEventPlugin()
+
 Meteor.startup(function(){
 
   if(window.navigator.standalone) {

@@ -7,16 +7,64 @@
   height: 100%;
 }
 
+@sideBarWidth: 260px;
 .sideBar {
-  display: none;
-  width: 260px;
   position: absolute;
   top: 0;
+  right: 0;
+  bottom: 0;
   left: 0;
-  height: 100%;
-  z-index: 21;
-  &.open {
-    display: block;
+  z-index: 1;
+  .menu {
+    width: @sideBarWidth !important;
+    min-height: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .6);
+  }
+  &.sideBarTransition-enter{
+    .menu {
+      transform: translateX(-@sideBarWidth);
+    }
+    .overlay {
+      opacity: 0.01;
+    }
+  }
+  &.sideBarTransition-enter.sideBarTransition-enter-active{
+    .menu {
+      transform: translateX(0);
+      transition: transform 500ms ease-out;
+    }
+    .overlay {
+      opacity: 1;
+      transition: opacity 500ms ease-out;
+    }
+  }
+
+  &.sideBarTransition-leave{
+    .menu {
+      transform: translateX(0);
+    }
+    .overlay {
+      opacity: 1;
+    }
+  }
+  &.sideBarTransition-leave.sideBarTransition-leave-active{
+    .menu {
+      transform: translateX(-@sideBarWidth);
+      transition: transform 500ms ease;
+    }
+    .overlay {
+      opacity: 0.01;
+      transition: opacity 300ms ease-in;
+    }
   }
 }
 
@@ -24,19 +72,6 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  .overlay {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 20;
-    background-color: rgba(0, 0, 0, .4);
-    display: none;
-  }
-  &.dimmed .overlay {
-    display: block;
-  }
 }
 
 @statusBarSize: 20px;

@@ -38,3 +38,4 @@ useraccounts:semantic-ui
 useraccounts:flow-routing
 blaze
 kadira:flow-router
+coniel:react-tap-event-plugin

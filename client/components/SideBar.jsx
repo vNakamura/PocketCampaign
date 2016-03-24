@@ -1,12 +1,12 @@
 SideBar = React.createClass({
   propTypes: {
-    open: React.PropTypes.bool.isRequired
+    closeHandler: React.PropTypes.func.isRequired
   },
-
   render() {
-    const sideBarClasses = ClassNames('sideBar', {open: this.props.open});
     return (
-      <div className={sideBarClasses}>
+      <div className="sideBar">
+        <div className="overlay" onTouchTap={this.props.closeHandler}/>
+
         <div className="ui vertical inverted menu">
           <a className="item">
             Item 1

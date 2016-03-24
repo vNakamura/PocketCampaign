@@ -21,7 +21,7 @@ NavBar = React.createClass({
       <div className={navBarClasses}>
         <i
           className="sidebar link icon"
-          onClick={this.props.menuIconAction}
+          onTouchTap={this.props.menuIconAction}
         ></i>
         <p className="title">Testando</p>
         <i className="info circle link icon"></i>

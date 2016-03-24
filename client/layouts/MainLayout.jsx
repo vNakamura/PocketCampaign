@@ -1,3 +1,5 @@
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
 MainLayout = React.createClass({
   getInitialState() {
     return {
@@ -11,12 +13,13 @@ MainLayout = React.createClass({
     this.setState({sidebarOpen: false});
   },
   render() {
-    const wrapperClasses = ClassNames('wrapper', 'fullSize', {dimmed: this.state.sidebarOpen});
     return (
       <div className="fullSize">
-        <SideBar open={this.state.sidebarOpen}/>
-        <main className={wrapperClasses}>
-          <div className="overlay" onClick={this.closeSidebar}/>
+        <ReactCSSTransitionGroup transitionName="sideBarTransition" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+          {this.state.sidebarOpen?
+            <SideBar open={this.state.sidebarOpen} closeHandler={this.closeSidebar}/> : ''}
+        </ReactCSSTransitionGroup>
+        <main className='wrapper fullSize'>
           <NavBar menuIconAction={this.openSidebar}/>
 
           <div className="layoutContent">
