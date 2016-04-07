@@ -1,0 +1,34 @@
+{
+  "name": "rpg-messenger",
+  "version": "0.0.5",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://vnakamura@github.com/vNakamura/RPG-Messenger.git"
+  },
+  "author": "Vinicius Nakamura",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vNakamura/RPG-Messenger/issues"
+  },
+  "homepage": "https://github.com/vNakamura/RPG-Messenger#readme",
+  "dependencies": {
+    "classnames": "^2.2.3",
+    "meteor-node-stubs": "^0.2.1",
+    "react": "^0.14.8",
+    "react-addons-create-fragment": "^0.14.8",
+    "react-addons-css-transition-group": "^0.14.8",
+    "react-addons-linked-state-mixin": "^0.14.8",
+    "react-addons-perf": "^0.14.8",
+    "react-addons-pure-render-mixin": "^0.14.8",
+    "react-addons-test-utils": "^0.14.8",
+    "react-addons-transition-group": "^0.14.8",
+    "react-addons-update": "^0.14.8",
+    "react-dom": "^0.14.8",
+    "react-mounter": "^1.1.0",
+    "react-tap-event-plugin": "^0.2.2"
+  }
+}

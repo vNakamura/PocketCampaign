@@ -1,3 +1,5 @@
+import React from "react";
+
 SideBar = React.createClass({
   propTypes: {
     closeHandler: React.PropTypes.func.isRequired

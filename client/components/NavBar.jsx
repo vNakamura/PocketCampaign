@@ -1,3 +1,6 @@
+import React from "react";
+import ClassNames from "classnames";
+
 NavBar = React.createClass({
   propTypes: {
     menuIconAction: React.PropTypes.func.isRequired

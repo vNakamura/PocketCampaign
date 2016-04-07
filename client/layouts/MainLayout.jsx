@@ -1,4 +1,5 @@
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+import React from "react";
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 MainLayout = React.createClass({
   getInitialState() {

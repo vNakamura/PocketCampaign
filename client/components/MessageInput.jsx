@@ -1,3 +1,6 @@
+import React from "react";
+import ClassNames from "classnames";
+
 MessageInput = React.createClass({
   getInitialState() {
     return {message: ''};
