@@ -1,4 +1,11 @@
+import React from "react";
+import ClassNames from "classnames";
+
 NavBar = React.createClass({
+  propTypes: {
+    menuIconAction: React.PropTypes.func.isRequired
+  },
+
   getInitialState() {
     return {
       isStandalone: false
@@ -15,7 +22,10 @@ NavBar = React.createClass({
     const navBarClasses = ClassNames('navBar', {withStatus: this.state.isStandalone});
     return (
       <div className={navBarClasses}>
-        <i className="sidebar link icon"></i>
+        <i
+          className="sidebar link icon"
+          onTouchTap={this.props.menuIconAction}
+        ></i>
         <p className="title">Testando</p>
         <i className="info circle link icon"></i>
       </div>

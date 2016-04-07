@@ -1,3 +1,6 @@
+import React from "react";
+import ClassNames from "classnames";
+
 MessageInput = React.createClass({
   getInitialState() {
     return {message: ''};
@@ -31,7 +34,7 @@ MessageInput = React.createClass({
     return (
       <div className="ui fluid action input">
         <input type="text" placeholder="Mensagem..." ref="textInput" onChange={this.handleChange} onFocus={this.handleFocus} onKeyUp={this.handleKeyUp}></input>
-        <div className={buttonClasses} onClick={this.handleSubmit}>
+        <div className={buttonClasses} onTouchTap={this.handleSubmit}>
           <i className="comment icon"></i>
         </div>
       </div>

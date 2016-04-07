@@ -1,14 +1,8 @@
-AccountsTemplates.configure({
-  defaultLayoutType: 'blaze-to-react',
-  defaultLayout: MainLayout,
-  defaultLayoutRegions: {},
-  defaultContentRegion: 'content'
-});
-
-AccountsTemplates.configureRoute('signIn');
+import React from 'react';
+import {mount} from 'react-mounter';
 
 FlowRouter.route('/', {
-  action(){
-    ReactLayout.render(MainLayout, {content: <App />});
+  action() {
+    mount(MainLayout, {content: <App />});
   }
 });
