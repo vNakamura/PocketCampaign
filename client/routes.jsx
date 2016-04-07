@@ -5,16 +5,7 @@ AccountsTemplates.configure({
   defaultContentRegion: 'content'
 });
 
-AccountsTemplates.configureRoute('signIn', {
-  layoutRegions: {
-    title: 'Sign In'
-  }
-});
-AccountsTemplates.configureRoute('signUp', {
-  layoutRegions: {
-    title: 'Sign Up'
-  }
-});
+AccountsTemplates.configureRoute('signIn');
 
 FlowRouter.route('/', {
   action(){
