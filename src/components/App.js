@@ -1,9 +1,18 @@
 import React from 'react';
+import style from './App.styl';
+import classNames from 'classnames';
+
+//Components
+import Sidebar from './Sidebar';
+import Content from './Content';
 
 class App extends React.Component {
   render() {
     return (
-      <h1>Pocket Campaign</h1>
+      <div className={style.fullHeight}>
+        <Sidebar/>
+        <Content/>
+      </div>
     );
   }
 }
