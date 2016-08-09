@@ -1,4 +1,5 @@
-autoprefixer = require('autoprefixer');
+var autoprefixer = require('autoprefixer');
+var axis = require('axis');
 
 module.exports = {
   entry: './src/main.js',
@@ -16,9 +17,12 @@ module.exports = {
       {
         test: /\.styl$/,
         loader:
-          'style!css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!stylus'
+          'style!css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!stylus-relative'
       }
     ]
+  },
+  stylus: {
+    use: axis()
   },
   postcss: function () {
     return [autoprefixer];
