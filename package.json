@@ -29,6 +29,7 @@
     "postcss-loader": "^0.9.1",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
+    "react-icons": "^2.2.1",
     "style-loader": "^0.13.1",
     "stylus": "^0.54.5",
     "stylus-relative-loader": "^3.2.0",

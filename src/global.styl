@@ -7,16 +7,15 @@ fluid-media()
 typographic()
 
 html, body
-  height 100%;
+  height: 100%;
 
 :global
   #root
-    height 100%;
-    display: flex;
+    full-size()
 
   // For some reason Typographic's header mixin isn't working correctly. So I copied it from the source code.
   h1, h2, h3, h4, h5, h6
     font-family: $heading-font
     font-weight: $heading-font-weight
-    color: $heading-color
-    clear: both
+    color:       $heading-color
+    clear:       both

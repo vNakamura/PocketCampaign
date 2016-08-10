@@ -1,0 +1,20 @@
+@import '../config'
+
+.container
+  height:           $top-bar-height
+  display:          flex;
+  align-items:      center;
+  justify-content:  space-between;
+  main-gradient()
+
+.title
+  text-align: center;
+  flex:   1;
+  ellipsis();
+  margin: 0 $common-spacing;
+  no-select();
+
+.menuButton
+  button:  transparent 'large';
+  padding: $common-spacing;
+  margin:  0;
