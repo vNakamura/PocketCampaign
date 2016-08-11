@@ -13,8 +13,12 @@
   ellipsis();
   margin: 0 $common-spacing;
   no-select();
+  color: $topbar-color;
+  text-shadow: 0px 0px 16px rgba($text-color, .2);
 
 .menuButton
-  button:  transparent 'large';
+  button:  transparent 'large' $topbar-color;
   padding: $common-spacing;
   margin:  0;
+  svg
+    vertical-align: baseline !important;

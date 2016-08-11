@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --hot --inline --colors --no-info --content-base bin/"
+    "start": "npm install && webpack-dev-server --hot --inline --colors --no-info --content-base bin/"
   },
   "repository": {
     "type": "git",
