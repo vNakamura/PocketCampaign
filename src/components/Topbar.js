@@ -3,14 +3,14 @@ import style from './Topbar.styl';
 import { TiThMenu } from 'react-icons/lib/ti'
 
 class Topbar extends React.Component {
-  onMenuButtonClick (e) {
+  handleMenuButtonClick (e) {
     e.preventDefault();
-    console.log("Menu Button clicked");
+    this.props.menuButtonAction();
   }
 
   renderMenuButton () {
     return(
-      <a href="#" onClick={this.onMenuButtonClick.bind()} className={style.menuButton}><TiThMenu/></a>
+      <a href="#" onClick={this.handleMenuButtonClick.bind(this)} className={style.menuButton}><TiThMenu/></a>
     );
   }
   render () {
@@ -24,13 +24,15 @@ class Topbar extends React.Component {
 }
 
 Topbar.propTypes = {
-  showMenuButton: PropTypes.bool,
-  titleText: PropTypes.string
+  showMenuButton:   PropTypes.bool,
+  titleText:        PropTypes.string,
+  menuButtonAction: PropTypes.func
 }
 
 Topbar.defaultProps = {
-  showMenuButton: false,
-  titleText: ''
+  showMenuButton:   false,
+  titleText:        '',
+  menuButtonAction: function(){console.log("Menu Button Action not set");}
 }
 
 export default Topbar;
