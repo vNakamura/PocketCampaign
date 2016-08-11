@@ -1,18 +1,33 @@
 // Typography
 $body-font           = 'Open Sans', $helvetica
-$body-color          = #444
 $heading-font        = 'Dosis', $helvetica
 $heading-font-weight = 400
-$heading-color       = #222
 
 // Layout Sizes
 $min-sidebar-width = 320px;
 $common-spacing    = 10px;
-$top-bar-height    = 44px;
+$top-bar-height    = 52px;
 
 // Colors
-main-gradient(angle = -269deg)
-  background-image: linear-gradient(angle, #F3C7A1 25%, #E87975 82%);
+
+$text-color = #373f51
+$alternative-text-color = #fff
+$canvas = #fff
+$primary1 = #008dd5
+$primary2 = #ffc39d
+$accent1 = #f56476
+$accent2 = #e43f6f
+
+$body-color         = $text-color
+$heading-color      = darken($text-color, 10%)
+$topbar-color       = #FFF
+
+main-gradient(angle = 11deg)
+  background-image: linear-gradient(angle, $accent2 0%, $accent1 35%, $primary2 90%);
+  color: $alternative-text-color
+menu-gradient(angle = 98deg)
+  background-image: linear-gradient(angle, $body-color 25%, $heading-color 82%);
+  color: $alternative-text-color
 
 full-size()
   position: absolute;
