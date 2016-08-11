@@ -17,7 +17,7 @@ class Topbar extends React.Component {
     return(
       <div className={style.container}>
         {this.props.showMenuButton? this.renderMenuButton() : ""}
-        <h5 className={style.title}>{this.props.titleText}</h5>
+        <h4 className={style.title}>{this.props.titleText}</h4>
       </div>
     );
   }
