@@ -1,11 +1,12 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
+import { TiThMenu } from 'react-icons/lib/ti';
 
 import Topbar from '../Topbar';
 
 storiesOf('Topbar', module)
   .addWithInfo('with menu button', 'Menu button at the left of the bar', () => (
-    <Topbar showMenuButton={true} menuButtonAction={action('Menu button was pressed!')} titleText="My Topbar"/>
+    <Topbar leftButtonContent={<TiThMenu/>} leftButtonAction={action('Menu button was pressed!')} titleText="My Topbar"/>
   ), { propTables: [Topbar], inline: true })
   .addWithInfo('without button', 'Simple version', () => (
     <Topbar titleText="My Topbar"/>
