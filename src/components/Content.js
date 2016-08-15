@@ -5,6 +5,7 @@ import style from './Content.styl';
 import KitchenSink from './KitchenSink';
 import Topbar from './Topbar';
 import { TiThMenu } from 'react-icons/lib/ti';
+import Scrollable from './Scrollable';
 
 class Content extends React.Component {
   render () {
@@ -14,9 +15,9 @@ class Content extends React.Component {
         leftButtonAction={this.props.menuButtonAction}
         titleText="A really long title that would make the line break on a small screen"
       />
-      <div className={style.scrollable}>
+      <Scrollable>
         <KitchenSink/>
-      </div>
+      </Scrollable>
     </div>);
   }
 }
