@@ -2,23 +2,19 @@ import React, { PropTypes } from 'react';
 import style from './Topbar.styl';
 
 class Topbar extends React.Component {
-  handleMenuButtonClick (e) {
+  noActionSet(e) {
     e.preventDefault();
-    this.props.menuButtonAction();
-  }
-
-  noActionSet() {
     console.log("Button Action not set");
   }
 
-  renderMenuButton (content, action) {
+  renderMenuButton (content, action = this.noActionSet) {
     return(
-      content? (<a href="#" onClick={action.bind(this)} className={style.menuButton}>{content}</a>) : ""
+      content? (<a href="#" onClick={action} className={style.menuButton}>{content}</a>) : ""
     );
   }
   render () {
     return(
-      <div className={style.container}>
+      <div className={style.container} style={this.props.style}>
         {this.renderMenuButton(this.props.leftButtonContent, this.props.leftButtonAction)}
         <h4 className={style.title}>{this.props.titleText}</h4>
         {this.renderMenuButton(this.props.rightButtonContent, this.props.rightButtonAction)}
@@ -36,9 +32,7 @@ Topbar.propTypes = {
 }
 
 Topbar.defaultProps = {
-  titleText:         '',
-  leftButtonAction:  Topbar.noActionSet,
-  rightButtonAction: Topbar.noActionSet
+  titleText:         ''
 }
 
 export default Topbar;
