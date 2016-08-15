@@ -10,19 +10,23 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sidebarVisible : false
+      sidebarVisible : true
     }
   }
 
-  toggleSidebarVisibility() {
+  toggleSidebarVisibility(e) {
+    e.preventDefault();
     this.setState({sidebarVisible: !this.state.sidebarVisible});
   }
 
   render() {
     return (
       <div className={style.fullHeight}>
-        {this.state.sidebarVisible? <Sidebar/>: ""}
-        <Content sidebarVisible={this.state.sidebarVisible} menuButtonAction={this.toggleSidebarVisibility.bind(this)}/>
+        {this.state.sidebarVisible? <Sidebar closeButtonAction={this.toggleSidebarVisibility.bind(this)}/>: ""}
+        <Content
+          sidebarVisible={this.state.sidebarVisible}
+          menuButtonAction={this.toggleSidebarVisibility.bind(this)}
+        />
       </div>
     );
   }
