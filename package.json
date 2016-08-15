@@ -12,6 +12,7 @@
     "type": "git",
     "url": "git+https://vnakamura@github.com/vNakamura/PocketCampaign.git"
   },
+  "private": true,
   "author": "Vinicius Nakamura",
   "license": "ISC",
   "bugs": {
