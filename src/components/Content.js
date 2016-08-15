@@ -6,6 +6,7 @@ import KitchenSink from './KitchenSink';
 import Topbar from './Topbar';
 import { TiThMenu } from 'react-icons/lib/ti';
 import Scrollable from './Scrollable';
+import ChatInput from './ChatInput';
 
 class Content extends React.Component {
   render () {
@@ -18,6 +19,7 @@ class Content extends React.Component {
       <Scrollable>
         <KitchenSink/>
       </Scrollable>
+      <ChatInput/>
     </div>);
   }
 }

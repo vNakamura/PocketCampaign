@@ -1,0 +1,18 @@
+@import '../config.styl';
+
+.container
+  min-height:      $top-bar-height;
+  display:         flex;
+  align-items:     flex-end;
+  justify-content: space-between;
+  padding:         ($common-spacing / 2);
+
+.textInput
+  flex:          1
+  resize:        none;
+  margin-bottom: 0;
+  input()
+
+.sendButton
+  icon-button($primary1);
+  margin-left: $common-spacing;
