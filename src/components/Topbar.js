@@ -4,15 +4,15 @@ import style from './Topbar.styl';
 class Topbar extends React.Component {
   noActionSet(e) {
     e.preventDefault();
-    console.log("Button Action not set");
+    console.log('Button Action not set');
   }
 
-  renderMenuButton (content, action = this.noActionSet) {
-    return(
-      content? (<a href="#" onClick={action} className={style.menuButton}>{content}</a>) : ""
+  renderMenuButton(content, action = this.noActionSet) {
+    return (
+      content ? (<a href="#menu" onClick={action} className={style.menuButton}>{content}</a>) : null
     );
   }
-  render () {
+  render() {
     return(
       <div className={style.container} style={this.props.style}>
         {this.renderMenuButton(this.props.leftButtonContent, this.props.leftButtonAction)}
@@ -24,15 +24,16 @@ class Topbar extends React.Component {
 }
 
 Topbar.propTypes = {
-  titleText:          PropTypes.string,
-  leftButtonContent:  PropTypes.element,
+  titleText: PropTypes.string,
+  leftButtonContent: PropTypes.element,
   rightButtonContent: PropTypes.element,
-  leftButtonAction:   PropTypes.func,
-  rightButtonAction:  PropTypes.func
-}
+  leftButtonAction: PropTypes.func,
+  rightButtonAction: PropTypes.func,
+  style: Proptypes.object,
+};
 
 Topbar.defaultProps = {
-  titleText:         ''
-}
+  titleText: ''
+};
 
 export default Topbar;

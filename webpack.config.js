@@ -20,6 +20,13 @@ module.exports = {
         loader:
           'style!css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!stylus-relative'
       }
+    ],
+    preLoaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'eslint',
+      }
     ]
   },
   stylus: {
@@ -27,5 +34,10 @@ module.exports = {
   },
   postcss: function () {
     return [autoprefixer];
+  },
+  eslint: {
+    configFile: './.eslintrc.js',
+    failOnWarning: false,
+    failOnError: true
   }
 }
