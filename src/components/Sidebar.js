@@ -5,23 +5,21 @@ import style from './Sidebar.styl';
 // Components
 import Topbar from './Topbar';
 
-class Sidebar extends React.Component {
-  getTopbarStyle() {
-    return {
-      background: 'none',
-    };
-  }
-  render() {
-    return (<div className={style.sidebar}>
-      <Topbar
-        style={this.getTopbarStyle()}
-        titleText="Pocket Campaign"
-        rightButtonContent={<TiTimes />}
-        rightButtonAction={this.props.closeButtonAction}
-      />
-    </div>);
-  }
+function getTopbarStyle() {
+  return {
+    background: 'none',
+  };
 }
+
+const Sidebar = (props) =>
+  <div className={style.sidebar}>
+    <Topbar
+      style={getTopbarStyle()}
+      titleText="Pocket Campaign"
+      rightButtonContent={<TiTimes />}
+      rightButtonAction={props.closeButtonAction}
+    />
+  </div>;
 
 Sidebar.propTypes = {
   closeButtonAction: PropTypes.func,

@@ -9,6 +9,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { sidebarVisible: true };
+
+    // Binds
+    this.toggleSidebarVisibility = this.toggleSidebarVisibility.bind(this);
   }
 
   toggleSidebarVisibility(e) {

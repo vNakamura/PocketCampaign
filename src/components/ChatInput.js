@@ -16,6 +16,12 @@ class ChatInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = { text: '' };
+
+    // Binds
+    this.handleTextChange = this.handleTextChange.bind(this);
+    this.handleSend = this.handleSend.bind(this);
+    this.handleFocus = this.handleFocus.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
   }
 
   handleTextChange(e) {

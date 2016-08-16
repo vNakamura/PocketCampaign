@@ -4,7 +4,6 @@ import style from './Topbar.styl';
 class Topbar extends React.Component {
   noActionSet(e) {
     e.preventDefault();
-    console.log('Button Action not set');
   }
 
   renderMenuButton(content, action = this.noActionSet) {
@@ -13,7 +12,7 @@ class Topbar extends React.Component {
     );
   }
   render() {
-    return(
+    return (
       <div className={style.container} style={this.props.style}>
         {this.renderMenuButton(this.props.leftButtonContent, this.props.leftButtonAction)}
         <h4 className={style.title}>{this.props.titleText}</h4>
@@ -29,11 +28,11 @@ Topbar.propTypes = {
   rightButtonContent: PropTypes.element,
   leftButtonAction: PropTypes.func,
   rightButtonAction: PropTypes.func,
-  style: Proptypes.object,
+  style: PropTypes.object,
 };
 
 Topbar.defaultProps = {
-  titleText: ''
+  titleText: '',
 };
 
 export default Topbar;
