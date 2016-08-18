@@ -8,7 +8,15 @@ class Topbar extends React.Component {
 
   renderMenuButton(content, action = this.noActionSet) {
     return (
-      content ? (<a href="#menu" onClick={action} className={style.menuButton}>{content}</a>) : null
+      content ?
+        (<a
+          href="#topbarButton"
+          onClick={action}
+          className={style.menuButton}
+        >
+          {content}
+        </a>)
+      : null
     );
   }
   render() {
