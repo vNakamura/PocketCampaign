@@ -5,16 +5,14 @@ import style from './Sidebar.styl';
 // Components
 import Topbar from './Topbar';
 
-function getTopbarStyle() {
-  return {
-    background: 'none',
-  };
-}
+const topbarStyle = {
+  background: 'none',
+};
 
 const Sidebar = (props) =>
   <div className={style.sidebar}>
     <Topbar
-      style={getTopbarStyle()}
+      style={topbarStyle}
       titleText="Pocket Campaign"
       rightButtonContent={<TiTimes />}
       rightButtonAction={props.closeButtonAction}
