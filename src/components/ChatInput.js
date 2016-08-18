@@ -13,22 +13,17 @@ const hotkeys = [
 ];
 
 class ChatInput extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { text: '' };
-
-    // Binds
-    this.handleTextChange = this.handleTextChange.bind(this);
-    this.handleSend = this.handleSend.bind(this);
-    this.handleFocus = this.handleFocus.bind(this);
-    this.handleBlur = this.handleBlur.bind(this);
+  static propTypes = {
+    sendAction: PropTypes.func.isRequired,
   }
 
-  handleTextChange(e) {
+  state = { text: '' }
+
+  handleTextChange = (e) => {
     this.setState({ text: e.currentTarget.value });
   }
 
-  handleSend(e) {
+  handleSend = (e) => {
     e.preventDefault();
     const message = trim(this.state.text);
     if (message.length > 0) {
@@ -37,7 +32,7 @@ class ChatInput extends React.Component {
     }
   }
 
-  handleFocus() {
+  handleFocus = () => {
     MouseTrap.bind(hotkeys, this.handleSend);
   }
   handleBlur() {
@@ -70,9 +65,5 @@ class ChatInput extends React.Component {
     );
   }
 }
-
-ChatInput.propTypes = {
-  sendAction: PropTypes.func.isRequired,
-};
 
 export default ChatInput;

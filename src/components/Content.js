@@ -9,6 +9,11 @@ import Scrollable from './Scrollable';
 import ChatInput from './ChatInput';
 
 class Content extends React.Component {
+  static propTypes = {
+    sidebarVisible: PropTypes.bool,
+    menuButtonAction: PropTypes.func,
+  }
+
   sendAction(message) {
     console.log(message);
   }
@@ -27,10 +32,5 @@ class Content extends React.Component {
     </div>);
   }
 }
-
-Content.propTypes = {
-  sidebarVisible: PropTypes.bool,
-  menuButtonAction: PropTypes.func,
-};
 
 export default Content;
