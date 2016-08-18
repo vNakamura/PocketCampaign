@@ -38,9 +38,9 @@ describe('<Topbar />', function () {
       count++;
     }
     const wrapper = shallow(<Topbar
-      leftButtonContent="l"
+      leftButtonContent={<span>l</span>}
       leftButtonAction={increaseCount}
-      rightButtonContent="r"
+      rightButtonContent={<span>r</span>}
       rightButtonAction={increaseCount}
     />);
 

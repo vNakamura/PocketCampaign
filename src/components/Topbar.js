@@ -2,6 +2,19 @@ import React, { PropTypes } from 'react';
 import style from './Topbar.styl';
 
 class Topbar extends React.Component {
+  static propTypes = {
+    titleText: PropTypes.string,
+    leftButtonContent: PropTypes.element,
+    rightButtonContent: PropTypes.element,
+    leftButtonAction: PropTypes.func,
+    rightButtonAction: PropTypes.func,
+    style: PropTypes.object,
+  }
+
+  static defaultProps = {
+    titleText: '',
+  }
+
   noActionSet(e) {
     e.preventDefault();
   }
@@ -29,18 +42,5 @@ class Topbar extends React.Component {
     );
   }
 }
-
-Topbar.propTypes = {
-  titleText: PropTypes.string,
-  leftButtonContent: PropTypes.element,
-  rightButtonContent: PropTypes.element,
-  leftButtonAction: PropTypes.func,
-  rightButtonAction: PropTypes.func,
-  style: PropTypes.object,
-};
-
-Topbar.defaultProps = {
-  titleText: '',
-};
 
 export default Topbar;
