@@ -2,9 +2,9 @@
   "name": "pocket-campaign",
   "version": "0.0.1",
   "description": "A messenger app for your RPG adventures",
-  "main": "index.js",
+  "main": "src/main.js",
   "scripts": {
-    "test": "mocha --require ignore-styles -w test/helpers/browser.js test/*.spec.js",
+    "test": "mocha -w --require ignore-styles test/helpers/browser.js test/*.spec.js",
     "start": "webpack-dev-server --hot --inline --colors --no-info --content-base bin/",
     "start-storybook": "start-storybook -p 9001"
   },
@@ -51,6 +51,7 @@
     "ignore-styles": "^4.0.0",
     "jsdom": "^9.4.2",
     "mocha": "^3.0.2",
+    "mocha-eslint": "^3.0.1",
     "postcss-loader": "^0.9.1",
     "react-addons-test-utils": "^15.3.0",
     "style-loader": "^0.13.1",
