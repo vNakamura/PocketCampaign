@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import TextareaAutoresize from 'react-textarea-autosize';
-import { trim } from 'lodash';
+import trim from 'lodash/trim';
 import MouseTrap from 'mousetrap';
 import classNames from 'classnames';
 import style from './ChatInput.styl';

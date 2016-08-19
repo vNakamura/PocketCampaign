@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { TiThMenu } from 'react-icons/lib/ti';
+import TiThMenu from 'react-icons/lib/ti/th-menu';
 import style from './Content.styl';
 
 // Components

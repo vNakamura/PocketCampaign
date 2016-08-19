@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { TiTimes } from 'react-icons/lib/ti';
+import TiTimes from 'react-icons/lib/ti/times';
 import style from './Sidebar.styl';
 
 // Components
