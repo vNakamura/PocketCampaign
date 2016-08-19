@@ -24,7 +24,7 @@ class ChatInput extends React.Component {
   }
 
   handleSend = (e) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
     const message = trim(this.state.text);
     if (message.length > 0) {
       this.props.sendAction(message);

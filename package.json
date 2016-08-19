@@ -4,7 +4,7 @@
   "description": "A messenger app for your RPG adventures",
   "main": "src/main.js",
   "scripts": {
-    "test": "mocha -w --require ignore-styles test/helpers/browser.js test/*.spec.js",
+    "test": "mocha -w --require ignore-styles test/helpers/browser.js test/helpers/chai-plugins.js test/*.spec.js",
     "start": "webpack-dev-server --hot --inline --colors --no-info --content-base bin/",
     "start-storybook": "start-storybook -p 9001"
   },
@@ -40,6 +40,7 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-2": "^6.13.0",
     "chai": "^3.5.0",
+    "chai-enzyme": "^0.5.0",
     "css-loader": "^0.23.1",
     "enzyme": "^2.4.1",
     "eslint": "^3.3.1",
@@ -54,6 +55,8 @@
     "mocha-eslint": "^3.0.1",
     "postcss-loader": "^0.9.1",
     "react-addons-test-utils": "^15.3.0",
+    "sinon": "^1.17.5",
+    "sinon-chai": "^2.8.0",
     "style-loader": "^0.13.1",
     "stylus": "^0.54.5",
     "stylus-relative-loader": "^3.2.0",
