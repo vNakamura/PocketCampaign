@@ -12,12 +12,3 @@ function loadStories() {
 }
 
 configure(loadStories, module);
-
-(function(){
-  var font = document.createElement('link');
-  font.type = 'text/css';
-  font.rel = 'stylesheet';
-  font.href = '//fonts.googleapis.com/css?family=Dosis:300,400|Open+Sans:400,400i,700,700i';
-  var s = document.getElementsByTagName('style')[0];
-  s.parentNode.insertBefore(font, s);
-})();
