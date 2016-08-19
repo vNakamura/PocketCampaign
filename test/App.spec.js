@@ -7,7 +7,7 @@ import App from '../src/components/App';
 describe('<App />', function () {
   it('should have a <Content /> component', function () {
     const wrapper = shallow(<App />);
-    expect(wrapper.find('Content')).to.have.length(1);
+    expect(wrapper).to.have.exactly(1).descendants('Content');
   });
 
   it('should have a <Sidebar /> component if state says so', function () {

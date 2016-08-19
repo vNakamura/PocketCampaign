@@ -11,14 +11,14 @@ describe('<ChatInput />', function () {
 
   it('should have a <TextareaAutoresize /> component', function () {
     const wrapper = shallow(<ChatInput  sendAction={sendAction} />);
-    expect(wrapper).to.have.descendants(TextareaAutoresize);
+    expect(wrapper).to.have.exactly(1).descendants(TextareaAutoresize);
   });
 
   it('should have a send button only if text input has content', function () {
     const wrapper = shallow(<ChatInput  sendAction={sendAction} />);
     expect(wrapper).to.not.have.descendants('a');
     wrapper.setState({ text: 'abc' });
-    expect(wrapper).to.have.descendants('a');
+    expect(wrapper).to.have.exactly.descendants('a');
   });
 
   it('should trim the message before sending and then clean the input field', function () {
