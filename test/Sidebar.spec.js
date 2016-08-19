@@ -11,9 +11,4 @@ describe('<Sidebar />', function () {
     expect(element).to.have.length(1);
   });
 
-  it('should have props for close button', function () {
-    const props = shallow(<Sidebar />).props();
-    expect(props.closeButtonAction).to.be.defined;
-  });
-
 });

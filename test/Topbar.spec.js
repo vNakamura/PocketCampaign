@@ -14,15 +14,6 @@ describe('<Topbar />', function () {
     expect(element.text()).to.equal(title);
   });
 
-  it('should have props for title and buttons', function () {
-    const props = shallow(<Topbar />).props();
-    expect(props.titleText).to.be.defined;
-    expect(props.leftButtonContent).to.be.defined;
-    expect(props.rightButtonContent).to.be.defined;
-    expect(props.leftButtonAction).to.be.defined;
-    expect(props.rightButtonAction).to.be.defined;
-  });
-
   it('should show buttons when set by props', function () {
     let wrapper = shallow(<Topbar />);
     expect(wrapper.find('a')).to.have.length(0);

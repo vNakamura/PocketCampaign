@@ -14,11 +14,6 @@ describe('<ChatInput />', function () {
     expect(wrapper).to.have.descendants(TextareaAutoresize);
   });
 
-  it('should have prop for sendAction', function () {
-    const wrapper = mount(<ChatInput sendAction={sendAction} />);
-    expect(wrapper).to.have.prop('sendAction').equal(sendAction);
-  });
-
   it('should have a send button only if text input has content', function () {
     const wrapper = shallow(<ChatInput  sendAction={sendAction} />);
     expect(wrapper).to.not.have.descendants('a');

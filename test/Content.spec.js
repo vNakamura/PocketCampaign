@@ -20,12 +20,4 @@ describe('<Content />', function () {
     expect(wrapper.find('ChatInput')).to.have.length(1);
   });
 
-  it('should have props for sidebar visibility and menu button action',
-    function () {
-      const props = shallow(<Content />).props();
-      expect(props.sidebarVisible).to.be.defined;
-      expect(props.menuButtonAction).to.be.defined;
-    }
-  );
-
 });
