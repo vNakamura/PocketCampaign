@@ -10,6 +10,7 @@ function loadStories() {
   require('../src/components/stories/Topbar-story');
   require('../src/components/stories/ChatInput-story');
   require('../src/components/stories/Avatar-story');
+  require('../src/components/stories/Message-story');
 }
 
 configure(loadStories, module);
