@@ -7,8 +7,9 @@ require('../src/global.styl');
 require('./storybook.styl');
 
 function loadStories() {
-  require('../src/components/stories/ChatInput-story');
   require('../src/components/stories/Topbar-story');
+  require('../src/components/stories/ChatInput-story');
+  require('../src/components/stories/Avatar-story');
 }
 
 configure(loadStories, module);
