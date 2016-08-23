@@ -1,4 +1,7 @@
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actionCreators from '../actions/actionCreators';
 import style from './App.styl';
 
 // Components
@@ -10,22 +13,15 @@ class App extends React.Component {
     children: PropTypes.node.isRequired,
   }
 
-  state = { sidebarVisible: true }
-
-  toggleSidebarVisibility = (e) => {
-    e.preventDefault();
-    this.setState({ sidebarVisible: !this.state.sidebarVisible });
-  }
-
   render() {
     return (
       <div className={style.fullHeight}>
-        {this.state.sidebarVisible ?
-          <Sidebar closeButtonAction={this.toggleSidebarVisibility} /> : null
+        {this.props.sidebarVisible ?
+          <Sidebar closeButtonAction={this.props.toggleSidebar} /> : null
         }
         <Content
-          menuButtonAction={this.state.sidebarVisible ?
-            null : this.toggleSidebarVisibility
+          menuButtonAction={this.props.sidebarVisible ?
+            null : this.props.toggleSidebar
           }
         >
           {this.props.children}
@@ -35,4 +31,14 @@ class App extends React.Component {
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    sidebarVisible: state.sidebarVisible,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(actionCreators, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
