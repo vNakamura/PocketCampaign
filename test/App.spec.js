@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
 
@@ -17,6 +17,10 @@ describe('<App />', function () {
     wrapper.setState({sidebarVisible: !visibility});
     visibility = wrapper.state('sidebarVisible') ? 1 : 0;
     expect(wrapper.find('Sidebar')).to.have.length(visibility);
+  });
+
+  it('should have propTypes set', function () {
+    expect(App.propTypes.children).to.be.equal(PropTypes.node.isRequired);
   });
 
 });

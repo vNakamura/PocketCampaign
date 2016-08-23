@@ -21,7 +21,6 @@ describe('<Content />', function () {
   });
 
   it('should have propTypes set', function () {
-    expect(Content.propTypes.sidebarVisible).to.be.equal(PropTypes.bool);
     expect(Content.propTypes.menuButtonAction).to.be.equal(PropTypes.func);
   });
 });

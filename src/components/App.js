@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import style from './App.styl';
 
 // Components
@@ -6,6 +6,10 @@ import Sidebar from './Sidebar';
 import Content from './Content';
 
 class App extends React.Component {
+  static propTypes = {
+    children: PropTypes.node.isRequired,
+  }
+
   state = { sidebarVisible: true }
 
   toggleSidebarVisibility = (e) => {
@@ -20,9 +24,12 @@ class App extends React.Component {
           <Sidebar closeButtonAction={this.toggleSidebarVisibility} /> : null
         }
         <Content
-          sidebarVisible={this.state.sidebarVisible}
-          menuButtonAction={this.toggleSidebarVisibility}
-        />
+          menuButtonAction={this.state.sidebarVisible ?
+            null : this.toggleSidebarVisibility
+          }
+        >
+          {this.props.children}
+        </Content>
       </div>
     );
   }
