@@ -22,13 +22,12 @@ class Topbar extends React.Component {
   renderMenuButton(content, action = this.noActionSet) {
     return (
       content ?
-        (<a
-          href="#topbarButton"
+        (<button
           onClick={action}
           className={style.menuButton}
         >
           {content}
-        </a>)
+        </button>)
       : null
     );
   }

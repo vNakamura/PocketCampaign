@@ -8,28 +8,25 @@ import style from './App.styl';
 import Sidebar from './Sidebar';
 import Content from './Content';
 
-class App extends React.Component {
-  static propTypes = {
-    children: PropTypes.node.isRequired,
-  }
+export const App = (props) =>
+  <div className={style.fullHeight}>
+    {props.sidebarVisible ?
+      <Sidebar closeButtonAction={props.toggleSidebar} /> : null
+    }
+    <Content
+      menuButtonAction={props.sidebarVisible ?
+        null : props.toggleSidebar
+      }
+    >
+      {props.children}
+    </Content>
+  </div>;
 
-  render() {
-    return (
-      <div className={style.fullHeight}>
-        {this.props.sidebarVisible ?
-          <Sidebar closeButtonAction={this.props.toggleSidebar} /> : null
-        }
-        <Content
-          menuButtonAction={this.props.sidebarVisible ?
-            null : this.props.toggleSidebar
-          }
-        >
-          {this.props.children}
-        </Content>
-      </div>
-    );
-  }
-}
+App.propTypes = {
+  children: PropTypes.node.isRequired,
+  sidebarVisible: PropTypes.bool.isRequired,
+  toggleSidebar: PropTypes.func.isRequired,
+};
 
 function mapStateToProps(state) {
   return {

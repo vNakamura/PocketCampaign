@@ -1,8 +1,12 @@
 function sidebarVisible(state = true, action) {
-  if (action.type === 'TOGGLE_SIDEBAR') {
-    return !state;
+  switch (action.type) {
+    case 'SET_SIDEBAR_VISIBILITY':
+      return action.visible;
+    case 'TOGGLE_SIDEBAR':
+      return !state;
+    default:
+      return state;
   }
-  return state;
 }
 
 export default sidebarVisible;

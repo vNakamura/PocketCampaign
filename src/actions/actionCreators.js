@@ -4,4 +4,9 @@ export function toggleSidebar() {
   };
 }
 
-export default {};
+export function setSidebarVisibility(visible) {
+  return {
+    type: 'SET_SIDEBAR_VISIBILITY',
+    visible,
+  };
+}

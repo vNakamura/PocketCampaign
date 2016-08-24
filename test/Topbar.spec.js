@@ -19,9 +19,9 @@ describe('<Topbar />', function () {
     let wrapper = shallow(<Topbar />);
     expect(wrapper).to.not.have.descendants('a');
     wrapper.setProps({leftButtonContent: <span>left</span>});
-    expect(wrapper).to.have.exactly(1).descendants('a');
+    expect(wrapper).to.have.exactly(1).descendants('button');
     wrapper.setProps({rightButtonContent: <span>right</span>});
-    expect(wrapper).to.have.exactly(2).descendants('a');
+    expect(wrapper).to.have.exactly(2).descendants('button');
   });
 
   it('should accept functions as props to run when buttons are clicked', function () {
@@ -33,7 +33,7 @@ describe('<Topbar />', function () {
       rightButtonAction={action}
     />);
 
-    const buttons = wrapper.find('a');
+    const buttons = wrapper.find('button');
     expect(action).to.have.not.been.called;
     buttons.at(0).simulate('click');
     expect(action).to.have.been.calledOnce;
