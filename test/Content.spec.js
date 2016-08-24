@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import { expect } from 'chai';
 
 import Content from '../src/components/Content';
+import ChatInput from '../src/components/ChatInput';
 
 describe('<Content />', function () {
   it('should have a <Topbar /> component', function () {
@@ -17,7 +18,7 @@ describe('<Content />', function () {
 
   it('should have a <ChatInput /> component', function () {
     const wrapper = shallow(<Content />);
-    expect(wrapper).to.have.exactly(1).descendants('ChatInput');
+    expect(wrapper).to.have.exactly(1).descendants(ChatInput);
   });
 
   it('should have propTypes set', function () {
