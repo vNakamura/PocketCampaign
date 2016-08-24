@@ -10,3 +10,10 @@ export function setSidebarVisibility(visible) {
     visible,
   };
 }
+
+export function sendMessage(text) {
+  return {
+    type: 'SEND_MESSAGE',
+    text,
+  };
+}

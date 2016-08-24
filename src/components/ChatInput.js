@@ -1,9 +1,13 @@
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import TextareaAutoresize from 'react-textarea-autosize';
 import trim from 'lodash/trim';
 import MouseTrap from 'mousetrap';
 import classNames from 'classnames';
 import style from './ChatInput.styl';
+
+import { sendMessage } from '../actions/actionCreators';
 
 const hotkeys = [
   'command+enter',
@@ -12,9 +16,9 @@ const hotkeys = [
   'ctrl+return',
 ];
 
-class ChatInput extends React.Component {
+export class ChatInput extends React.Component {
   static propTypes = {
-    sendAction: PropTypes.func.isRequired,
+    sendMessage: PropTypes.func.isRequired,
   }
 
   state = { text: '' }
@@ -27,7 +31,7 @@ class ChatInput extends React.Component {
     if (e) e.preventDefault();
     const message = trim(this.state.text);
     if (message.length > 0) {
-      this.props.sendAction(message);
+      this.props.sendMessage(message);
       this.setState({ text: '' });
     }
   }
@@ -54,11 +58,10 @@ class ChatInput extends React.Component {
         />
         {
           (trim(this.state.text).length > 0) ?
-            <a
+            <button
               className={style.sendButton}
               onClick={this.handleSend}
-              href="#send"
-            >Send</a>
+            >Send</button>
           : null
         }
       </div>
@@ -66,4 +69,8 @@ class ChatInput extends React.Component {
   }
 }
 
-export default ChatInput;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ sendMessage }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(ChatInput);

@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actionCreators from '../actions/actionCreators';
+import { toggleSidebar } from '../actions/actionCreators';
 import style from './App.styl';
 
 // Components
@@ -35,7 +35,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(actionCreators, dispatch);
+  return bindActionCreators({ toggleSidebar }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

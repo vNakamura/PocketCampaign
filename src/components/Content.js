@@ -28,7 +28,7 @@ class Content extends React.Component {
       <Scrollable>
         {this.props.children}
       </Scrollable>
-      <ChatInput sendAction={this.sendAction} />
+      <ChatInput />
     </div>);
   }
 }
