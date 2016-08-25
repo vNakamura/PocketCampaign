@@ -2,6 +2,8 @@
 
 A self-hosted chat app to let you play your tabletop RPG adventures anywhere.
 
+[![Build Status](https://travis-ci.org/vNakamura/PocketCampaign.svg)](https://travis-ci.org/vNakamura/PocketCampaign)
+
 ## Stack
 
 * NodeJS <https://nodejs.org/>
