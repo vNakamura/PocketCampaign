@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 
 import store, { history } from './store';
 import App from './components/App';
-import KitchenSink from './components/KitchenSink';
+import Chat from './components/Chat';
 
 require('./global.styl');
 
@@ -13,7 +13,7 @@ const router = (
   <Provider store={store}>
     <Router history={history} >
       <Route path="/" component={App}>
-        <IndexRoute component={KitchenSink} />
+        <IndexRoute component={Chat} />
       </Route>
     </Router>
   </Provider>
