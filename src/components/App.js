@@ -23,9 +23,9 @@ export const App = (props) =>
   </div>;
 
 App.propTypes = {
-  children: PropTypes.node.isRequired,
-  sidebarVisible: PropTypes.bool.isRequired,
-  toggleSidebar: PropTypes.func.isRequired,
+  children: PropTypes.node,
+  sidebarVisible: PropTypes.bool,
+  toggleSidebar: PropTypes.func,
 };
 
 function mapStateToProps(state) {

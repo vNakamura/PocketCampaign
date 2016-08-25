@@ -18,7 +18,7 @@ describe('<App />', function () {
   });
 
   it('should have propTypes set', function () {
-    expect(App.propTypes.children).to.be.equal(PropTypes.node.isRequired);
+    expect(App.propTypes.children).to.be.equal(PropTypes.node);
   });
 
 });
