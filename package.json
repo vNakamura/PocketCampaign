@@ -23,6 +23,7 @@
   "homepage": "https://github.com/vNakamura/PocketCampaign#readme",
   "dependencies": {
     "classnames": "^2.2.5",
+    "firebase": "^3.3.0",
     "lodash": "^4.15.0",
     "md5": "^2.1.0",
     "moment": "^2.14.1",
