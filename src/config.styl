@@ -11,20 +11,22 @@ $top-bar-height    = 52px;
 
 // Colors
 
-$text-color = #373f51
-$alternative-text-color = #fff
-$canvas = #fff
-$primary1 = #008dd5
-$primary2 = #ffc39d
-$accent1 = #f56476
-$accent2 = #e43f6f
+// Pallete: https://coolors.co/493548-4b4e6d-6a8d92-80b192-a1e887
+
+$text-color = #493548
+$alternative-text-color = #FFFDF7
+$canvas = $alternative-text-color
+$primary1 = #80B192
+$primary2 = #A1E887
+$accent1 = #4B4E6D
+$accent2 = #6A8D92
 
 $body-color         = $text-color
-$heading-color      = darken($text-color, 10%)
-$topbar-color       = #FFF
+$heading-color      = darken($text-color, 15%)
+$topbar-color       = $alternative-text-color
 
 main-gradient(angle = 11deg)
-  background-image: linear-gradient(angle, $accent2 0%, $accent1 35%, $primary2 90%);
+  background-image: linear-gradient(angle, $primary1 8%, $primary2 92%);
   color: $alternative-text-color
 menu-gradient(angle = 98deg)
   background-image: linear-gradient(angle, $body-color 25%, $heading-color 82%);
