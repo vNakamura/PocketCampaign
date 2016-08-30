@@ -6,7 +6,7 @@
   "scripts": {
     "test-once": "mocha --require ignore-styles test/helpers/browser.js test/helpers/chai-plugins.js test/*.spec.js",
     "test": "npm run test-once -- -w",
-    "start": "webpack-dev-server --hot --inline --colors --no-info --content-base bin/",
+    "start": "webpack-dev-server --history-api-fallback --hot --inline --colors --no-info --content-base bin/",
     "build": "webpack --config webpack.config.prod.js",
     "start-storybook": "start-storybook -p 9001"
   },

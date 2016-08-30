@@ -16,12 +16,15 @@ describe('<Content />', function () {
     expect(wrapper).to.have.exactly(1).descendants('Scrollable');
   });
 
-  it('should have a <ChatInput /> component', function () {
+  it('should have a <ChatInput /> component when prop is set', function () {
     const wrapper = shallow(<Content />);
+    expect(wrapper).to.not.have.descendants(ChatInput);
+    wrapper.setProps({ chatInputVisible: true });
     expect(wrapper).to.have.exactly(1).descendants(ChatInput);
   });
 
   it('should have propTypes set', function () {
     expect(Content.propTypes.menuButtonAction).to.be.equal(PropTypes.func);
+    expect(Content.propTypes.chatInputVisible).to.be.equal(PropTypes.bool);
   });
 });

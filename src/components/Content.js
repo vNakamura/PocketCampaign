@@ -18,12 +18,17 @@ const Content = (props) =>
     <Scrollable>
       {props.children}
     </Scrollable>
-    <ChatInput />
+    {props.chatInputVisible ? <ChatInput /> : null}
   </div>;
 
 Content.propTypes = {
   menuButtonAction: PropTypes.func,
+  chatInputVisible: PropTypes.bool,
   children: PropTypes.node,
+};
+
+Content.defaultProps = {
+  chatInputVisible: false,
 };
 
 export default Content;

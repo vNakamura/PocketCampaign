@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 import TiTimes from 'react-icons/lib/ti/times';
 import style from './Sidebar.styl';
 
@@ -17,6 +18,14 @@ const Sidebar = (props) =>
       rightButtonContent={<TiTimes />}
       rightButtonAction={props.closeButtonAction}
     />
+    <ul>
+      <li>
+        <Link to="/">Typography test</Link>
+      </li>
+      <li>
+        <Link to="/chat/asd">Chat</Link>
+      </li>
+    </ul>
   </div>;
 
 Sidebar.propTypes = {
