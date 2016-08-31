@@ -6,7 +6,6 @@ import rootReducer from './reducers/index';
 
 const defaultState = {
   sidebarVisible: true,
-  messages: [],
 };
 
 const store = createStore(

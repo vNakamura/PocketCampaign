@@ -1,5 +1,5 @@
-import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
+import { bindToCollection } from 'firebase-3-react';
 
 import Message from './Message';
 
@@ -8,24 +8,22 @@ const author = {
 };
 
 function renderMessages(messages) {
-  return messages.map((message, index) =>
-    <Message text={message} key={index} author={author} />
-  );
+  return Object.keys(messages).map((key, id) => {
+    const message = messages[key];
+    return <Message text={message.text} key={key} id={id} author={author} />;
+  });
 }
 
-export const Chat = (props) =>
+export const Chat = () =>
+  <MessagesContainer
+    firebaseRef="/messages"
+    cacheLocally
+  />;
+
+const MessagesContainer = bindToCollection((props) =>
   <div>
-    {renderMessages(props.messages)}
-  </div>;
+    {renderMessages(props.data)}
+  </div>
+);
 
-Chat.propTypes = {
-  messages: PropTypes.array,
-};
-
-function mapStateToProps(state) {
-  return {
-    messages: state.messages,
-  };
-}
-
-export default connect(mapStateToProps)(Chat);
+export default Chat;

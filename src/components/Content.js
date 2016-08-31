@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes, Component } from 'react';
+import { findDOMNode } from 'react-dom';
 import TiThMenu from 'react-icons/lib/ti/th-menu';
 import isNil from 'lodash/isNil';
 import style from './Content.styl';
@@ -8,27 +9,40 @@ import Topbar from './Topbar';
 import Scrollable from './Scrollable';
 import ChatInput from './ChatInput';
 
-const Content = (props) =>
-  <div className={style.content}>
-    <Topbar
-      leftButtonContent={isNil(props.menuButtonAction) ? null : <TiThMenu />}
-      leftButtonAction={props.menuButtonAction}
-      titleText="A really long title that would make the line break on a small screen"
-    />
-    <Scrollable>
-      {props.children}
-    </Scrollable>
-    {props.chatInputVisible ? <ChatInput /> : null}
-  </div>;
+class Content extends Component {
+  static propTypes = {
+    menuButtonAction: PropTypes.func,
+    chatInputVisible: PropTypes.bool,
+    children: PropTypes.node,
+  }
 
-Content.propTypes = {
-  menuButtonAction: PropTypes.func,
-  chatInputVisible: PropTypes.bool,
-  children: PropTypes.node,
-};
+  static defaultProps = {
+    chatInputVisible: false,
+  }
 
-Content.defaultProps = {
-  chatInputVisible: false,
-};
+  handleSend = () => {
+    const node = findDOMNode(this.scrollable);
+    node.scrollTop = node.scrollHeight;
+  }
+
+  render() {
+    return (
+      <div className={style.content}>
+        <Topbar
+          leftButtonContent={
+            isNil(this.props.menuButtonAction) ?
+            null : <TiThMenu />
+          }
+          leftButtonAction={this.props.menuButtonAction}
+          titleText="A really long title that would make the line break on a small screen"
+        />
+        <Scrollable ref={(c) => { this.scrollable = c; }}>
+          {this.props.children}
+        </Scrollable>
+        {this.props.chatInputVisible ? <ChatInput onSend={this.handleSend} /> : null}
+      </div>
+    );
+  }
+}
 
 export default Content;

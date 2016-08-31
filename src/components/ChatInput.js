@@ -1,13 +1,12 @@
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import TextareaAutoresize from 'react-textarea-autosize';
 import trim from 'lodash/trim';
 import MouseTrap from 'mousetrap';
 import classNames from 'classnames';
-import style from './ChatInput.styl';
+import { database } from 'firebase-3-react';
+import { ServerValue } from 'firebase/database';
 
-import { sendMessage } from '../actions/actionCreators';
+import style from './ChatInput.styl';
 
 const hotkeys = [
   'command+enter',
@@ -18,7 +17,7 @@ const hotkeys = [
 
 export class ChatInput extends React.Component {
   static propTypes = {
-    sendMessage: PropTypes.func.isRequired,
+    onSend: PropTypes.func.isRequired,
   }
 
   state = { text: '' }
@@ -29,9 +28,13 @@ export class ChatInput extends React.Component {
 
   handleSend = (e) => {
     if (e) e.preventDefault();
-    const message = trim(this.state.text);
-    if (message.length > 0) {
-      this.props.sendMessage(message);
+    const text = trim(this.state.text);
+    if (text.length > 0) {
+      database().ref('/messages').push({
+        text,
+        time: ServerValue.TIMESTAMP,
+      });
+      this.props.onSend();
       this.setState({ text: '' });
     }
   }
@@ -69,8 +72,4 @@ export class ChatInput extends React.Component {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ sendMessage }, dispatch);
-}
-
-export default connect(null, mapDispatchToProps)(ChatInput);
+export default ChatInput;
