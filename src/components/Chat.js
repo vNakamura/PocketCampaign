@@ -8,9 +8,9 @@ const author = {
 };
 
 function renderMessages(messages) {
-  return Object.keys(messages).map((key, id) => {
+  return Object.keys(messages).map((key) => {
     const message = messages[key];
-    return <Message text={message.text} key={key} id={id} author={author} />;
+    return <Message {... message} key={key} author={author} />;
   });
 }
 
