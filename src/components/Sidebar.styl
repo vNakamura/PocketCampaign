@@ -22,12 +22,12 @@ break = 800px;
       transform:  translate(-($sidebar-width), 0);
     .enterActive &
       transform:  translate(0, 0);
-      transition: transform 500ms ease-out;
+      transition: transform 300ms ease-out;
     .leave &
       transform:  translate(0, 0);
     .leaveActive &
       transform:  translate(-($sidebar-width), 0);
-      transition: transform 300ms ease-in;
+      transition: transform 200ms ease-in;
 
 .overlay
   display: none;
@@ -44,9 +44,9 @@ break = 800px;
       opacity:    0.01;
     .enterActive &
       opacity:    1;
-      transition: opacity 500ms ease-in;
+      transition: opacity 300ms ease-in;
     .leave &
       opacity:    1;
     .leaveActive &
       opacity:    0.01;
-      transition: opacity 300ms ease-in;
+      transition: opacity 200ms ease-in;

@@ -52,8 +52,8 @@ export class App extends Component {
       <div className={style.fullHeight}>
         <ReactCSSTransitionGroup
           transitionName={sidebarStyle}
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={300}
+          transitionEnterTimeout={300}
+          transitionLeaveTimeout={200}
         >
           {this.renderSidebar()}
         </ReactCSSTransitionGroup>
