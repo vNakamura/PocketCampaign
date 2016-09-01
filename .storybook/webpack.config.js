@@ -1,6 +1,7 @@
 var autoprefixer = require('autoprefixer');
 var axis = require('axis');
 var typographic = require('typographic');
+var rupture = require('rupture');
 
 module.exports = {
   module: {
@@ -13,7 +14,7 @@ module.exports = {
     ]
   },
   stylus: {
-    use: [typographic(),  axis()]
+    use: [typographic(),  axis(), rupture({ implicit: false })]
   },
   postcss: function () {
     return [autoprefixer];

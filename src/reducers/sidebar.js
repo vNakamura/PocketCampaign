@@ -1,4 +1,4 @@
-function sidebarVisible(state = true, action) {
+function sidebarVisible(state = false, action) {
   switch (action.type) {
     case 'SET_SIDEBAR_VISIBILITY':
       return action.visible;

@@ -12,6 +12,11 @@ Object.keys(document.defaultView).forEach((property) => {
     global[property] = document.defaultView[property];
   }
 });
+global.window.matchMedia = function () {
+  return {
+    addListener: function () { return {}; }
+  }
+};
 
 global.navigator = {
   userAgent: 'node.js'

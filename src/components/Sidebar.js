@@ -11,21 +11,24 @@ const topbarStyle = {
 };
 
 const Sidebar = (props) =>
-  <div className={style.sidebar}>
-    <Topbar
-      style={topbarStyle}
-      titleText="Pocket Campaign"
-      rightButtonContent={<TiTimes />}
-      rightButtonAction={props.closeButtonAction}
-    />
-    <ul>
-      <li>
-        <Link to="/">Typography test</Link>
-      </li>
-      <li>
-        <Link to="/chat/asd">Chat</Link>
-      </li>
-    </ul>
+  <div className={style.container}>
+    <div className={style.overlay} onClick={props.closeButtonAction} />
+    <div className={style.sidebar}>
+      <Topbar
+        style={topbarStyle}
+        titleText="Pocket Campaign"
+        rightButtonContent={props.closeButtonAction ? <TiTimes /> : null}
+        rightButtonAction={props.closeButtonAction}
+      />
+      <ul>
+        <li>
+          <Link to="/">Typography test</Link>
+        </li>
+        <li>
+          <Link to="/chat/asd">Chat</Link>
+        </li>
+      </ul>
+    </div>
   </div>;
 
 Sidebar.propTypes = {
