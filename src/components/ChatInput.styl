@@ -1,18 +1,19 @@
 @import '../config.styl';
 
 .container
-  min-height:      $top-bar-height;
   display:         flex;
   align-items:     flex-end;
   justify-content: space-between;
-  padding:         ($common-spacing / 2);
+  padding-bottom:  ($common-spacing / 2);
 
 .textInput
   flex:          1
   resize:        none;
-  margin-bottom: 0;
   input($primary1);
+  margin: ($common-spacing / 2) ($common-spacing / 2) 0 0;
+
+.rollButton
+  simple-button($primary1);
 
 .sendButton
   simple-button($primary1);
-  margin-left: $common-spacing;

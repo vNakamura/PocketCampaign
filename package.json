@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/vNakamura/PocketCampaign#readme",
   "dependencies": {
+    "chance": "^1.0.4",
     "classnames": "^2.2.5",
     "firebase": "^3.3.0",
     "firebase-3-react": "^1.0.24",

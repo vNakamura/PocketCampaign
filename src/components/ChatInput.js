@@ -7,6 +7,7 @@ import { database } from 'firebase-3-react';
 import { ServerValue } from 'firebase/database';
 
 import style from './ChatInput.styl';
+import DiceIcon from './icons/Dice';
 
 const hotkeys = [
   'command+enter',
@@ -39,6 +40,10 @@ export class ChatInput extends React.Component {
     }
   }
 
+  handleRoll = (e) => {
+    if (e) e.preventDefault();
+  }
+
   handleFocus = () => {
     MouseTrap.bind(hotkeys, this.handleSend);
   }
@@ -50,6 +55,10 @@ export class ChatInput extends React.Component {
     const textAreaClass = classNames('mousetrap', style.textInput);
     return (
       <div className={style.container}>
+        <button
+          className={style.rollButton}
+          onClick={this.handleRoll}
+        ><DiceIcon/></button>
         <TextareaAutoresize
           maxRows={4}
           className={textAreaClass}
