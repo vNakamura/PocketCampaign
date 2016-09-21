@@ -55,10 +55,12 @@ export class ChatInput extends React.Component {
     const textAreaClass = classNames('mousetrap', style.textInput);
     return (
       <div className={style.container}>
-        <button
-          className={style.rollButton}
-          onClick={this.handleRoll}
-        ><DiceIcon/></button>
+        <div className={style.toolsButtons}>
+          <button
+            className={style.rollButton}
+            onClick={this.handleRoll}
+          ><DiceIcon /></button>
+        </div>
         <TextareaAutoresize
           maxRows={4}
           className={textAreaClass}

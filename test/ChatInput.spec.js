@@ -16,16 +16,16 @@ describe('<ChatInput />', function () {
 
   it('should have a send button only if text input has content', function () {
     const wrapper = shallow(<ChatInput  onSend={sendAction} />);
-    expect(wrapper).to.not.have.descendants('button');
+    expect(wrapper.childAt(2)).to.not.match('button');
     wrapper.setState({ text: 'abc' });
-    expect(wrapper).to.have.exactly.descendants('button');
+    expect(wrapper.childAt(2)).to.match('button');
   });
 
   it('should trim the message before sending and then clean the input field', function () {
     sendAction.reset()
     const wrapper = shallow(<ChatInput onSend={sendAction} />);
     wrapper.setState({ text: ' ab c \n' });
-    wrapper.find('button').simulate('click');
+    wrapper.childAt(2).simulate('click');
     expect(sendAction).to.have.been.calledOnce;
     expect(wrapper).to.have.state('text').equal('');
   });
