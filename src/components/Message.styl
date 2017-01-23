@@ -1,0 +1,31 @@
+@import "../config.styl";
+
+.container
+  display: flex;
+  align-items: flex-end;
+  margin: $common-spacing;
+
+.avatar
+  flex: 3;
+
+.line
+  flex: 1;
+  align-self: stretch;
+  display: block;
+  border-right: solid .3em $primary1;
+  border-bottom-right-radius: 1em;
+  margin: 2.5em 0 1.5em;
+
+.text
+  flex: 20;
+  margin: 0 10% 0 $common-spacing;
+  white-space: pre-line;
+  p
+    .name
+      color: $primary1;
+    margin: 0;
+    &.speach
+      padding: $common-spacing;
+    &.time
+      text-align: right;
+      padding: 0 $common-spacing;

@@ -1,0 +1,19 @@
+@import '../config.styl';
+
+.container
+  display:         flex;
+  align-items:     flex-end;
+  justify-content: space-between;
+  padding-bottom:  ($common-spacing / 2);
+
+.textInput
+  flex:          1
+  resize:        none;
+  input($primary1);
+  margin: ($common-spacing / 2) ($common-spacing / 2) 0 0;
+
+.rollButton
+  simple-button($primary1);
+
+.sendButton
+  simple-button($primary1);

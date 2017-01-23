@@ -1,0 +1,52 @@
+@import "../config"
+@import "rupture";
+
+break = 800px;
+
+.container
+  flex:   1;
+  height: 100%;
+  +below(break)
+    full-size()
+
+.sidebar
+  width:  $sidebar-width;
+  height: 100%;
+  menu-gradient();
+  +below(break)
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index:    10;
+    .enter &
+      transform:  translate(-($sidebar-width), 0);
+    .enterActive &
+      transform:  translate(0, 0);
+      transition: transform 300ms ease-out;
+    .leave &
+      transform:  translate(0, 0);
+    .leaveActive &
+      transform:  translate(-($sidebar-width), 0);
+      transition: transform 200ms ease-in;
+
+.overlay
+  display: none;
+  +below(break)
+    display:    block;
+    position:   absolute;
+    top:        0;
+    right:      0;
+    bottom:     0;
+    left:       0;
+    background: rgba(darken($heading-color, 20%), 0.5);
+
+    .enter &
+      opacity:    0.01;
+    .enterActive &
+      opacity:    1;
+      transition: opacity 300ms ease-in;
+    .leave &
+      opacity:    1;
+    .leaveActive &
+      opacity:    0.01;
+      transition: opacity 200ms ease-in;
