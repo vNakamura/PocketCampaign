@@ -2,11 +2,12 @@ var autoprefixer = require('autoprefixer');
 var axis = require('axis');
 var typographic = require('typographic');
 var rupture = require('rupture');
+var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 module.exports = {
   entry: './src/main.js',
   output: {
-    path: './bin',
+    path: './dist',
     filename: 'app.bundle.js'
   },
   externals: {
@@ -38,5 +39,8 @@ module.exports = {
     configFile: './.eslintrc.js',
     failOnWarning: false,
     failOnError: true
-  }
+  },
+  plugins: [
+    new LodashModuleReplacementPlugin()
+  ]
 }

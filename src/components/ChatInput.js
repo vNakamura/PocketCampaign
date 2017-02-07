@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
 import TextareaAutoresize from 'react-textarea-autosize';
-import trim from 'lodash/trim';
 import MouseTrap from 'mousetrap';
 import classNames from 'classnames';
-import { database } from 'firebase-3-react';
 import { ServerValue } from 'firebase/database';
+import { firebaseConnect, helpers } from 'react-redux-firebase';
+const { dataToJS } = helpers;
 
 import style from './ChatInput.styl';
 import DiceIcon from './icons/Dice';
@@ -16,6 +16,7 @@ const hotkeys = [
   'ctrl+return',
 ];
 
+@firebaseConnect()
 export class ChatInput extends React.Component {
   static propTypes = {
     onSend: PropTypes.func.isRequired,
@@ -28,10 +29,11 @@ export class ChatInput extends React.Component {
   }
 
   handleSend = (e) => {
+    var {firebase} = this.props;
     if (e) e.preventDefault();
-    const text = trim(this.state.text);
+    const text = this.state.text.trim();
     if (text.length > 0) {
-      database().ref('/messages').push({
+      firebase.push('/messages', {
         text,
         time: ServerValue.TIMESTAMP,
       });
@@ -71,7 +73,7 @@ export class ChatInput extends React.Component {
           value={this.state.text}
         />
         {
-          (trim(this.state.text).length > 0) ?
+          (this.state.text.trim().length > 0) ?
             <button
               className={style.sendButton}
               onClick={this.handleSend}

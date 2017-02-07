@@ -2,7 +2,6 @@ import React, { PropTypes, Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import startsWith from 'lodash/startsWith';
 
 import { toggleSidebar } from '../actions/actionCreators';
 import style from './App.styl';
@@ -73,7 +72,7 @@ export class App extends Component {
 function mapStateToProps(state) {
   return {
     sidebarVisible: state.sidebarVisible,
-    chatInputVisible: startsWith(state.routing.locationBeforeTransitions.pathname, '/chat/'),
+    chatInputVisible: /^\/chat\//i.test(state.routing.locationBeforeTransitions.pathname),
   };
 }
 

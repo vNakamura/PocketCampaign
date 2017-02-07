@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import isNil from 'lodash/isNil';
 import TimeAgo from 'react-timeago';
 
 import style from './Message.styl';
@@ -22,7 +21,7 @@ const Message = (props) =>
         {props.text}
       </p>
       <p className={style.time}>
-        {isNil(props.time) ?
+        {props.time == null ?
           '\u00A0' :
           (<TimeAgo date={props.time} formatter={timeFormatter} />)
         }

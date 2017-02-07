@@ -1,7 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import { findDOMNode } from 'react-dom';
 import TiThMenu from 'react-icons/lib/ti/th-menu';
-import isNil from 'lodash/isNil';
 import style from './Content.styl';
 
 // Components
@@ -30,7 +29,7 @@ class Content extends Component {
       <div className={style.content}>
         <Topbar
           leftButtonContent={
-            isNil(this.props.menuButtonAction) ?
+            this.props.menuButtonAction == null ?
             null : <TiThMenu />
           }
           leftButtonAction={this.props.menuButtonAction}
@@ -39,7 +38,7 @@ class Content extends Component {
         <Scrollable ref={(c) => { this.scrollable = c; }}>
           {this.props.children}
         </Scrollable>
-        {this.props.chatInputVisible ? <ChatInput onSend={this.handleSend} /> : null}
+        {this.props.chatInputVisible ? <ChatInput onSend={this.handleSend} /> : ""}
       </div>
     );
   }

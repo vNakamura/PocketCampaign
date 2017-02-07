@@ -1,16 +1,36 @@
 import { render } from 'react-dom';
 import React from 'react';
+import { createStore, compose } from 'redux';
 import { Router, Route, IndexRoute } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
+import { browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
-import { init } from 'firebase-3-react';
+import { reactReduxFirebase } from 'react-redux-firebase';
 
-import { firebase } from './config';
-import store, { history } from './store';
+import config from './config';
+import rootReducer from './reducers/index';
 import App from './components/App';
 import Chat from './components/Chat';
 import KitchenSink from './components/KitchenSink';
 
-init(firebase);
+const defaultState = {
+  sidebarVisible: false,
+};
+
+const store = createStore(
+  rootReducer,
+  defaultState,
+  compose(
+    reactReduxFirebase(config.firebase),
+    (
+      process.env.NODE_ENV === 'production' ?
+      f => f :
+      ( window.devToolsExtension ? window.devToolsExtension() : f => f )
+    )
+  )
+);
+const history = syncHistoryWithStore(browserHistory, store);
+
 require('./global.styl');
 
 const router = (

@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import isNil from 'lodash/isNil';
 import md5 from 'md5';
 
 import style from './Avatar.styl';
@@ -7,7 +6,7 @@ import style from './Avatar.styl';
 function getImageSrc(props) {
   const { name, image } = props;
 
-  if (isNil(image)) {
+  if (image == null) {
     return `https://api.adorable.io/avatars/128/${md5(name)}`;
   }
   return image;
