@@ -1,9 +1,8 @@
 import { render } from 'react-dom';
 import React from 'react';
 import { createStore, compose } from 'redux';
-import { Router, Route, IndexRoute } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
-import { browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import { reactReduxFirebase } from 'react-redux-firebase';
 
@@ -25,9 +24,9 @@ const store = createStore(
     (
       process.env.NODE_ENV === 'production' ?
       f => f :
-      ( window.devToolsExtension ? window.devToolsExtension() : f => f )
-    )
-  )
+      (window.devToolsExtension ? window.devToolsExtension() : f => f)
+    ),
+  ),
 );
 const history = syncHistoryWithStore(browserHistory, store);
 

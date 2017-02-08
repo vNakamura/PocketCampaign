@@ -11,7 +11,7 @@ function timeFormatter(value, unit) {
   return `${value} ${unit}`;
 }
 
-const Message = (props) =>
+const Message = props =>
   <div className={style.container}>
     <Avatar className={style.avatar} {... props.author} />
     <div className={style.line} />
@@ -33,6 +33,9 @@ Message.propTypes = {
   text: PropTypes.string.isRequired,
   author: PropTypes.object.isRequired,
   time: PropTypes.number,
+};
+Message.defaultProps = {
+  time: null,
 };
 
 export default Message;

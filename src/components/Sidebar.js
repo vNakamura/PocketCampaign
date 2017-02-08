@@ -10,7 +10,7 @@ const topbarStyle = {
   background: 'none',
 };
 
-const Sidebar = (props) =>
+const Sidebar = props =>
   <div className={style.container}>
     <div className={style.overlay} onClick={props.closeButtonAction} />
     <div className={style.sidebar}>
@@ -33,6 +33,9 @@ const Sidebar = (props) =>
 
 Sidebar.propTypes = {
   closeButtonAction: PropTypes.func,
+};
+Sidebar.defaultProps = {
+  closeButtonAction: null,
 };
 
 export default Sidebar;

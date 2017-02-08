@@ -24,10 +24,12 @@
   },
   "homepage": "https://github.com/vNakamura/PocketCampaign#readme",
   "dependencies": {
+    "axis": "^1.0.0",
     "babel-plugin-lodash": "^3.2.11",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "chance": "^1.0.4",
     "classnames": "^2.2.5",
+    "firebase": "3.6.5",
     "lodash-webpack-plugin": "^0.11.0",
     "md5": "^2.1.0",
     "moment": "^2.14.1",
@@ -44,13 +46,13 @@
     "react-textarea-autosize": "^4.0.4",
     "react-timeago": "^3.1.2",
     "redux": "^3.5.2",
-    "rupture": "^0.6.1"
+    "rupture": "^0.6.1",
+    "typographic": "^3.0.0"
   },
   "devDependencies": {
     "@kadira/react-storybook-addon-info": "^3.3.0",
     "@kadira/storybook": "^2.21.0",
     "autoprefixer": "^6.4.0",
-    "axis": "^1.0.0",
     "babel-core": "^6.22.1",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.4",
@@ -68,7 +70,6 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^3.0.2",
     "eslint-plugin-react": "^6.1.1",
-    "getstorybook": "^1.7.0",
     "ignore-styles": "^5.0.1",
     "jsdom": "^9.4.2",
     "mocha": "^3.0.2",
@@ -81,7 +82,6 @@
     "style-loader": "^0.13.1",
     "stylus": "^0.54.5",
     "stylus-relative-loader": "^3.2.0",
-    "typographic": "^3.0.0",
     "webpack": "^1.13.1",
     "webpack-bundle-size-analyzer": "^2.5.0",
     "webpack-dev-server": "^1.14.1"

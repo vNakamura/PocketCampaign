@@ -6,6 +6,10 @@ import { spy } from 'sinon';
 import TextareaAutoresize from 'react-textarea-autosize';
 import { ChatInput } from '../src/components/ChatInput';
 
+const firebase = {
+  push: spy()
+}
+
 describe('<ChatInput />', function () {
   const sendAction = spy();
 
@@ -22,12 +26,21 @@ describe('<ChatInput />', function () {
   });
 
   it('should trim the message before sending and then clean the input field', function () {
-    sendAction.reset()
-    const wrapper = shallow(<ChatInput onSend={sendAction} />);
+    const wrapper = shallow(<ChatInput onSend={sendAction} firebase={firebase} />);
+    wrapper.setState({ text: ' ab c \n' });
+    wrapper.childAt(2).simulate('click');
+    expect(wrapper).to.have.state('text').equal('');
+  });
+
+  it('should push data to firebase and call onSend prop', function () {
+    sendAction.reset();
+    firebase.push.reset();
+    const wrapper = shallow(<ChatInput onSend={sendAction} firebase={firebase} />);
+    wrapper.childAt(2).simulate('click');
     wrapper.setState({ text: ' ab c \n' });
     wrapper.childAt(2).simulate('click');
     expect(sendAction).to.have.been.calledOnce;
-    expect(wrapper).to.have.state('text').equal('');
+    expect(firebase.push).to.have.been.calledOnce;
   });
 
 });

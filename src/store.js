@@ -13,7 +13,7 @@ const store = createStore(
   defaultState,
   (process.env.NODE_ENV === 'production') ?
     undefined :
-    window.devToolsExtension && window.devToolsExtension()
+    window.devToolsExtension && window.devToolsExtension(),
 );
 
 export const history = syncHistoryWithStore(browserHistory, store);

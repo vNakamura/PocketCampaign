@@ -16,7 +16,9 @@ class Content extends Component {
   }
 
   static defaultProps = {
+    menuButtonAction: null,
     chatInputVisible: false,
+    children: null,
   }
 
   handleSend = () => {
@@ -38,7 +40,7 @@ class Content extends Component {
         <Scrollable ref={(c) => { this.scrollable = c; }}>
           {this.props.children}
         </Scrollable>
-        {this.props.chatInputVisible ? <ChatInput onSend={this.handleSend} /> : ""}
+        {this.props.chatInputVisible ? <ChatInput onSend={this.handleSend} /> : null}
       </div>
     );
   }

@@ -7,6 +7,9 @@ class Scrollable extends Component {
   static propTypes = {
     children: PropTypes.node,
   }
+  static defaultProps = {
+    children: null,
+  }
 
   render() {
     return (

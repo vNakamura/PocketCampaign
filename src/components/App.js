@@ -18,6 +18,12 @@ export class App extends Component {
     toggleSidebar: PropTypes.func,
     chatInputVisible: PropTypes.bool,
   }
+  static defaultProps = {
+    children: null,
+    sidebarVisible: false,
+    toggleSidebar: null,
+    chatInputVisible: false,
+  }
 
   componentWillMount = () => {
     const mql = window.matchMedia('(min-width: 800px)');

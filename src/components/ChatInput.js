@@ -3,11 +3,11 @@ import TextareaAutoresize from 'react-textarea-autosize';
 import MouseTrap from 'mousetrap';
 import classNames from 'classnames';
 import { ServerValue } from 'firebase/database';
-import { firebaseConnect, helpers } from 'react-redux-firebase';
-const { dataToJS } = helpers;
+import { firebaseConnect } from 'react-redux-firebase';
 
 import style from './ChatInput.styl';
 import DiceIcon from './icons/Dice';
+
 
 const hotkeys = [
   'command+enter',
@@ -16,10 +16,17 @@ const hotkeys = [
   'ctrl+return',
 ];
 
-@firebaseConnect()
 export class ChatInput extends React.Component {
   static propTypes = {
     onSend: PropTypes.func.isRequired,
+    firebase: PropTypes.object.isRequired,
+  }
+
+  static handleRoll = (e) => {
+    if (e) e.preventDefault();
+  }
+  static handleBlur() {
+    MouseTrap.unbind(hotkeys);
   }
 
   state = { text: '' }
@@ -29,7 +36,7 @@ export class ChatInput extends React.Component {
   }
 
   handleSend = (e) => {
-    var {firebase} = this.props;
+    const { firebase } = this.props;
     if (e) e.preventDefault();
     const text = this.state.text.trim();
     if (text.length > 0) {
@@ -42,15 +49,8 @@ export class ChatInput extends React.Component {
     }
   }
 
-  handleRoll = (e) => {
-    if (e) e.preventDefault();
-  }
-
   handleFocus = () => {
     MouseTrap.bind(hotkeys, this.handleSend);
-  }
-  handleBlur() {
-    MouseTrap.unbind(hotkeys);
   }
 
   render() {
@@ -60,7 +60,7 @@ export class ChatInput extends React.Component {
         <div className={style.toolsButtons}>
           <button
             className={style.rollButton}
-            onClick={this.handleRoll}
+            onClick={ChatInput.handleRoll}
           ><DiceIcon /></button>
         </div>
         <TextareaAutoresize
@@ -69,7 +69,7 @@ export class ChatInput extends React.Component {
           placeholder="Your message"
           onChange={this.handleTextChange}
           onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
+          onBlur={ChatInput.handleBlur}
           value={this.state.text}
         />
         {
@@ -85,4 +85,4 @@ export class ChatInput extends React.Component {
   }
 }
 
-export default ChatInput;
+export default firebaseConnect([])(ChatInput);

@@ -3,21 +3,19 @@ import md5 from 'md5';
 
 import style from './Avatar.styl';
 
-function getImageSrc(props) {
-  const { name, image } = props;
-
+function getImageSrc(name, image) {
   if (image == null) {
     return `https://api.adorable.io/avatars/128/${md5(name)}`;
   }
   return image;
 }
 
-const Avatar = (props) =>
+const Avatar = props =>
   <div className={props.className}><img
     className={style.avatar}
     title={props.name}
-    role="presentation"
-    src={getImageSrc(props)}
+    alt=""
+    src={getImageSrc(props.name, props.image)}
     style={props.style}
   /></div>;
 
@@ -26,6 +24,11 @@ Avatar.propTypes = {
   image: PropTypes.string,
   style: PropTypes.object,
   className: PropTypes.string,
+};
+Avatar.defaultProps = {
+  image: null,
+  style: {},
+  className: '',
 };
 
 export default Avatar;

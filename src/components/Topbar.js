@@ -13,13 +13,18 @@ class Topbar extends React.Component {
 
   static defaultProps = {
     titleText: '',
+    leftButtonContent: null,
+    rightButtonContent: null,
+    leftButtonAction: null,
+    rightButtonAction: null,
+    style: {},
   }
 
-  noActionSet(e) {
+  static noActionSet(e) {
     e.preventDefault();
   }
 
-  renderMenuButton(content, action = this.noActionSet) {
+  static renderMenuButton(content, action = Topbar.noActionSet) {
     return (
       content ?
         (<button
@@ -34,9 +39,9 @@ class Topbar extends React.Component {
   render() {
     return (
       <div className={style.container} style={this.props.style}>
-        {this.renderMenuButton(this.props.leftButtonContent, this.props.leftButtonAction)}
+        {Topbar.renderMenuButton(this.props.leftButtonContent, this.props.leftButtonAction)}
         <h4 className={style.title}>{this.props.titleText}</h4>
-        {this.renderMenuButton(this.props.rightButtonContent, this.props.rightButtonAction)}
+        {Topbar.renderMenuButton(this.props.rightButtonContent, this.props.rightButtonAction)}
       </div>
     );
   }

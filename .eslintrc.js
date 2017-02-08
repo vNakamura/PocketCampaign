@@ -11,6 +11,9 @@ module.exports = {
   },
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "import/no-named-as-default": "off"
+    "import/no-named-as-default": "off",
+    "no-nested-ternary": "off",
+    "react/forbid-prop-types": "off",
+    "jsx-a11y/no-static-element-interactions": "off"
   }
 };
