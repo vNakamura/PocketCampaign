@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { firebaseConnect, helpers } from 'react-redux-firebase';
 
-import Message from './Message';
+import ChatItem from './ChatItem';
 
 const { isLoaded, isEmpty, dataToJS } = helpers;
 const author = {
@@ -31,10 +31,10 @@ export default class Chat extends Component {
     messages: {},
   }
 
-  static renderMessages(messages) {
+  static renderChatItems(messages) {
     return Object.keys(messages).map((key) => {
       const message = messages[key];
-      return <Message {... message} key={key} author={author} />;
+      return <ChatItem content={message} key={key} author={author} />;
     });
   }
 
@@ -47,7 +47,7 @@ export default class Chat extends Component {
           ? 'Loading'
           : isEmpty(messages)
             ? 'Empty'
-            : Chat.renderMessages(messages)
+            : Chat.renderChatItems(messages)
         }
       </div>
     );

@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import TimeAgo from 'react-timeago';
 
-import style from './Message.styl';
+import style from './ChatItem.styl';
 import Avatar from './Avatar';
 
 function timeFormatter(value, unit) {
@@ -11,31 +11,27 @@ function timeFormatter(value, unit) {
   return `${value} ${unit}`;
 }
 
-const Message = props =>
+const ChatItem = props =>
   <div className={style.container}>
     <Avatar className={style.avatar} {... props.author} />
     <div className={style.line} />
     <div className={style.text}>
       <p className={style.speach}>
         <span className={style.name}>{props.author.name}</span><br />
-        {props.text}
+        {props.content.text}
       </p>
       <p className={style.time}>
-        {props.time == null ?
+        {props.content.time == null ?
           '\u00A0' :
-          (<TimeAgo date={props.time} formatter={timeFormatter} />)
+          (<TimeAgo date={props.content.time} formatter={timeFormatter} />)
         }
       </p>
     </div>
   </div>;
 
-Message.propTypes = {
-  text: PropTypes.string.isRequired,
+ChatItem.propTypes = {
+  content: PropTypes.object.isRequired,
   author: PropTypes.object.isRequired,
-  time: PropTypes.number,
-};
-Message.defaultProps = {
-  time: null,
 };
 
-export default Message;
+export default ChatItem;
