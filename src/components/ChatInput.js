@@ -20,6 +20,7 @@ export class ChatInput extends React.Component {
   static propTypes = {
     onSend: PropTypes.func.isRequired,
     firebase: PropTypes.object.isRequired,
+    params: PropTypes.object.isRequired,
   }
 
   static handleRoll = (e) => {
@@ -36,13 +37,14 @@ export class ChatInput extends React.Component {
   }
 
   handleSend = (e) => {
-    const { firebase } = this.props;
+    const { firebase, params } = this.props;
     if (e) e.preventDefault();
     const text = this.state.text.trim();
     if (text.length > 0) {
-      firebase.push('/messages', {
+      firebase.push(`chats/${params.id}`, {
+        type: 'text',
         text,
-        time: ServerValue.TIMESTAMP,
+        timestamp: ServerValue.TIMESTAMP,
       });
       this.props.onSend();
       this.setState({ text: '' });

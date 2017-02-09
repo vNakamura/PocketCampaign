@@ -17,6 +17,7 @@ export class App extends Component {
     sidebarVisible: PropTypes.bool,
     toggleSidebar: PropTypes.func,
     chatInputVisible: PropTypes.bool,
+    params: PropTypes.object.isRequired,
   }
   static defaultProps = {
     children: null,
@@ -63,6 +64,7 @@ export class App extends Component {
           {this.renderSidebar()}
         </ReactCSSTransitionGroup>
         <Content
+          params={this.props.params}
           menuButtonAction={this.props.sidebarVisible || this.state.sidebarDocked ?
             null : this.props.toggleSidebar
           }

@@ -21,9 +21,9 @@ const ChatItem = props =>
         {props.content.text}
       </p>
       <p className={style.time}>
-        {props.content.time == null ?
+        {props.content.timestamp == null ?
           '\u00A0' :
-          (<TimeAgo date={props.content.time} formatter={timeFormatter} />)
+          (<TimeAgo date={props.content.timestamp} formatter={timeFormatter} />)
         }
       </p>
     </div>

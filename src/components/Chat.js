@@ -9,45 +9,45 @@ const author = {
   name: 'Author Name',
 };
 
-@firebaseConnect([
+@firebaseConnect(({ params }) => [
   {
-    path: 'messages',
+    path: `chats/${params.id}`,
     queryParams: [
-      'orderByChild=time',
+      'orderByChild=timestamp',
       'limitToLast=100',
     ],
   },
 ])
 @connect(
-  ({ firebase }) => ({
-    messages: dataToJS(firebase, 'messages'),
+  ({ firebase }, { params }) => ({
+    content: dataToJS(firebase, `chats/${params.id}`),
   }),
 )
 export default class Chat extends Component {
   static propTypes = {
-    messages: PropTypes.object,
+    content: PropTypes.object,
   }
   static defaultProps = {
-    messages: {},
+    content: {},
   }
 
-  static renderChatItems(messages) {
-    return Object.keys(messages).map((key) => {
-      const message = messages[key];
-      return <ChatItem content={message} key={key} author={author} />;
+  static renderChatItems(content) {
+    return Object.keys(content).map((key) => {
+      const item = content[key];
+      return <ChatItem content={item} key={key} author={author} />;
     });
   }
 
   render() {
-    const { messages } = this.props;
+    const { content } = this.props;
     return (
       <div>
         {
-          !isLoaded(messages)
+          !isLoaded(content)
           ? 'Loading'
-          : isEmpty(messages)
+          : isEmpty(content)
             ? 'Empty'
-            : Chat.renderChatItems(messages)
+            : Chat.renderChatItems(content)
         }
       </div>
     );

@@ -14,7 +14,7 @@ describe('<ChatItem />', function () {
   };
   const content = {
     text: randomatic('*', 150),
-    time: moment().valueOf(),
+    timestamp: moment().valueOf(),
   };
 
   it('should have an Avatar component', function () {
