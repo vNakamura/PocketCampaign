@@ -3,29 +3,51 @@
 .container
   display: flex;
   align-items: flex-end;
-  margin: $common-spacing;
+  margin: 1em;
 
 .avatar
-  flex: 3;
-
-.line
   flex: 1;
-  align-self: stretch;
-  display: block;
-  border-right: solid .3em $primary1;
-  border-bottom-right-radius: 1em;
-  margin: 2.5em 0 1.5em;
 
-.text
-  flex: 20;
-  margin: 0 10% 0 $common-spacing;
-  white-space: pre-line;
-  p
-    .name
-      color: $primary1;
-    margin: 0;
-    &.speach
-      padding: $common-spacing;
-    &.time
-      text-align: right;
-      padding: 0 $common-spacing;
+.content
+  flex: 10;
+  display: flex;
+  flex-direction: column;
+
+  .name
+    color: $primary1;
+    padding: 0 3em;
+
+
+  .text
+    display: flex;
+    margin: 0 1em;
+    .line
+      align-self: stretch;
+      display: block;
+      border-right: solid .3em $primary1;
+      border-bottom-right-radius: 1em;
+      width: 1em;
+      margin-top: 1em;
+    .speach
+      flex: 1;
+      p
+        white-space: pre-line;
+        margin: 0;
+        padding: 1em;
+
+  .time
+    padding: .5em 3em 0;
+
+.spacer
+  flex: 1;
+
+.container.me
+  text-align: right;
+  flex-direction: row-reverse;
+  .text
+    flex-direction: row-reverse;
+    .line
+      border-right: none;
+      border-bottom-right-radius: 0;
+      border-left: solid .3em $primary1;
+      border-bottom-left-radius: 1em;
