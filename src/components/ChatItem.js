@@ -12,35 +12,34 @@ function timeFormatter(value, unit) {
   return `${value} ${unit}`;
 }
 
-
 const renderSpeach = content => (
   <div className={style.text}>
     <div className={style.line} />
-    <div className={style.speach}>
-      <p>{content.text}</p>
-    </div>
+    <message className={style.speach}>
+      <p>{content && content.text}</p>
+    </message>
   </div>
 );
 
 const renderTime = content => (
   <div className={style.time}>
-    {content.timestamp == null ?
+    {content == null || content.timestamp == null ?
       '\u00A0' :
       (<TimeAgo date={content.timestamp} formatter={timeFormatter} />)
     }
   </div>
 );
 
-const getConteinarClasses = user => classnames(
+const getConteinarClasses = content => classnames(
   style.container,
-  { [`${style.me}`]: user === "anUserID" }
+  { [`${style.me}`]: content && content.user && content.user === 'anUserID' },
 );
 
 const ChatItem = props =>
-  <div className={getConteinarClasses(props.content.user)}>
+  <div className={getConteinarClasses(props.content)}>
     <Avatar className={style.avatar} {... props.author} />
     <div className={style.content}>
-      <div className={style.name}>{props.author.name}</div>
+      <author className={style.name}>{props.author.name}</author>
       {renderSpeach(props.content)}
       {renderTime(props.content)}
     </div>
