@@ -13,6 +13,7 @@ describe('<ChatItem />', function () {
     name: randomatic('*', 20),
   };
   const content = {
+    type: 'text',
     text: randomatic('*', 150),
     timestamp: moment().valueOf(),
   };
