@@ -32,7 +32,9 @@ export default class Chat extends Component {
   }
 
   static renderChatItems(content) {
-    return Object.keys(content).map((key) => {
+    const keys = Object.keys(content).sort((a, b) => content[a].timestamp - content[b].timestamp);
+
+    return keys.map((key) => {
       const item = content[key];
       return <ChatItem content={item} key={key} author={author} />;
     });
