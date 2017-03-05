@@ -10,6 +10,8 @@ html, body
   height: 100%;
 a
   color: $primary1;
+b, strong
+  font-weight: $bold-weight;
 
 :global
   #root
@@ -17,7 +19,7 @@ a
 
   // For some reason Typographic's header mixin isn't working correctly. So I copied it from the source code.
   h1, h2, h3, h4, h5, h6
-    font-family: $heading-font
-    font-weight: $heading-font-weight
-    color:       $heading-color
-    clear:       both
+    font-family: $heading-font;
+    font-weight: $heading-font-weight;
+    color:       $heading-color;
+    clear:       both;

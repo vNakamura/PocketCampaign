@@ -21,8 +21,24 @@ const roll = (notation, seed) => {
   if (p.numSides > 1000) return 'Invalid dice notation. Too many sides!';
 
   seedrandom(seed, { global: true });
-  // TODO render every dice inside an element so it can be stylized
-  return droll.roll(notation).toString();
+  const result = droll.roll(notation);
+  const styledResult = [];
+  result.rolls.forEach((r, i) => {
+    if (i > 0) styledResult.push(<span key={styledResult.length} className={style.signal}>+</span>);
+    styledResult.push(<span key={styledResult.length} className={style.result}>{r}</span>);
+  });
+  if (result.modifier !== 0) {
+    styledResult.push(<span key={styledResult.length} className={style.signal}>
+      {result.modifier > 0 ? '+' : '-'}
+    </span>);
+    styledResult.push(<span
+      key={styledResult.length}
+      className={style.modifier}
+    >{Math.abs(result.modifier)}</span>);
+  }
+  styledResult.push(<span key={styledResult.length} className={style.signal}>=</span>);
+  styledResult.push(<span key={styledResult.length} className={style.total}>{result.total}</span>);
+  return styledResult;
 };
 
 const renderSpeach = content => (
@@ -37,7 +53,7 @@ const renderSpeach = content => (
 const renderDiceRoll = content => (
   <div className={style.text}>
     <div className={style.line} />
-    <message className={style.speach}>
+    <message className={style.roll}>
       <p><strong>Rolled:</strong> {content && content.notation}</p>
       <p>{roll(content.notation, content.timestamp)}</p>
     </message>

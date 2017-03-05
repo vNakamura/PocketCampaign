@@ -1,25 +1,26 @@
 // Typography
-$min-font            = 10px
-$body-font           = 'Open Sans', $helvetica
-$heading-font        = 'Dosis', $helvetica
-$heading-font-weight = 400
+$min-font            = 10px;
+$body-font           = 'Open Sans', $helvetica;
+$bold-weight         = 700;
+$heading-font        = 'Dosis', $helvetica;
+$heading-font-weight = 400;
 
 // Layout Sizes
-$sidebar-width = 320px;
-$common-spacing    = 1em;
-$top-bar-height    = 52px;
+$sidebar-width  = 320px;
+$common-spacing = 1em;
+$top-bar-height = 52px;
 
 // Colors
 
 // Pallete: https://coolors.co/493548-4b4e6d-6a8d92-80b192-a1e887
 
-$text-color = #493548
+$text-color             = #493548
 $alternative-text-color = #FFFDF7
-$canvas = $alternative-text-color
-$primary1 = #80B192
-$primary2 = #A1E887
-$accent1 = #4B4E6D
-$accent2 = #6A8D92
+$canvas                 = $alternative-text-color
+$primary1               = #80B192
+$primary2               = #A1E887
+$accent1                = #4B4E6D
+$accent2                = #6A8D92
 
 $body-color         = $text-color
 $heading-color      = darken($text-color, 15%)
@@ -27,10 +28,10 @@ $topbar-color       = $alternative-text-color
 
 main-gradient(angle = 11deg)
   background-image: linear-gradient(angle, $primary1 8%, $primary2 92%);
-  color: $alternative-text-color
+  color:            $alternative-text-color
 menu-gradient(angle = 98deg)
   background-image: linear-gradient(angle, $body-color 25%, $heading-color 82%);
-  color: $alternative-text-color
+  color:            $alternative-text-color
 
 full-size()
   position: absolute;
