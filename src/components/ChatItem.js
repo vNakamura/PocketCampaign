@@ -15,7 +15,13 @@ const timeFormatter = (value, unit) => {
 };
 
 const roll = (notation, seed) => {
+  const p = droll.parse(notation);
+  if (!p) return 'Invalid dice notation';
+  if (p.numDice > 100) return 'Invalid dice notation. Too many dice!';
+  if (p.numSides > 1000) return 'Invalid dice notation. Too many sides!';
+
   seedrandom(seed, { global: true });
+  // TODO render every dice inside an element so it can be stylized
   return droll.roll(notation).toString();
 };
 

@@ -46,4 +46,6 @@ describe('<ChatItem />', function () {
     expect(ChatItem.propTypes.author).to.be.equal(PropTypes.object.isRequired);
   });
 
+  // TODO create tests for Dice Roll
+
 });
