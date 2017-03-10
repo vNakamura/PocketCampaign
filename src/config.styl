@@ -22,9 +22,9 @@ $primary2               = #A1E887
 $accent1                = #4B4E6D
 $accent2                = #6A8D92
 
-$body-color         = $text-color
-$heading-color      = darken($text-color, 15%)
-$topbar-color       = $alternative-text-color
+$body-color             = $text-color
+$heading-color          = darken($text-color, 15%)
+$topbar-color           = $alternative-text-color
 
 main-gradient(angle = 11deg)
   background-image: linear-gradient(angle, $primary1 8%, $primary2 92%);
@@ -41,11 +41,25 @@ full-size()
   left:     0;
 
 simple-button(content-color = $topbar-color)
-  button:      transparent 'large' content-color;
-  font-family: $heading-font;
-  padding:     $common-spacing;
-  margin:      0;
+  background-color: transparent;
+  color:            content-color;
+  font-family:      $heading-font;
+  padding:          .3em;
+  margin:           0;
+  cursor:           pointer
+  line-height:      1
+  text-align:       center
+  text-decoration:  none
+  display:          inline-block
+  border:           none
+  no-select()
   hover-color: darken(content-color, 25%) true;
   click-down();
   svg
+    font-size:        1.8em;
     vertical-align: baseline !important;
+
+overlay()
+  full-size()
+  display:    block;
+  background: rgba(darken($heading-color, 20%), 0.5);

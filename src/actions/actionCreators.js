@@ -10,3 +10,14 @@ export function setSidebarVisibility(visible) {
     visible,
   };
 }
+
+export function setModal(content) {
+  return {
+    type: 'SET_MODAL',
+    content,
+  };
+}
+
+export function closeModal() {
+  setModal(null);
+}

@@ -7,12 +7,14 @@ import style from './Content.styl';
 import Topbar from './Topbar';
 import Scrollable from './Scrollable';
 import ChatInput from './ChatInput';
+import Modal from './Modal';
 
 class Content extends Component {
   static propTypes = {
     menuButtonAction: PropTypes.func,
     chatInputVisible: PropTypes.bool,
     children: PropTypes.node,
+    modalContent: PropTypes.node,
     params: PropTypes.object.isRequired,
   }
 
@@ -20,6 +22,7 @@ class Content extends Component {
     menuButtonAction: null,
     chatInputVisible: false,
     children: null,
+    modalContent: null,
   }
 
   handleSend = () => {
@@ -44,6 +47,7 @@ class Content extends Component {
         {this.props.chatInputVisible ?
           <ChatInput params={this.props.params} onSend={this.handleSend} /> :
           null}
+        {this.props.modalContent ? <Modal>{this.props.modalContent}</Modal> : null}
       </div>
     );
   }

@@ -17,6 +17,7 @@ export class App extends Component {
     sidebarVisible: PropTypes.bool,
     toggleSidebar: PropTypes.func,
     chatInputVisible: PropTypes.bool,
+    modalContent: PropTypes.node,
     params: PropTypes.object.isRequired,
   }
   static defaultProps = {
@@ -24,6 +25,7 @@ export class App extends Component {
     sidebarVisible: false,
     toggleSidebar: null,
     chatInputVisible: false,
+    modalContent: null,
   }
 
   componentWillMount = () => {
@@ -69,6 +71,7 @@ export class App extends Component {
             null : this.props.toggleSidebar
           }
           chatInputVisible={this.props.chatInputVisible}
+          modalContent={this.props.modalContent}
         >
           {this.props.children}
         </Content>
@@ -81,6 +84,7 @@ function mapStateToProps(state) {
   return {
     sidebarVisible: state.sidebarVisible,
     chatInputVisible: /^\/chat\//i.test(state.routing.locationBeforeTransitions.pathname),
+    modalContent: state.modalContent,
   };
 }
 

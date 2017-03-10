@@ -4,10 +4,13 @@ import MouseTrap from 'mousetrap';
 import classNames from 'classnames';
 import { ServerValue } from 'firebase/database';
 import { firebaseConnect } from 'react-redux-firebase';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
+import { setModal } from '../actions/actionCreators';
 import style from './ChatInput.styl';
 import DiceIcon from './icons/Dice';
-
+import DiceRollModal from './modals/diceRoll';
 
 const hotkeys = [
   'command+enter',
@@ -19,18 +22,21 @@ const hotkeys = [
 export class ChatInput extends React.Component {
   static propTypes = {
     onSend: PropTypes.func.isRequired,
+    setModal: PropTypes.func.isRequired,
     firebase: PropTypes.object.isRequired,
     params: PropTypes.object.isRequired,
   }
 
-  static handleRoll = (e) => {
-    if (e) e.preventDefault();
-  }
   static handleBlur() {
     MouseTrap.unbind(hotkeys);
   }
 
   state = { text: '' }
+
+  handleRoll = (e) => {
+    if (e) e.preventDefault();
+    this.props.setModal(<DiceRollModal />);
+  }
 
   handleTextChange = (e) => {
     this.setState({ text: e.currentTarget.value });
@@ -62,7 +68,7 @@ export class ChatInput extends React.Component {
         <div className={style.toolsButtons}>
           <button
             className={style.rollButton}
-            onClick={ChatInput.handleRoll}
+            onClick={this.handleRoll}
           ><DiceIcon /></button>
         </div>
         <TextareaAutoresize
@@ -87,4 +93,9 @@ export class ChatInput extends React.Component {
   }
 }
 
-export default firebaseConnect([])(ChatInput);
+export default firebaseConnect([])(
+  connect(
+    null,
+    dispatch => bindActionCreators({ setModal }, dispatch),
+  )(ChatInput),
+);
