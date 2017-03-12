@@ -55,6 +55,8 @@ simple-button(content-color = $topbar-color)
   no-select()
   hover-color: darken(content-color, 25%) true;
   click-down();
+  &:focus
+    outline: none;
   svg
     font-size:        1.8em;
     vertical-align: baseline !important;
