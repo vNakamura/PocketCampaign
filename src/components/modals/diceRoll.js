@@ -72,7 +72,7 @@ export default class DiceRollModal extends React.Component {
         <p>
           Min: {minResult}<br />
           Max: {maxResult}<br />
-          Avg: {(minResult + maxResult)/2}
+          Avg: {(minResult + maxResult) / 2}
         </p>
       </div>
     );
