@@ -60,12 +60,13 @@ export default class DiceRollModal extends React.Component {
             onChange={this.handleNumSidesUpdate}
             defaultValue={numSides}
           />
-          +
+          {modifier < 0 ? '-' : '+'}
           <NumberInput
             className={style.numberInput}
             min={-100}
             max={100}
             onChange={this.handleModifierUpdate}
+            hideSign
             defaultValue={modifier}
           />
         </div>
@@ -74,6 +75,10 @@ export default class DiceRollModal extends React.Component {
           Max: {maxResult}<br />
           Avg: {(minResult + maxResult) / 2}
         </p>
+        <div className={style.buttonsRow}>
+          <button>Cancel</button>
+          <button>Roll</button>
+        </div>
       </div>
     );
   }

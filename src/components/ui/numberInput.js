@@ -9,6 +9,7 @@ export default class NumberInput extends React.Component {
     min: PropTypes.number,
     max: PropTypes.number,
     onChange: PropTypes.func,
+    hideSign: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -17,6 +18,7 @@ export default class NumberInput extends React.Component {
     min: Number.MIN_SAFE_INTEGER || -9007199254740991,
     max: Number.MAX_SAFE_INTEGER || 9007199254740991,
     onChange: null,
+    hideSign: false,
   }
 
   static filterInt(value) {
@@ -76,7 +78,8 @@ export default class NumberInput extends React.Component {
   }
 
   render() {
-    const { value } = this.state;
+    const { hideSign } = this.props;
+    const value = hideSign ? Math.abs(this.state.value) : this.state.value;
     return (
       <div className={style.container}>
         <button

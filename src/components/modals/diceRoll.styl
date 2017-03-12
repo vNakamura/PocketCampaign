@@ -1,6 +1,14 @@
 @import '../../config'
 
 .notation
-  display: flex;
+  display:     flex;
   align-items: center;
-  font-size: 2em;
+  font-size:   2em;
+
+.buttonsRow
+  display:        flex;
+  flex-direction: row;
+  button
+    simple-button($canvas, $accent1);
+    margin: .2em;
+    flex:   1;
