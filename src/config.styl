@@ -41,7 +41,7 @@ full-size()
   left:     0;
 
 simple-button(content-color = $topbar-color, bg-color = transparent)
-  background-color: bg-color;
+  no-select()
   color:            content-color;
   font-family:      $heading-font;
   padding:          .3em;
@@ -52,14 +52,25 @@ simple-button(content-color = $topbar-color, bg-color = transparent)
   text-decoration:  none
   display:          inline-block
   border:           none
-  no-select()
-  hover-color: darken(content-color, 25%) true;
+  background-color: bg-color;
+  if alpha(bg-color) > 0
+    hover-color: darken(bg-color, 25%);
+  else
+    hover-color: darken(content-color, 25%) true;
   click-down();
   &:focus
     outline: none;
+  &:hover
+    darken(bg-color, 30%);
   svg
     font-size:        1.8em;
     vertical-align: baseline !important;
+
+modal-button(bg-color = $accent1)
+  simple-button($canvas, bg-color);
+  padding:       .5em;
+  flex:          1;
+  font-size:     1.5em;
 
 overlay()
   full-size()

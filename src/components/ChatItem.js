@@ -23,20 +23,30 @@ const roll = (notation, seed) => {
   seedrandom(seed, { global: true });
   const result = droll.roll(notation);
   const styledResult = [];
-  result.rolls.forEach((r, i) => {
-    if (i > 0) styledResult.push(<span key={styledResult.length} className={style.signal}>+</span>);
-    styledResult.push(<span key={styledResult.length} className={style.result}>{r}</span>);
-  });
-  if (result.modifier !== 0) {
-    styledResult.push(<span key={styledResult.length} className={style.signal}>
-      {result.modifier > 0 ? '+' : '-'}
-    </span>);
+  if (result.rolls.length > 1 || result.modifier !== 0) {
+    result.rolls.forEach((r, i) => {
+      if (i > 0) {
+        styledResult.push(<span
+          key={styledResult.length}
+          className={style.signal}
+        >+</span>);
+      }
+      styledResult.push(<span key={styledResult.length} className={style.result}>{r}</span>);
+    });
+    if (result.modifier !== 0) {
+      styledResult.push(<span key={styledResult.length} className={style.signal}>
+        {result.modifier > 0 ? '+' : '-'}
+      </span>);
+      styledResult.push(<span
+        key={styledResult.length}
+        className={style.modifier}
+      >{Math.abs(result.modifier)}</span>);
+    }
     styledResult.push(<span
       key={styledResult.length}
-      className={style.modifier}
-    >{Math.abs(result.modifier)}</span>);
+      className={style.signal}
+    >=</span>);
   }
-  styledResult.push(<span key={styledResult.length} className={style.signal}>=</span>);
   styledResult.push(<span key={styledResult.length} className={style.total}>{result.total}</span>);
   return styledResult;
 };

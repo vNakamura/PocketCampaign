@@ -11,13 +11,14 @@ export function setSidebarVisibility(visible) {
   };
 }
 
-export function setModal(content) {
+export function setModal(content, title) {
   return {
     type: 'SET_MODAL',
     content,
+    title,
   };
 }
 
 export function closeModal() {
-  return setModal(null);
+  return setModal(null, null);
 }

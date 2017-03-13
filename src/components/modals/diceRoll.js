@@ -12,7 +12,6 @@ import NumberInput from '../ui/numberInput';
 export class DiceRollModal extends React.Component {
   static propTypes = {
     closeModal: PropTypes.func.isRequired,
-    onSend: PropTypes.func.isRequired,
     firebase: PropTypes.object.isRequired,
     params: PropTypes.object.isRequired,
   }
@@ -41,7 +40,6 @@ export class DiceRollModal extends React.Component {
         notation,
         timestamp: ServerValue.TIMESTAMP,
       });
-      this.props.onSend();
       this.props.closeModal();
     }
   }
@@ -97,16 +95,27 @@ export class DiceRollModal extends React.Component {
             defaultValue={modifier}
           />
         </div>
-        <p>
-          Min: {minResult}<br />
-          Max: {maxResult}<br />
-          Avg: {(minResult + maxResult) / 2}
-        </p>
+        <div className={style.statsTable}>
+          <div className={style.statsColumn}>
+            <div className={style.statsHeader}>Min</div>
+            <div className={style.statsValue}>{minResult}</div>
+          </div>
+          <div className={style.statsColumn}>
+            <div className={style.statsHeader}>Max</div>
+            <div className={style.statsValue}>{maxResult}</div>
+          </div>
+          <div className={style.statsColumn}>
+            <div className={style.statsHeader}>Avg</div>
+            <div className={style.statsValue}>{(minResult + maxResult) / 2}</div>
+          </div>
+        </div>
         <div className={style.buttonsRow}>
           <button
+            className={style.cancel}
             onClick={this.props.closeModal}
           >Cancel</button>
           <button
+            className={style.roll}
             onClick={this.handleRoll}
           >Roll</button>
         </div>

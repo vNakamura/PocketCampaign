@@ -14,7 +14,7 @@ class Content extends Component {
     menuButtonAction: PropTypes.func,
     chatInputVisible: PropTypes.bool,
     children: PropTypes.node,
-    modalContent: PropTypes.node,
+    modal: PropTypes.object,
     params: PropTypes.object.isRequired,
   }
 
@@ -22,32 +22,44 @@ class Content extends Component {
     menuButtonAction: null,
     chatInputVisible: false,
     children: null,
-    modalContent: null,
+    modal: null,
   }
-
-  handleSend = () => {
+  handleSend() {
     const node = findDOMNode(this.scrollable);
     node.scrollTop = node.scrollHeight;
   }
 
   render() {
+    const {
+      menuButtonAction,
+      children,
+      chatInputVisible,
+      params,
+      modal,
+    } = this.props;
     return (
       <div className={style.content}>
         <Topbar
           leftButtonContent={
-            this.props.menuButtonAction == null ?
+            menuButtonAction == null ?
             null : <TiThMenu />
           }
-          leftButtonAction={this.props.menuButtonAction}
+          leftButtonAction={menuButtonAction}
           titleText="A really long title that would make the line break on a small screen"
         />
         <Scrollable ref={(c) => { this.scrollable = c; }}>
-          {this.props.children}
+          {children}
         </Scrollable>
-        {this.props.chatInputVisible ?
-          <ChatInput params={this.props.params} onSend={this.handleSend} /> :
+        {chatInputVisible ?
+          <ChatInput params={params} onSend={this.handleSend} /> :
           null}
-        {this.props.modalContent ? <Modal>{this.props.modalContent}</Modal> : null}
+        {
+          (modal && modal.content) ?
+            <Modal title={modal.title}>
+              {modal.content}
+            </Modal>
+          : null
+        }
       </div>
     );
   }

@@ -1,10 +1,13 @@
-function modalContent(state = null, action) {
+function modal(state = null, action) {
   switch (action.type) {
     case 'SET_MODAL':
-      return action.content;
+      return {
+        content: action.content,
+        title: action.title,
+      };
     default:
       return state;
   }
 }
 
-export default modalContent;
+export default modal;
