@@ -19,5 +19,5 @@ export function setModal(content) {
 }
 
 export function closeModal() {
-  setModal(null);
+  return setModal(null);
 }
