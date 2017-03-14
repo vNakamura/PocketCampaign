@@ -26,6 +26,7 @@ const author = {
 export default class Chat extends Component {
   static propTypes = {
     content: PropTypes.object,
+    scrollDownHandler: PropTypes.func.isRequired,
   }
   static defaultProps = {
     content: {},
@@ -41,7 +42,8 @@ export default class Chat extends Component {
   }
 
   render() {
-    const { content } = this.props;
+    const { content, scrollDownHandler } = this.props;
+    scrollDownHandler();
     return (
       <div>
         {

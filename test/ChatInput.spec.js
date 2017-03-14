@@ -11,35 +11,32 @@ const firebase = {
 }
 
 describe('<ChatInput />', function () {
-  const sendAction = spy();
 
   it('should have a <TextareaAutoresize /> component', function () {
-    const wrapper = shallow(<ChatInput  onSend={sendAction} />);
+    const wrapper = shallow(<ChatInput />);
     expect(wrapper).to.have.exactly(1).descendants(TextareaAutoresize);
   });
 
   it('should have a send button only if text input has content', function () {
-    const wrapper = shallow(<ChatInput  onSend={sendAction} />);
+    const wrapper = shallow(<ChatInput />);
     expect(wrapper.childAt(2)).to.not.match('button');
     wrapper.setState({ text: 'abc' });
     expect(wrapper.childAt(2)).to.match('button');
   });
 
   it('should trim the message before sending and then clean the input field', function () {
-    const wrapper = shallow(<ChatInput onSend={sendAction} params={{id:'asd'}} firebase={firebase} />);
+    const wrapper = shallow(<ChatInput params={{id:'asd'}} firebase={firebase} />);
     wrapper.setState({ text: ' ab c \n' });
     wrapper.childAt(2).simulate('click');
     expect(wrapper).to.have.state('text').equal('');
   });
 
-  it('should push data to firebase and call onSend prop', function () {
-    sendAction.reset();
+  it('should push data to firebase', function () {
     firebase.push.reset();
-    const wrapper = shallow(<ChatInput onSend={sendAction} params={{id:'asd'}} firebase={firebase} />);
+    const wrapper = shallow(<ChatInput params={{id:'asd'}} firebase={firebase} />);
     wrapper.childAt(2).simulate('click');
     wrapper.setState({ text: ' ab c \n' });
     wrapper.childAt(2).simulate('click');
-    expect(sendAction).to.have.been.calledOnce;
     expect(firebase.push).to.have.been.calledOnce;
   });
 

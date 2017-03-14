@@ -13,20 +13,29 @@ class Content extends Component {
   static propTypes = {
     menuButtonAction: PropTypes.func,
     chatInputVisible: PropTypes.bool,
-    children: PropTypes.node,
     modal: PropTypes.object,
+    children: PropTypes.node.isRequired,
     params: PropTypes.object.isRequired,
   }
 
   static defaultProps = {
     menuButtonAction: null,
     chatInputVisible: false,
-    children: null,
     modal: null,
   }
-  handleSend() {
-    const node = findDOMNode(this.scrollable);
-    node.scrollTop = node.scrollHeight;
+
+  constructor(props) {
+    super(props);
+    this.scrollDown = this.scrollDown.bind(this);
+  }
+
+  scrollDown() {
+    window.requestAnimationFrame(() => {
+      const node = findDOMNode(this.scrollable);
+      if (node !== undefined) {
+        node.scrollTop = node.scrollHeight;
+      }
+    });
   }
 
   render() {
@@ -48,10 +57,10 @@ class Content extends Component {
           titleText="A really long title that would make the line break on a small screen"
         />
         <Scrollable ref={(c) => { this.scrollable = c; }}>
-          {children}
+          {React.cloneElement(children, { scrollDownHandler: this.scrollDown })}
         </Scrollable>
         {chatInputVisible ?
-          <ChatInput params={params} onSend={this.handleSend} /> :
+          <ChatInput params={params} /> :
           null}
         {
           (modal && modal.content) ?

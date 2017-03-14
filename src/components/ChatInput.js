@@ -21,7 +21,6 @@ const hotkeys = [
 
 export class ChatInput extends React.Component {
   static propTypes = {
-    onSend: PropTypes.func.isRequired,
     setModal: PropTypes.func.isRequired,
     firebase: PropTypes.object.isRequired,
     params: PropTypes.object.isRequired,
@@ -54,7 +53,6 @@ export class ChatInput extends React.Component {
         text,
         timestamp: ServerValue.TIMESTAMP,
       });
-      this.props.onSend();
       this.setState({ text: '' });
     }
   }
