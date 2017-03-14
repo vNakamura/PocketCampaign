@@ -2,6 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { pathToJS, firebaseConnect } from 'react-redux-firebase';
 
 import { toggleSidebar } from '../actions/actionCreators';
 import style from './App.styl';
@@ -10,6 +11,15 @@ import sidebarStyle from './Sidebar.styl';
 // Components
 import Sidebar from './Sidebar';
 import Content from './Content';
+import LoginForm from './LoginForm';
+
+function renderLoginForm() {
+  return (
+    <div className={style.fullHeight}>
+      <LoginForm />
+    </div>
+  );
+}
 
 export class App extends Component {
   static propTypes = {
@@ -18,7 +28,11 @@ export class App extends Component {
     toggleSidebar: PropTypes.func,
     chatInputVisible: PropTypes.bool,
     modal: PropTypes.object,
+    auth: PropTypes.object,
     params: PropTypes.object.isRequired,
+    firebase: PropTypes.shape({
+      logout: PropTypes.func.isRequired,
+    }).isRequired,
   }
   static defaultProps = {
     children: null,
@@ -26,6 +40,7 @@ export class App extends Component {
     toggleSidebar: null,
     chatInputVisible: false,
     modal: null,
+    auth: null,
   }
 
   componentWillMount = () => {
@@ -50,12 +65,18 @@ export class App extends Component {
   renderSidebar = () => {
     if (this.state.sidebarDocked || this.props.sidebarVisible) {
       const cba = this.state.sidebarDocked ? null : this.props.toggleSidebar;
-      return <Sidebar key="sb" closeButtonAction={cba} />;
+      return (
+        <Sidebar
+          key="sb"
+          closeButtonAction={cba}
+          signOutAction={this.props.firebase.logout}
+        />
+      );
     }
     return null;
   }
 
-  render() {
+  renderApp() {
     return (
       <div className={style.fullHeight}>
         <ReactCSSTransitionGroup
@@ -78,13 +99,23 @@ export class App extends Component {
       </div>
     );
   }
+
+  render() {
+    if (this.props.auth) {
+      return this.renderApp();
+    }
+    return renderLoginForm();
+  }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps({ firebase, sidebarVisible, routing, modal }) {
   return {
-    sidebarVisible: state.sidebarVisible,
-    chatInputVisible: /^\/chat\//i.test(state.routing.locationBeforeTransitions.pathname),
-    modal: state.modal,
+    sidebarVisible,
+    chatInputVisible: /^\/chat\//i.test(routing.locationBeforeTransitions.pathname),
+    modal,
+    authError: pathToJS(firebase, 'authError'),
+    auth: pathToJS(firebase, 'auth'),
+    profile: pathToJS(firebase, 'profile'),
   };
 }
 
@@ -92,4 +123,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ toggleSidebar }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(firebaseConnect()(App));

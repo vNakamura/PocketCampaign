@@ -27,15 +27,18 @@ const Sidebar = props =>
         <li>
           <Link to="/chat/asd">Chat</Link>
         </li>
+        <button onClick={props.signOutAction}>Sign Out</button>
       </ul>
     </div>
   </div>;
 
 Sidebar.propTypes = {
   closeButtonAction: PropTypes.func,
+  signOutAction: PropTypes.func,
 };
 Sidebar.defaultProps = {
   closeButtonAction: null,
+  signOutAction: null,
 };
 
 export default Sidebar;
