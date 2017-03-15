@@ -40,10 +40,11 @@ full-size()
   bottom:   0;
   left:     0;
 
-simple-button(content-color = $topbar-color, bg-color = transparent)
+simple-button(content-color = $topbar-color, bg-color = transparent, font-size = 1em)
   no-select()
   color:            content-color;
   font-family:      $heading-font;
+  font-size:        font-size;
   padding:          .3em;
   margin:           0;
   cursor:           pointer
@@ -53,15 +54,13 @@ simple-button(content-color = $topbar-color, bg-color = transparent)
   display:          inline-block
   border:           none
   background-color: bg-color;
-  if alpha(bg-color) > 0
-    hover-color: darken(bg-color, 25%);
-  else
-    hover-color: darken(content-color, 25%) true;
   click-down();
-  &:focus
+  &:focus, &:hover
     outline: none;
-  &:hover
-    darken(bg-color, 30%);
+    if alpha(bg-color) > 0
+      background-color: darken(bg-color, 25%);
+    else
+      color: darken(content-color, 25%) true;
   svg
     font-size:        1.8em;
     vertical-align: baseline !important;

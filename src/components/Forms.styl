@@ -1,0 +1,67 @@
+@import '../config';
+
+.center
+  full-size();
+  display:         flex;
+  justify-content: center;
+  align-items:     center;
+
+form-border-size= 2px;
+ease-cubic-in-out= cubic-bezier(0.645, 0.045, 0.355, 1);
+
+.formBox
+  border:    solid form-border-size $accent1;
+  padding:   .5em;
+  font-size: 1.5em;
+  min-width: 300px;
+  position:  relative;
+
+  input[type="text"], input[type="email"], input[type="password"]
+    border:        none;
+    border-bottom: solid 1px $accent1;
+    margin-bottom: 1em;
+    width:         100%
+
+    &:focus
+      outline:             none;
+      border-bottom-width: 2px;
+      margin-bottom:       calc(1em - 1px);
+
+  input[type="password"]
+    margin-bottom: 1px;
+    &:focus
+      margin-bottom: 0;
+
+  input[type="submit"], button
+    simple-button($canvas, $primary1);
+    display: block;
+    width:   100%;
+
+  .recover
+    font-size: .6em;
+
+  .error
+    position:         absolute;
+    left:             -(form-border-size);
+    right:            -(form-border-size);
+    top:              100%;
+    margin-top:       form-border-size;
+    font-size:        .6em;
+    background-color: $accent1;
+    color:            $canvas;
+    display:          block;
+    padding:          1em;
+    &.success
+      background-color: $primary1;
+    &.enter
+      transform-origin: top;
+      transform:        perspective(50em) rotateX(-90deg);
+    &.enterActive
+      transform:  rotateX(0);
+      transition: transform 500ms ease-cubic-in-out;
+    &.leave
+      transform:  rotateX(0);
+    &.leaveActive
+      transform-origin: top;
+      transform:        perspective(50em) rotateX(-90deg);
+      transition:       transform 200ms ease-cubic-in-out;
