@@ -34,9 +34,7 @@ export class ChatInput extends React.Component {
 
   handleRoll = (e) => {
     if (e) e.preventDefault();
-    this.props.setModal(<DiceRollModal
-      params={this.props.params}
-    />, 'Roll Dice');
+    this.props.setModal(<DiceRollModal />, 'Roll Dice');
   }
 
   handleTextChange = (e) => {

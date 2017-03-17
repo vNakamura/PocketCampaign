@@ -48,6 +48,7 @@
     "redux": "^3.5.2",
     "rupture": "^0.6.1",
     "seedrandom": "^2.4.2",
+    "string-replace-to-array": "^1.0.1",
     "typographic": "^3.0.0"
   },
   "devDependencies": {

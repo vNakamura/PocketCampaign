@@ -14,15 +14,21 @@ export class DiceRollModal extends React.Component {
     closeModal: PropTypes.func.isRequired,
     firebase: PropTypes.object.isRequired,
     params: PropTypes.object.isRequired,
+    notation: PropTypes.string,
+  }
+
+  static defaultProps = {
+    notation: '1d6',
   }
 
   constructor(props) {
     super(props);
+    const p = droll.parse(props.notation);
     this.state = {
-      numDice: 1,
-      numSides: 6,
-      modifier: 0,
-      notation: '1d6',
+      numDice: p.numDice,
+      numSides: p.numSides,
+      modifier: p.modifier,
+      notation: props.notation,
     };
     this.handleNumDiceUpdate = this.handleNumDiceUpdate.bind(this);
     this.handleNumSidesUpdate = this.handleNumSidesUpdate.bind(this);

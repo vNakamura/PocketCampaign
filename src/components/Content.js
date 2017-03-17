@@ -65,7 +65,7 @@ class Content extends Component {
         {
           (modal && modal.content) ?
             <Modal title={modal.title}>
-              {modal.content}
+              {React.cloneElement(modal.content, { params })}
             </Modal>
           : null
         }

@@ -3,9 +3,11 @@ import TimeAgo from 'react-timeago';
 import classnames from 'classnames';
 import droll from 'droll';
 import seedrandom from 'seedrandom';
+import replace from 'string-replace-to-array';
 
 import style from './ChatItem.styl';
 import Avatar from './Avatar';
+import NotationLink from './NotationLink';
 
 const timeFormatter = (value, unit) => {
   if (value > 1) {
@@ -14,11 +16,33 @@ const timeFormatter = (value, unit) => {
   return `${value} ${unit}`;
 };
 
-const roll = (notation, seed) => {
+const diceNotationRegex = /([1-9]\d*)?d([1-9]\d*)([+-]\d+)?/gi;
+const addLinksToText = (text) => {
+  let i = 0;
+  const result = replace(
+    text,
+    diceNotationRegex,
+    (notation, numDice, numSides) => {
+      i += 1;
+      if (numSides > 1) return <NotationLink key={i} notation={notation} />;
+      return notation;
+    },
+  );
+  return result;
+};
+
+const parseRoll = (notation) => {
   const p = droll.parse(notation);
-  if (!p) return 'Invalid dice notation';
-  if (p.numDice > 100) return 'Invalid dice notation. Too many dice!';
-  if (p.numSides > 1000) return 'Invalid dice notation. Too many sides!';
+  if (!p) return { ok: false, message: 'Invalid dice notation' };
+  if (p.numDice > 100) return { ok: false, message: 'Invalid dice notation. Too many dice!' };
+  if (p.numSides > 1000) return { ok: false, message: 'Invalid dice notation. Too many sides!' };
+  if (p.numSides < 2) return { ok: false, message: 'Invalid dice notation. Too few sides!' };
+  return { ok: true };
+};
+
+const roll = (notation, seed) => {
+  const p = parseRoll(notation);
+  if (!p.ok) return p.message;
 
   seedrandom(seed, { global: true });
   const result = droll.roll(notation);
@@ -55,7 +79,7 @@ const renderSpeach = content => (
   <div className={style.text}>
     <div className={style.line} />
     <message className={style.speach}>
-      <p>{content && content.text}</p>
+      <p>{content && addLinksToText(content.text)}</p>
     </message>
   </div>
 );
