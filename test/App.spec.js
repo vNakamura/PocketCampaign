@@ -11,13 +11,18 @@ const firebase = {
 
 describe('<App />', function () {
   it('should have a <Content /> component', function () {
-    const wrapper = shallow(<App auth={true} firebase={firebase} />);
+    const wrapper = shallow(<App
+      auth={{ user: true }}
+      params={{ id: 'a' }}
+      firebase={firebase}
+    />);
     expect(wrapper).to.have.exactly(1).descendants('Content');
   });
 
   it('should have a <Sidebar /> component if props says so', function () {
     const wrapper = shallow(<App
-      auth={true}
+      auth={{ user: true }}
+      params={{ id: 'a' }}
       firebase={firebase}
       sidebarVisible={true}
     />);
