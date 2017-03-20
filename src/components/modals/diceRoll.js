@@ -75,6 +75,7 @@ export class DiceRollModal extends React.Component {
     const { maxResult, minResult } = droll.parse(notation);
     return (
       <div>
+        <h2 className={style.statsTitle}>Notation</h2>
         <div className={style.notation}>
           <NumberInput
             className={style.numberInput}
@@ -101,6 +102,7 @@ export class DiceRollModal extends React.Component {
             defaultValue={modifier}
           />
         </div>
+        <h2 className={style.statsTitle}>Stats</h2>
         <div className={style.statsTable}>
           <div className={style.statsColumn}>
             <div className={style.statsHeader}>Min</div>

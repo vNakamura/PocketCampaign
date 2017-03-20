@@ -86,7 +86,7 @@ export default class NumberInput extends React.Component {
           className={style.increase}
           onClick={this.increase}
           tabIndex="-1"
-        >+</button>
+        >˄</button>
         <input
           type="text"
           className={style.field}
@@ -99,7 +99,7 @@ export default class NumberInput extends React.Component {
           className={style.decrease}
           onClick={this.decrease}
           tabIndex="-1"
-        >-</button>
+        >˅</button>
       </div>
     );
   }

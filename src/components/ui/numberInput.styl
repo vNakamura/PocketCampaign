@@ -1,18 +1,31 @@
 @import '../../config'
 
+b-rad= .4em;
+
 .container
-  display:   inline-flex;
-  flex-flow: column;
-  margin:    .2em;
-  border: solid 1px $primary1
+  display:       inline-flex;
+  flex-flow:     column;
+  margin:        .2em;
 
   button
-    min-width:   1em;
-    width:       auto;
-    margin:      0;
-    padding:     0;
-    line-height: 1;
-    border:      none;
+    min-width:        1em;
+    width:            auto;
+    margin:           0;
+    padding:          .2em;
+    line-height:      1;
+    font-size:        .4em;
+    border:           none;
+    background-color: $primary1;
+    color:            $text-color;
+
+    &.increase
+      border-top-left-radius:  b-rad;
+      border-top-right-radius: b-rad;
+
+    &.decrease
+      border-bottom-left-radius:  b-rad;
+      border-bottom-right-radius: b-rad;
+
     &:focus
       outline: none;
 
@@ -26,4 +39,7 @@ input[type="text"].field
   line-height:    1;
   display:        inline-block;
   vertical-align: baseline;
-  border:         none;
+  border:         solid 2px $primary1;
+  border-top:     none;
+  border-bottom:  none;
+  color:          $text-color;
