@@ -16,7 +16,7 @@ const timeFormatter = (value, unit) => {
   return `${value} ${unit}`;
 };
 
-const diceNotationRegex = /([1-9]\d*)?d([1-9]\d*)([+-]\d+)?/gi;
+const diceNotationRegex = /\b([1-9]\d*)?d([1-9]\d*)([+-]\d+)?\b/gi;
 const addLinksToText = (text) => {
   let i = 0;
   const result = replace(
