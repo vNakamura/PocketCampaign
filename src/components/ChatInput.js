@@ -22,8 +22,12 @@ const hotkeys = [
 export class ChatInput extends React.Component {
   static propTypes = {
     setModal: PropTypes.func.isRequired,
-    firebase: PropTypes.object.isRequired,
-    params: PropTypes.object.isRequired,
+    firebase: PropTypes.object,
+    match: PropTypes.object.isRequired,
+  }
+
+  static defaultProps = {
+    firebase: {},
   }
 
   static handleBlur() {
@@ -42,11 +46,11 @@ export class ChatInput extends React.Component {
   }
 
   handleSend = (e) => {
-    const { firebase, params } = this.props;
+    const { firebase, match } = this.props;
     if (e) e.preventDefault();
     const text = this.state.text.trim();
     if (text.length > 0) {
-      firebase.push(`chats/${params.id}`, {
+      firebase.push(`chats/${match.params.id}`, {
         type: 'text',
         text,
         timestamp: ServerValue.TIMESTAMP,

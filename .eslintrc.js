@@ -14,6 +14,7 @@ module.exports = {
     "import/no-named-as-default": "off",
     "no-nested-ternary": "off",
     "react/forbid-prop-types": "off",
-    "jsx-a11y/no-static-element-interactions": "off"
+    "jsx-a11y/no-static-element-interactions": "off",
+    "react/no-children-prop": "off" // React Router 4. Route component has a children prop which receives a function
   }
 };

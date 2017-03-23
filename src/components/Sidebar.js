@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import TiTimes from 'react-icons/lib/ti/times';
 import style from './Sidebar.styl';
 
@@ -17,7 +17,7 @@ const Sidebar = props =>
       <Topbar
         style={topbarStyle}
         titleText="Pocket Campaign"
-        rightButtonContent={props.closeButtonAction ? <TiTimes /> : null}
+        rightButtonContent={props.closeButtonAction && <TiTimes />}
         rightButtonAction={props.closeButtonAction}
       />
       <ul>

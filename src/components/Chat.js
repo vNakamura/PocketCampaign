@@ -26,10 +26,11 @@ const author = {
 export default class Chat extends Component {
   static propTypes = {
     content: PropTypes.object,
-    scrollDownHandler: PropTypes.func.isRequired,
+    onUpdate: PropTypes.func,
   }
   static defaultProps = {
     content: {},
+    onUpdate: null,
   }
 
   static renderChatItems(content) {
@@ -42,8 +43,8 @@ export default class Chat extends Component {
   }
 
   render() {
-    const { content, scrollDownHandler } = this.props;
-    scrollDownHandler();
+    const { content, onUpdate } = this.props;
+    if (onUpdate) onUpdate();
     return (
       <div>
         {

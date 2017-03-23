@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { pathToJS, firebaseConnect } from 'react-redux-firebase';
@@ -23,22 +24,17 @@ function renderLoginForm() {
 
 export class App extends Component {
   static propTypes = {
-    children: PropTypes.node,
     sidebarVisible: PropTypes.bool,
     toggleSidebar: PropTypes.func,
-    chatInputVisible: PropTypes.bool,
     modal: PropTypes.object,
     auth: PropTypes.object,
-    params: PropTypes.object.isRequired,
     firebase: PropTypes.shape({
       logout: PropTypes.func.isRequired,
     }).isRequired,
   }
   static defaultProps = {
-    children: null,
     sidebarVisible: false,
     toggleSidebar: null,
-    chatInputVisible: false,
     modal: null,
     auth: null,
   }
@@ -78,25 +74,23 @@ export class App extends Component {
 
   renderApp() {
     return (
-      <div className={style.fullHeight}>
-        <ReactCSSTransitionGroup
-          transitionName={sidebarStyle}
-          transitionEnterTimeout={300}
-          transitionLeaveTimeout={200}
-        >
-          {this.renderSidebar()}
-        </ReactCSSTransitionGroup>
-        <Content
-          params={this.props.params}
-          menuButtonAction={this.props.sidebarVisible || this.state.sidebarDocked ?
-            null : this.props.toggleSidebar
-          }
-          chatInputVisible={this.props.chatInputVisible}
-          modal={this.props.modal}
-        >
-          {this.props.children}
-        </Content>
-      </div>
+      <Router>
+        <div className={style.fullHeight}>
+          <ReactCSSTransitionGroup
+            transitionName={sidebarStyle}
+            transitionEnterTimeout={300}
+            transitionLeaveTimeout={200}
+          >
+            {this.renderSidebar()}
+          </ReactCSSTransitionGroup>
+          <Content
+            menuButtonAction={this.props.sidebarVisible || this.state.sidebarDocked ?
+              null : this.props.toggleSidebar
+            }
+            modal={this.props.modal}
+          />
+        </div>
+      </Router>
     );
   }
 
@@ -108,10 +102,9 @@ export class App extends Component {
   }
 }
 
-function mapStateToProps({ firebase, sidebarVisible, routing, modal }) {
+function mapStateToProps({ firebase, sidebarVisible, modal }) {
   return {
     sidebarVisible,
-    chatInputVisible: /^\/chat\//i.test(routing.locationBeforeTransitions.pathname),
     modal,
     authError: pathToJS(firebase, 'authError'),
     auth: pathToJS(firebase, 'auth'),

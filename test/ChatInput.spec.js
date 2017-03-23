@@ -9,6 +9,11 @@ import { ChatInput } from '../src/components/ChatInput';
 const firebase = {
   push: spy()
 }
+const match = {
+  params: {
+    id: 'asd'
+  }
+}
 
 describe('<ChatInput />', function () {
 
@@ -25,7 +30,7 @@ describe('<ChatInput />', function () {
   });
 
   it('should trim the message before sending and then clean the input field', function () {
-    const wrapper = shallow(<ChatInput params={{id:'asd'}} firebase={firebase} />);
+    const wrapper = shallow(<ChatInput match={match} firebase={firebase} />);
     wrapper.setState({ text: ' ab c \n' });
     wrapper.childAt(2).simulate('click');
     expect(wrapper).to.have.state('text').equal('');
@@ -33,7 +38,7 @@ describe('<ChatInput />', function () {
 
   it('should push data to firebase', function () {
     firebase.push.reset();
-    const wrapper = shallow(<ChatInput params={{id:'asd'}} firebase={firebase} />);
+    const wrapper = shallow(<ChatInput match={match} firebase={firebase} />);
     wrapper.childAt(2).simulate('click');
     wrapper.setState({ text: ' ab c \n' });
     wrapper.childAt(2).simulate('click');
