@@ -12,11 +12,22 @@ const defaultState = {
   sidebarVisible: false,
 };
 
+const reduxFirebaseConfig = {
+  userProfile: 'users',
+  profileFactory: (userData) => {
+    const { user } = userData;
+    return {
+      email: user.email,
+    };
+  },
+  updateProfileOnLogin: true,
+};
+
 const store = createStore(
   rootReducer,
   defaultState,
   compose(
-    reactReduxFirebase(config.firebase),
+    reactReduxFirebase(config.firebase, reduxFirebaseConfig),
     (
       process.env.NODE_ENV === 'production' ?
       f => f :

@@ -28,9 +28,6 @@ export class App extends Component {
     toggleSidebar: PropTypes.func,
     modal: PropTypes.object,
     auth: PropTypes.object,
-    firebase: PropTypes.shape({
-      logout: PropTypes.func.isRequired,
-    }).isRequired,
   }
   static defaultProps = {
     sidebarVisible: false,
@@ -65,7 +62,6 @@ export class App extends Component {
         <Sidebar
           key="sb"
           closeButtonAction={cba}
-          signOutAction={this.props.firebase.logout}
         />
       );
     }
