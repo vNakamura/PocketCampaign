@@ -1,50 +1,50 @@
-import React, { PropTypes } from 'react';
-import style from './Topbar.styl';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-class Topbar extends React.Component {
+import {Button} from './Common'
+
+const Container = styled.div `
+  display: flex;
+  align-items: center;
+  height: ${props => props.theme.topbar.height};
+`;
+const Title = styled.h2 `
+  text-align: center;
+  flex: 1;
+  color: ${props => props.inverted ? props.theme.topbar.invertedTextColor : props.theme.topbar.textColor};
+`;
+
+class TopBar extends Component {
   static propTypes = {
-    titleText: PropTypes.string,
+    text: PropTypes.string,
     leftButtonContent: PropTypes.element,
     rightButtonContent: PropTypes.element,
     leftButtonAction: PropTypes.func,
     rightButtonAction: PropTypes.func,
-    style: PropTypes.object,
+    inverted: PropTypes.boolean,
   }
 
   static defaultProps = {
-    titleText: '',
+    text: '',
     leftButtonContent: null,
     rightButtonContent: null,
     leftButtonAction: null,
     rightButtonAction: null,
-    style: {},
+    inverted: false,
   }
 
-  static noActionSet(e) {
-    e.preventDefault();
-  }
-
-  static renderMenuButton(content, action = Topbar.noActionSet) {
-    return (
-      content ?
-        (<button
-          onClick={action}
-          className={style.menuButton}
-        >
-          {content}
-        </button>)
-      : null
-    );
-  }
   render() {
+    const {text, leftButtonAction, leftButtonContent, rightButtonAction, rightButtonContent, inverted} = this.props;
     return (
-      <div className={style.container} style={this.props.style}>
-        {Topbar.renderMenuButton(this.props.leftButtonContent, this.props.leftButtonAction)}
-        <h4 className={style.title}>{this.props.titleText}</h4>
-        {Topbar.renderMenuButton(this.props.rightButtonContent, this.props.rightButtonAction)}
-      </div>
+      <Container>
+        {leftButtonAction && <Button onClick={leftButtonAction} >{leftButtonContent}</Button>}
+        <Title inverted={inverted}>{text}</Title>
+        {rightButtonAction && <Button onClick={rightButtonAction} >{rightButtonContent}</Button>}
+
+      </Container>
     );
   }
 }
 
-export default Topbar;
+export default TopBar;

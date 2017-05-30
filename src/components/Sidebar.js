@@ -1,43 +1,47 @@
-import React, { PropTypes } from 'react';
-import { Link } from 'react-router-dom';
-import TiTimes from 'react-icons/lib/ti/times';
-import style from './Sidebar.styl';
+import React, {Component} from 'react';
+import styled from 'styled-components';
 
-// Components
-import Topbar from './Topbar';
-import SidebarProfile from './SidebarProfile';
+import TopBar from './TopBar';
+import {Scrollable, Avatar, Button} from './Common';
+import MenuItem from './MenuItem';
 
-const topbarStyle = {
-  background: 'none',
-};
+const Container = styled.div `
+  display: flex;
+  flex-direction: column;
+  background: ${props => props.theme.sidebar.bg};
+  width: ${props => props.theme.sidebar.width}px;
+  color: ${props => props.theme.sidebar.textColor};
+`;
 
-const Sidebar = props =>
-  <div className={style.container}>
-    <div className={style.overlay} onClick={props.closeButtonAction} />
-    <div className={style.sidebar}>
-      <Topbar
-        style={topbarStyle}
-        titleText="Pocket Campaign"
-        rightButtonContent={props.closeButtonAction && <TiTimes />}
-        rightButtonAction={props.closeButtonAction}
-      />
-      <ul>
-        <li>
-          <Link to="/">Typography test</Link>
-        </li>
-        <li>
-          <Link to="/chat/asd">Chat</Link>
-        </li>
-      </ul>
-      <SidebarProfile />
-    </div>
-  </div>;
+class App extends Component {
+  render() {
+    return (
+      <Container>
+        <TopBar inverted={true} text="Pocket Campaign"/>
+        <Scrollable>
+          <MenuItem to="asd" text="Asd"/>
+          <MenuItem to="asd" text="Asd"/>
+          <MenuItem to="asd" text="Asd"/>
+          <MenuItem to="asd" text="Asd"/>
+        </Scrollable>
+        <UserBar>
+          <Avatar src="https://api.adorable.io/avatars/128/asd"/>
+          <Name>Nome do Usuário</Name>
+          <Button>X</Button>
+        </UserBar>
+      </Container>
+    );
+  }
+}
 
-Sidebar.propTypes = {
-  closeButtonAction: PropTypes.func,
-};
-Sidebar.defaultProps = {
-  closeButtonAction: null,
-};
+export default App;
 
-export default Sidebar;
+
+const UserBar = styled.div `
+  display: flex;
+  align-items: center;
+`;
+
+const Name = styled.h4 `
+  flex: 1;
+`;

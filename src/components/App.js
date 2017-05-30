@@ -1,115 +1,40 @@
-import React, { PropTypes, Component } from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { pathToJS, firebaseConnect } from 'react-redux-firebase';
+import React, {Component} from 'react';
+import styled, {ThemeProvider} from 'styled-components';
+import {BrowserRouter as Router} from 'react-router-dom';
 
-import { toggleSidebar } from '../actions/actionCreators';
-import style from './App.styl';
-import sidebarStyle from './Sidebar.styl';
+import theme from '../theme';
+import SideBar from './SideBar';
+import TopBar from './TopBar';
 
-// Components
-import Sidebar from './Sidebar';
-import Content from './Content';
-import LoginForm from './LoginForm';
+const Container = styled.div`
+  display:         flex;
+  align-items:     stretch;
+  justify-content: space-between;
+  width: 100vw;
+  height: 100vh;
+`;
 
-function renderLoginForm() {
-  return (
-    <div className={style.fullHeight}>
-      <LoginForm />
-    </div>
-  );
-}
-
-export class App extends Component {
-  static propTypes = {
-    sidebarVisible: PropTypes.bool,
-    toggleSidebar: PropTypes.func,
-    modal: PropTypes.object,
-    auth: PropTypes.object,
-  }
-  static defaultProps = {
-    sidebarVisible: false,
-    toggleSidebar: null,
-    modal: null,
-    auth: null,
-  }
-
-  componentWillMount = () => {
-    const mql = window.matchMedia('(min-width: 800px)');
-    mql.addListener(this.mediaQueryChanged);
-    this.setState({
-      mql,
-      sidebarDocked: mql.matches,
-    });
-  }
-
-  componentWillUnmount = () => {
-    this.state.mql.removeListener(this.mediaQueryChanged);
-  }
-
-  mediaQueryChanged = () => {
-    this.setState({
-      sidebarDocked: this.state.mql.matches,
-    });
-  }
-
-  renderSidebar = () => {
-    if (this.state.sidebarDocked || this.props.sidebarVisible) {
-      const cba = this.state.sidebarDocked ? null : this.props.toggleSidebar;
-      return (
-        <Sidebar
-          key="sb"
-          closeButtonAction={cba}
-        />
-      );
-    }
-    return null;
-  }
-
-  renderApp() {
+class App extends Component {
+  render() {
     return (
       <Router>
-        <div className={style.fullHeight}>
-          <ReactCSSTransitionGroup
-            transitionName={sidebarStyle}
-            transitionEnterTimeout={300}
-            transitionLeaveTimeout={200}
-          >
-            {this.renderSidebar()}
-          </ReactCSSTransitionGroup>
-          <Content
-            menuButtonAction={this.props.sidebarVisible || this.state.sidebarDocked ?
-              null : this.props.toggleSidebar
-            }
-            modal={this.props.modal}
-          />
-        </div>
+        <ThemeProvider theme={theme}>
+          <Container>
+            <SideBar />
+            <Content>
+              <TopBar text="Chat" />
+            </Content>
+          </Container>
+        </ThemeProvider>
       </Router>
     );
   }
-
-  render() {
-    if (this.props.auth) {
-      return this.renderApp();
-    }
-    return renderLoginForm();
-  }
 }
 
-function mapStateToProps({ firebase, sidebarVisible, modal }) {
-  return {
-    sidebarVisible,
-    modal,
-    authError: pathToJS(firebase, 'authError'),
-    auth: pathToJS(firebase, 'auth'),
-    profile: pathToJS(firebase, 'profile'),
-  };
-}
+export default App;
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ toggleSidebar }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(firebaseConnect()(App));
+const Content = styled.div`
+  background-color: ${props => props.theme.palette.canvas};
+  flex: 1;
+  flex-direction: column;
+`;
