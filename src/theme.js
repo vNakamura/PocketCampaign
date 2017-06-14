@@ -1,11 +1,10 @@
 import {darken} from 'polished';
 
-// Palette: https://coolors.co/493548-4b4e6d-6a8d92-80b192-a1e887
 const palette = {
-  text: '#493548',
-  canvas: '#FFFDF7',
-  primary1: '#80B192',
-  primary2: '#A1E887',
+  text: '#e6e5f1',
+  canvas: '#2a2932',
+  primary1: '#e05858',
+  primary2: '#c73661',
   accent1: '#4B4E6D',
   accent2: '#6A8D92'
 };
@@ -13,9 +12,9 @@ const palette = {
 const theme = {
   palette,
   sidebar: {
-    bg: `linear-gradient(11deg, ${palette.text} 25%, ${darken(.15, palette.text)} 82%);`,
+    bg: `linear-gradient(11deg, ${palette.canvas} 25%, ${darken(.05, palette.canvas)} 82%);`,
     width: 320,
-    textColor: palette.canvas,
+    textColor: palette.text,
   },
   topbar: {
     height: '56px',

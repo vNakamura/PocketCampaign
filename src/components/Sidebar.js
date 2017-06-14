@@ -17,7 +17,7 @@ class App extends Component {
   render() {
     return (
       <Container>
-        <TopBar inverted={true} text="Pocket Campaign"/>
+        <TopBar text="Pocket Campaign"/>
         <Scrollable>
           <MenuItem to="asd" text="Asd"/>
           <MenuItem to="asd" text="Asd"/>
