@@ -3,14 +3,21 @@ import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 
 const MenuItem = props => {
-  return (<Link to={props.to}>
-    <Text>{props.text}</Text>
-  </Link>);
+  return (<StyledLink to={props.to}>
+    {props.icon}
+    {props.text}
+  </StyledLink>);
 };
 
-const Text = styled.span `
+const StyledLink = styled(Link) `
   color: ${props => props.theme.sidebar.textColor};
   display: block;
+  padding: .8rem;
+  text-decoration: none;
+
+  &:hover {
+    background-color: ${props => props.theme.sidebar.itemHighlight}
+  }
 `;
 
 export default MenuItem;

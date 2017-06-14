@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 
+import FaCog from 'react-icons/lib/fa/cog';
+import FaSignOut from 'react-icons/lib/fa/sign-out';
+
 import TopBar from './TopBar';
 import {Scrollable, Avatar, Button} from './Common';
 import MenuItem from './MenuItem';
@@ -17,10 +20,12 @@ class App extends Component {
   render() {
     return (
       <Container>
-        <TopBar text="Pocket Campaign"/>
+        <TopBar
+          text="Pocket Campaign"
+        />
         <Scrollable>
-          <MenuItem to="asd" text="Asd"/>
-          <MenuItem to="asd" text="Asd"/>
+          <MenuItem to="sign-out" icon={<FaSignOut/>} text="Sign Out"/>
+          <MenuItem to="settings" icon={<FaCog/>} text="Settings"/>
           <MenuItem to="asd" text="Asd"/>
           <MenuItem to="asd" text="Asd"/>
         </Scrollable>

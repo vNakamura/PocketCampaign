@@ -15,6 +15,7 @@ const theme = {
     bg: `linear-gradient(11deg, ${palette.canvas} 25%, ${darken(.05, palette.canvas)} 82%);`,
     width: 320,
     textColor: palette.text,
+    itemHighlight: palette.accent1,
   },
   topbar: {
     height: '56px',
