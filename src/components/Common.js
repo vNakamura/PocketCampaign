@@ -4,9 +4,6 @@ export const Scrollable = styled.div `
   flex: 1;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
 `;
 
 export const Avatar = styled.img `

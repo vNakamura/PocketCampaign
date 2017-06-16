@@ -22,7 +22,7 @@ class TopBar extends Component {
     rightButtonContent: PropTypes.element,
     leftButtonAction: PropTypes.func,
     rightButtonAction: PropTypes.func,
-    inverted: PropTypes.boolean,
+    inverted: PropTypes.bool,
   }
 
   static defaultProps = {

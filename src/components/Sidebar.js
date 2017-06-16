@@ -9,6 +9,7 @@ import FaSignOut from 'react-icons/lib/fa/sign-out';
 import TopBar from './TopBar';
 import {Scrollable, Avatar, Button} from './Common';
 import MenuItem from './MenuItem';
+import AlignBottom from './AlignBottom';
 
 const Container = styled.div `
   display: flex;
@@ -26,10 +27,12 @@ class App extends Component {
           text="Pocket Campaign"
         />
         <Scrollable>
-          <MenuItem to="sign-out" icon={FaSignOut} text="Sign Out"/>
-          <MenuItem to="settings" icon={FaCog} text="Settings"/>
-          <MenuItem to="asd" text="Asd"/>
-          <MenuItem to="asd" text="Asd"/>
+          <AlignBottom>
+            <MenuItem to="sign-out" icon={FaSignOut} text="Sign Out"/>
+            <MenuItem to="settings" icon={FaCog} text="Settings"/>
+            <MenuItem to="asd" text="Asd"/>
+            <MenuItem to="asd" text="Asd"/>
+          </AlignBottom>
         </Scrollable>
         <UserBar>
           <Avatar src="https://api.adorable.io/avatars/128/asd"/>
