@@ -1,3 +1,5 @@
+// @flow
+
 import React, {Component} from 'react';
 import styled from 'styled-components';
 
@@ -24,8 +26,8 @@ class App extends Component {
           text="Pocket Campaign"
         />
         <Scrollable>
-          <MenuItem to="sign-out" icon={<FaSignOut/>} text="Sign Out"/>
-          <MenuItem to="settings" icon={<FaCog/>} text="Settings"/>
+          <MenuItem to="sign-out" icon={FaSignOut} text="Sign Out"/>
+          <MenuItem to="settings" icon={FaCog} text="Settings"/>
           <MenuItem to="asd" text="Asd"/>
           <MenuItem to="asd" text="Asd"/>
         </Scrollable>
