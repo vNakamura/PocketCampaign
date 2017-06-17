@@ -6,11 +6,16 @@ const palette = {
   primary1: '#e05858',
   primary2: '#c73661',
   accent1: '#4B4E6D',
-  accent2: '#6A8D92'
+  accent2: '#6A8D92',
+};
+const fonts = {
+  display: 'Dosis',
+  copy: 'Open Sans',
 };
 
 const theme = {
   palette,
+  fonts,
   sidebar: {
     bg: `linear-gradient(11deg, ${palette.canvas} 25%, ${darken(.05, palette.canvas)} 82%);`,
     width: 320,

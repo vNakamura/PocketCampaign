@@ -4,11 +4,10 @@
   "description": "A messenger app for your RPG adventures",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "flow": "flow"
+    "start": "cross-env NODE_PATH=src:src/components:src/containers react-scripts start",
+    "build": "cross-env NODE_PATH=src:src/components:src/containers react-scripts build",
+    "test": "cross-env NODE_PATH=src:src/components:src/containers react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   },
   "author": "Vinicius Nakamura",
   "license": "ISC",
@@ -22,6 +21,7 @@
     "styled-components": "^1.4.6"
   },
   "devDependencies": {
+    "cross-env": "^5.0.1",
     "react-scripts": "^1.0.7"
   }
 }

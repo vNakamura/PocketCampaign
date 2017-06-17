@@ -4,9 +4,11 @@ import styled from 'styled-components';
 import FaCog from 'react-icons/lib/fa/cog';
 import FaSignOut from 'react-icons/lib/fa/sign-out';
 
-import TopBar from './TopBar';
-import {Scrollable, Avatar, Button} from './Common';
-import MenuItem from './MenuItem';
+import TopBar from 'TopBar';
+import Scrollable from 'Scrollable';
+import Avatar from 'Avatar';
+import Button from 'Button';
+import MenuItem from 'MenuItem';
 
 const Container = styled.div `
   display: flex;
@@ -16,7 +18,7 @@ const Container = styled.div `
   color: ${props => props.theme.sidebar.textColor};
 `;
 
-class App extends Component {
+class SideBar extends Component {
   render() {
     return (
       <Container>
@@ -39,7 +41,7 @@ class App extends Component {
   }
 }
 
-export default App;
+export default SideBar;
 
 
 const UserBar = styled.div `
