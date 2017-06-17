@@ -5,7 +5,7 @@ import FaBars from 'react-icons/lib/fa/bars';
 import FaComment from 'react-icons/lib/fa/comment';
 import FaUser from 'react-icons/lib/fa/user';
 
-import IconButton from 'IconButton';
+import IconButton from './IconButton';
 
 export default class ChatBar extends Component {
   render() {

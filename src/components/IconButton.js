@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import FaQuestion from 'react-icons/lib/fa/question';
 
-import Button from 'Button';
+import Button from './Button';
 
 const Container = styled(Button) `
   flex: 1;
