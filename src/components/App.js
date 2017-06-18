@@ -8,7 +8,7 @@ import defaultTheme from '../theme';
 import type {theme} from '../theme';
 import SideBar from './SideBar';
 import TopBar from './TopBar';
-import ChatBar from './ChatBar';
+import ChatBar from './Chat/ChatBar';
 import Scrollable from './Scrollable';
 
 const Container = styled.div`

@@ -8,9 +8,9 @@ import FaSignOut from 'react-icons/lib/fa/sign-out';
 
 import TopBar from './TopBar';
 import Scrollable from './Scrollable';
-import AlignBottom from './AlignBottom';
+import PushToBottom from './PushToBottom';
 import Avatar from './Avatar';
-import Button from './Button';
+import Button from './Buttons/Button';
 import MenuItem from './MenuItem';
 
 const Container = styled.div `
@@ -29,12 +29,12 @@ class SideBar extends Component {
           text="Pocket Campaign"
         />
         <Scrollable startFromBottom={true}>
-          <AlignBottom>
+          <PushToBottom>
             <MenuItem to="sign-out" icon={FaSignOut} text="Sign Out"/>
             <MenuItem to="settings" icon={FaCog} text="Settings"/>
             <MenuItem to="asd" text="Asd"/>
             <MenuItem to="asd" text="Asd"/>
-          </AlignBottom>
+          </PushToBottom>
         </Scrollable>
         <UserBar>
           <Avatar src="https://api.adorable.io/avatars/128/asd"/>

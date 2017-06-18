@@ -13,15 +13,17 @@
   "author": "Vinicius Nakamura",
   "license": "ISC",
   "dependencies": {
+    "mousetrap": "^1.6.1",
     "polished": "^1.1.2",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
+    "react-autosize-textarea": "^0.4.4",
     "react-dom": "^15.5.4",
     "react-icons": "^2.2.5",
     "react-router-dom": "^4.1.1",
     "styled-components": "^1.4.6"
   },
-"devDependencies": {
+  "devDependencies": {
     "cross-env": "^5.0.1",
     "flow-bin": "^0.48.0",
     "react-scripts": "^1.0.7"
