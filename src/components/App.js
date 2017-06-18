@@ -5,7 +5,7 @@ import styled, {ThemeProvider} from 'styled-components';
 import {BrowserRouter as Router} from 'react-router-dom';
 
 import defaultTheme from '../theme';
-import type {theme} from '../theme';
+import type {Theme} from '../theme';
 import SideBar from './SideBar';
 import TopBar from './TopBar';
 import ChatBar from './Chat/ChatBar';
@@ -25,7 +25,7 @@ class App extends Component {
       <Router>
         <ThemeProvider theme={defaultTheme}>
           <Container>
-            <SideBar />
+            <SideBar breakpoint={defaultTheme.sidebar.breakpoint} />
             <Content>
               <TopBar text="Chat" />
               <Scrollable></Scrollable>
@@ -35,13 +35,13 @@ class App extends Component {
         </ThemeProvider>
       </Router>
     );
-  }
+  };
 }
 
 export default App;
 
 const Content = styled.div`
-  background-color: ${(props: {theme: theme}) => props.theme.palette.canvas};
+  background-color: ${(props: {theme: Theme}) => props.theme.palette.canvas};
   flex: 1;
   display: flex;
   flex-direction: column;

@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import BlankIcon from 'react-icon-base';
 
-import type {theme} from '../theme';
+import type {Theme} from '../theme';
 
 const MenuItem = (props: {to: string, text: string, icon?: Component}) => {
   return (<StyledLink to={props.to}>
@@ -16,7 +16,7 @@ const MenuItem = (props: {to: string, text: string, icon?: Component}) => {
 };
 
 const StyledLink = styled(Link) `
-  color: ${(props: {theme: theme}) => props.theme.sidebar.textColor};
+  color: ${(props: {theme: Theme}) => props.theme.sidebar.textColor};
   display: block;
   padding: .8rem;
   text-decoration: none;

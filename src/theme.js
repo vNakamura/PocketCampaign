@@ -2,7 +2,7 @@
 
 import darken from 'polished/lib/color/darken';
 
-type palette = {
+type Palette = {
   text: string,
   canvas: string,
   primary1: string,
@@ -10,7 +10,7 @@ type palette = {
   accent1: string,
   accent2: string
 };
-const darkPallete: palette = {
+const darkPallete: Palette = {
   text: '#e6e5f1',
   canvas: '#2a2932',
   primary1: '#e05858',
@@ -18,7 +18,7 @@ const darkPallete: palette = {
   accent1: '#4B4E6D',
   accent2: '#6A8D92'
 };
-type fonts = {
+type Fonts = {
   display: string,
   copy: string
 };
@@ -27,12 +27,13 @@ const basicFonts = {
   copy: 'Open Sans',
 };
 
-export type theme = {
-  palette: palette,
-  fonts: fonts,
+export type Theme = {
+  palette: Palette,
+  fonts: Fonts,
   sidebar: {
     bg: string,
     width: number,
+    breakpoint: number,
     textColor: string,
     itemHighlight: string,
   },
@@ -42,12 +43,13 @@ export type theme = {
     invertedTextColor: string,
   }
 };
-const darkTheme: $npm$styledComponents$Theme = {
+const darkTheme: Theme = {
   palette: darkPallete,
   fonts: basicFonts,
   sidebar: {
     bg: `linear-gradient(11deg, ${darkPallete.canvas} 25%, ${darken(.05, darkPallete.canvas)} 82%);`,
     width: 320,
+    breakpoint: 768,
     textColor: darkPallete.text,
     itemHighlight: darkPallete.accent1,
   },
@@ -58,4 +60,5 @@ const darkTheme: $npm$styledComponents$Theme = {
   },
 };
 
-export default darkTheme;
+export const defaultTheme: Theme = darkTheme;
+export default {...defaultTheme};

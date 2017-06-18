@@ -13,6 +13,7 @@
   "author": "Vinicius Nakamura",
   "license": "ISC",
   "dependencies": {
+    "lodash": "^4.17.4",
     "mousetrap": "^1.6.1",
     "polished": "^1.1.2",
     "prop-types": "^15.5.10",
@@ -20,7 +21,10 @@
     "react-autosize-textarea": "^0.4.4",
     "react-dom": "^15.5.4",
     "react-icons": "^2.2.5",
+    "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.1",
+    "redux": "^3.7.0",
+    "redux-logger": "^3.0.6",
     "styled-components": "^1.4.6"
   },
   "devDependencies": {

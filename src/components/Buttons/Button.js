@@ -6,6 +6,7 @@ const Button = styled.button `
   cursor: pointer;
   color: ${props => props.active? props.theme.palette.primary1 : props.theme.palette.accent1};
   font-family: ${props => props.theme.fonts.display};
+  font-size: 1rem;
 
   &:hover {
     color: ${props => props.theme.palette.text};
