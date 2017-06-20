@@ -34,6 +34,7 @@ export type Theme = {
     bg: string,
     width: number,
     breakpoint: number,
+    overlayColor: string,
     textColor: string,
     itemHighlight: string,
   },
@@ -51,6 +52,7 @@ const darkTheme: Theme = {
     width: 320,
     breakpoint: 768,
     textColor: darkPallete.text,
+    overlayColor: darkPallete.canvas,
     itemHighlight: darkPallete.accent1,
   },
   topbar: {

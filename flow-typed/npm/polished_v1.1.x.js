@@ -171,7 +171,7 @@ declare module 'polished/lib/color/toColorString' {
 }
 
 declare module 'polished/lib/color/transparentize' {
-  declare module.exports: any;
+  declare export default function transparentize(amount: number, color: string): string;
 }
 
 declare module 'polished/lib/helpers/directionalProperty' {
