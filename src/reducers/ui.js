@@ -5,7 +5,7 @@ import type {State} from '../types/State';
 
 const initialState: State = {
   sidebar: {
-    visible: true,
+    visible: false,
     fixed: true,
   },
 };
