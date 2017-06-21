@@ -1,6 +1,8 @@
+import React from 'react';
 import styled from 'styled-components';
+import type {Theme} from '../../theme';
 
-const Button = styled.button `
+const StyledButton = styled.button `
   background: none;
   border: none;
   cursor: pointer;
@@ -8,9 +10,18 @@ const Button = styled.button `
   font-family: ${props => props.theme.fonts.display};
   font-size: 1rem;
 
-  &:hover {
+  &:focus {
+    outline: none;
+  }
+  &:hover, &:focus {
     color: ${props => props.theme.palette.text};
   }
 `;
+const handleMouseUp = (e) => {
+  const target: EventTarget = e.currentTarget;
+  if (target instanceof HTMLInputElement) target.blur();
+}
+
+const Button = props => <StyledButton {...props} onMouseUp={handleMouseUp} />;
 
 export default Button;
