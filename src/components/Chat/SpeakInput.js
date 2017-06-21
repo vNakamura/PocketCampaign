@@ -19,6 +19,10 @@ const hotkeys: string[] = [
 ];
 const Textarea: StyledComponent = styled(TextareaAutosize)`
   flex: 1;
+  font-family: ${props => props.theme.fonts.copy}
+  font-size: 1rem;
+  resize: none;
+  padding: .4em;
 `;
 const SendButton: StyledComponent = styled(Button)`
   padding: .5rem;

@@ -15,8 +15,8 @@ const darkPallete: Palette = {
   canvas: '#2a2932',
   primary1: '#e05858',
   primary2: '#c73661',
-  accent1: '#4B4E6D',
-  accent2: '#6A8D92'
+  accent1: '#817b9e',
+  accent2: '#443a53'
 };
 type Fonts = {
   display: string,
@@ -30,6 +30,11 @@ const basicFonts = {
 export type Theme = {
   palette: Palette,
   fonts: Fonts,
+  button: {
+    color: string,
+    focusColor: string,
+    activeColor: string,
+  },
   sidebar: {
     bg: string,
     width: number,
@@ -42,21 +47,26 @@ export type Theme = {
     height: string,
     textColor: string,
     invertedTextColor: string,
-  }
+  },
 };
 const darkTheme: Theme = {
   palette: darkPallete,
   fonts: basicFonts,
+  button: {
+    color: darkPallete.accent1,
+    focusColor: darkPallete.text,
+    activeColor: darkPallete.primary1,
+  },
   sidebar: {
     bg: `linear-gradient(11deg, ${darkPallete.canvas} 25%, ${darken(.05, darkPallete.canvas)} 82%);`,
     width: 320,
     breakpoint: 768,
     textColor: darkPallete.text,
     overlayColor: darkPallete.canvas,
-    itemHighlight: darkPallete.accent1,
+    itemHighlight: darkPallete.accent2,
   },
   topbar: {
-    height: '56px',
+    height: '3rem',
     textColor: darkPallete.text,
     invertedTextColor: darkPallete.canvas,
   },
