@@ -17,6 +17,7 @@ const Container = styled.div`
   justify-content: space-between;
   width: 100vw;
   height: 100vh;
+  color: ${props => props.theme.palette.text}
 `;
 
 class App extends Component {
@@ -27,8 +28,8 @@ class App extends Component {
           <Container>
             <SideBar breakpoint={defaultTheme.sidebar.breakpoint} />
             <Content>
-              <TopBar text="Chat" />
-              <Scrollable></Scrollable>
+              <TopBar text="Chat" iOSSafariHack />
+              <Scrollable>{window.navigator.userAgent}</Scrollable>
               <ChatBar />
             </Content>
           </Container>

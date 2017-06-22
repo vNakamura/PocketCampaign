@@ -28,7 +28,6 @@ const Container = styled(Button) `
     margin: 4px;
   }
   transition: color .5s, border-color .5s;
-  border-bottom: solid 2px ${(props: Props) => props.active ? props.theme.sidebar.itemHighlight : 'transparent'};
 `;
 
 export const IconButton = (props: Props) => (
