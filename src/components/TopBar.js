@@ -10,25 +10,10 @@ type Props = {
   theme: Theme,
   iOSSafariHack: ?boolean,
 };
-const getTopPadding = (props: Props) => {
-  const userAgent = navigator.userAgent || navigator.vendor || window.opera || '';
-  console.log(userAgent);
-  if (/iPhone|iPod/.test(userAgent)) {
-    if (!props.iOSSafariHack || /CriOS|Focus/.test(userAgent)) return 6;
-    if (("standalone" in window.navigator) && !window.navigator.standalone) return 70; // Safari iPhone
-    return 26 // Saved to Home Screen
-  }
-  if (/iPad/.test(userAgent)) {
-    if (("standalone" in window.navigator) && !window.navigator.standalone) return 70; // Safari iPhone
-    return 26 // Saved to Home Screen
-  }
-  return 0;
-}
 const Container = styled.div `
   display: flex;
   align-items: center;
   min-height: ${(props: Props) => props.theme.topbar.height};
-  padding-top: ${getTopPadding}px;
 `;
 const Title = styled.h2 `
   text-align: center;

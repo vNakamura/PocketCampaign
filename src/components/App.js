@@ -15,8 +15,11 @@ const Container = styled.div`
   display: flex;
   align-items: stretch;
   justify-content: space-between;
-  width: 100vw;
-  height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   color: ${props => props.theme.palette.text}
 `;
 
