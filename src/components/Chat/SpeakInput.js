@@ -1,3 +1,5 @@
+// @flow
+
 import React, {Component} from 'react';
 import { findDOMNode } from 'react-dom';
 import styled from 'styled-components';
@@ -6,7 +8,7 @@ import MouseTrap from 'mousetrap';
 
 import Button from '../Buttons/Button';
 
-const Container: StyledComponent = styled.div`
+const Container = styled.div`
   display: flex;
   align-items: flex-end;
   padding: .5rem;
@@ -17,14 +19,14 @@ const hotkeys: string[] = [
   'ctrl+enter',
   'ctrl+return',
 ];
-const Textarea: StyledComponent = styled(TextareaAutosize)`
+const Textarea = styled(TextareaAutosize)`
   flex: 1;
   font-family: ${props => props.theme.fonts.copy}
   font-size: 1rem;
   resize: none;
   padding: .4em;
 `;
-const SendButton: StyledComponent = styled(Button)`
+const SendButton = styled(Button)`
   padding: .5rem;
 `;
 
@@ -32,22 +34,23 @@ export default class SpeakInput extends Component {
   state = {
     text: '',
   };
-  textarea: typeof Textarea;
+  textarea: HTMLTextAreaElement;
   componentDidMount() {
     this.textarea.focus();
   };
 
-  handleFocus = (e) => {
+  handleFocus = () => {
     MouseTrap.bind(hotkeys, this.handleSend);
   };
   handleBlur() {
     MouseTrap.unbind(hotkeys);
   };
-  handleTextChange = (e) => {
-    this.setState({ text: e.currentTarget.value });
+  handleTextChange = (e:Event) => {
+    const target: EventTarget = e.currentTarget;
+    if (target instanceof HTMLInputElement) this.setState({ text: target.value });
   }
 
-  handleSend = (e) => {
+  handleSend = (e?: Event) => {
     if (e) e.preventDefault();
     const text = this.state.text.trim();
     if (text.length > 0) {
@@ -68,7 +71,10 @@ export default class SpeakInput extends Component {
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           value={this.state.text}
-          ref={ref => this.textarea = findDOMNode(ref)}
+          ref={ref => {
+            const node = findDOMNode(ref);
+            if (node instanceof HTMLTextAreaElement) this.textarea = node;
+          }}
          />
         {
           this.state.text.length ?

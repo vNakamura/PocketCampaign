@@ -1,3 +1,5 @@
+// @flow
+
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
@@ -37,7 +39,7 @@ class ChatBar extends Component {
   }
 }
 
-const mapStateToProps = (state: State) => {
+const mapStateToProps = (state) => {
   const {fixed: sidebarFixed} = state.ui.sidebar;
 
   return {

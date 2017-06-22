@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import styled from 'styled-components';
 
@@ -16,11 +18,11 @@ const StyledButton = styled.button `
     color: ${props => props.theme.button.focusColor};
   }
 `;
-const handleMouseUp = (e) => {
+const handleMouseUp = (e: MouseEvent) => {
   const target: EventTarget = e.currentTarget;
   if (target instanceof HTMLInputElement) target.blur();
 }
 
-const Button = props => <StyledButton {...props} onMouseUp={handleMouseUp} />;
+const Button = (props: *) => <StyledButton {...props} onMouseUp={handleMouseUp} />;
 
 export default Button;

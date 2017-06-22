@@ -7,13 +7,6 @@ import FaQuestion from 'react-icons/lib/fa/question';
 import type {Theme} from '../../theme';
 import Button from './Button';
 
-type Props = {
-  text: string,
-  active: boolean,
-  theme: Theme,
-  icon: *,
-}
-
 const Container = styled(Button) `
   flex: 1;
   display: flex;
@@ -30,14 +23,25 @@ const Container = styled(Button) `
   transition: color .5s, border-color .5s;
 `;
 
+type Props = {
+  text: string,
+  active?: boolean,
+  theme?: Theme,
+  icon?: *,
+  onClick?: () => void,
+}
+
 export const IconButton = (props: Props) => (
   <Container
     active={props.active}
     onClick={props.onClick}
   >
-    {props.icon? props.icon : <FaQuestion/>}
+    {props.icon}
     <span>{props.text}</span>
   </Container>
 );
+IconButton.defaultProps = {
+  icon: <FaQuestion/>,
+};
 
 export default IconButton;
