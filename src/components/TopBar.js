@@ -8,12 +8,13 @@ import Button from './Buttons/Button'
 
 type Props = {
   theme: Theme,
-  iOSSafariHack: ?boolean,
+  marginTop: number,
 };
 const Container = styled.div `
   display: flex;
   align-items: center;
   min-height: ${(props: Props) => props.theme.topbar.height};
+  margin-top: ${(props: Props) => props.marginTop}px;
 `;
 const Title = styled.h2 `
   text-align: center;
@@ -31,7 +32,6 @@ class TopBar extends Component {
     leftButtonAction: ?Function,
     rightButtonAction: ?Function,
     inverted: boolean,
-    iOSSafariHack: boolean,
   }
 
   static defaultProps = {
@@ -41,13 +41,22 @@ class TopBar extends Component {
     leftButtonAction: null,
     rightButtonAction: null,
     inverted: false,
-    iOSSafariHack: false,
   }
+  state = {
+    marginTop: 0,
+  }
+
+  componentWillMount = () => {
+    if("standalone" in window.navigator && window.navigator.standalone)
+      this.setState({
+        marginTop: 20,
+      });
+  };
 
   render() {
     const {text, leftButtonAction, leftButtonContent, rightButtonAction, rightButtonContent, inverted} = this.props;
     return (
-      <Container iOSSafariHack={this.props.iOSSafariHack}>
+      <Container marginTop={this.state.marginTop}>
         {leftButtonAction && <Button onClick={leftButtonAction} >{leftButtonContent}</Button>}
         <Title inverted={inverted}>{text}</Title>
         {rightButtonAction && <Button onClick={rightButtonAction} >{rightButtonContent}</Button>}

@@ -31,7 +31,7 @@ class App extends Component {
           <Container>
             <SideBar breakpoint={defaultTheme.sidebar.breakpoint} />
             <Content>
-              <TopBar text="Chat" iOSSafariHack />
+              <TopBar text="Chat" />
               <Scrollable>{window.navigator.userAgent}</Scrollable>
               <ChatBar />
             </Content>
