@@ -6,6 +6,8 @@ import styled from 'styled-components';
 import TextareaAutosize from 'react-autosize-textarea';
 import MouseTrap from 'mousetrap';
 
+import FaArrowCircleUp from 'react-icons/lib/fa/arrow-circle-up';
+
 import Button from '../Buttons/Button';
 
 const Container = styled.div`
@@ -28,16 +30,17 @@ const Textarea = styled(TextareaAutosize)`
 `;
 const SendButton = styled(Button)`
   padding: .5rem;
+  font-size: 1.6rem;
 `;
 
 export default class SpeakInput extends Component {
+  props: {
+    onSend: (string) => void,
+  };
   state = {
     text: '',
   };
   textarea: HTMLTextAreaElement;
-  componentDidMount() {
-    this.textarea.focus();
-  };
 
   handleFocus = () => {
     MouseTrap.bind(hotkeys, this.handleSend);
@@ -47,13 +50,14 @@ export default class SpeakInput extends Component {
   };
   handleTextChange = (e:Event) => {
     const target: EventTarget = e.currentTarget;
-    if (target instanceof HTMLInputElement) this.setState({ text: target.value });
+    if (target instanceof HTMLTextAreaElement) this.setState({ text: target.value });
   }
 
   handleSend = (e?: Event) => {
     if (e) e.preventDefault();
     const text = this.state.text.trim();
     if (text.length > 0) {
+      this.props.onSend(text);
       this.setState({ text: '' });
       this.textarea.focus();
     }
@@ -78,7 +82,7 @@ export default class SpeakInput extends Component {
          />
         {
           this.state.text.length ?
-            <SendButton onClick={this.handleSend}>Send</SendButton>
+            <SendButton onClick={this.handleSend}><FaArrowCircleUp /></SendButton>
             : null
           }
       </Container>

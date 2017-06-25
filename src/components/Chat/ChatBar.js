@@ -11,6 +11,7 @@ import FaUser from 'react-icons/lib/fa/user';
 import IconButton from '../Buttons/IconButton';
 import SpeakInput from './SpeakInput';
 import {toggle_sidebar} from '../../actions/ui';
+import {send_message} from '../../actions/chat';
 
 const Container = styled.div``;
 const IconsBar = styled.div`
@@ -20,6 +21,9 @@ const IconsBar = styled.div`
 
 class ChatBar extends Component {
   handleMenuClick = () => this.props.dispatch(toggle_sidebar(true));
+  handleSpeakSend = (text: string) => {
+    this.props.dispatch(send_message('asd', text));
+  };
   render() {
     return (
       <Container>
@@ -33,7 +37,7 @@ class ChatBar extends Component {
           <IconButton text={"Roll"} />
           <IconButton icon={<FaUser/>} text={"Char"} />
         </IconsBar>
-        <SpeakInput />
+        <SpeakInput onSend={this.handleSpeakSend} />
       </Container>
     );
   }

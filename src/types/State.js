@@ -5,4 +5,9 @@ export type State = {
       fixed: boolean,
     },
   },
+  chat: {
+    [string]: {
+      text: string
+    },
+  }
 };
