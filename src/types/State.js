@@ -1,13 +1,19 @@
-export type State = {
-  ui: {
-    sidebar: {
-      visible: boolean,
-      fixed: boolean,
-    },
+// @flow
+
+import type {Message} from './Chat';
+
+export type UIState = {
+  +sidebar: {
+    +visible: boolean,
+    +fixed: boolean,
   },
-  chat: {
-    [string]: {
-      text: string
-    },
-  }
+};
+
+export type ChatState = {
+  +[string]: Message,
+};
+
+export type State = {
+  +ui: UIState,
+  +chat: ChatState,
 };

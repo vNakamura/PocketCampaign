@@ -8,7 +8,7 @@ import MouseTrap from 'mousetrap';
 
 import FaArrowCircleUp from 'react-icons/lib/fa/arrow-circle-up';
 
-import Button from '../Buttons/Button';
+import IconButton from '../Buttons/IconButton';
 
 const Container = styled.div`
   display: flex;
@@ -27,10 +27,7 @@ const Textarea = styled(TextareaAutosize)`
   font-size: 1rem;
   resize: none;
   padding: .4em;
-`;
-const SendButton = styled(Button)`
-  padding: .5rem;
-  font-size: 1.6rem;
+  border-radius: .4rem;
 `;
 
 export default class SpeakInput extends Component {
@@ -82,7 +79,11 @@ export default class SpeakInput extends Component {
          />
         {
           this.state.text.length ?
-            <SendButton onClick={this.handleSend}><FaArrowCircleUp /></SendButton>
+            <IconButton
+              onClick={this.handleSend}
+              text="Send"
+              icon={<FaArrowCircleUp />}
+            />
             : null
           }
       </Container>

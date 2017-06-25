@@ -32,10 +32,11 @@ class ChatBar extends Component {
             icon={<FaChevronLeft/>}
             text={"Menu"}
             onClick={this.handleMenuClick}
+            flex={1}
           />}
-          <IconButton icon={<FaComment/>} active text={"Talk"} />
-          <IconButton text={"Roll"} />
-          <IconButton icon={<FaUser/>} text={"Char"} />
+          <IconButton icon={<FaComment/>} active text={"Talk"} flex={1} />
+          <IconButton text={"Roll"} flex={1} />
+          <IconButton icon={<FaUser/>} text={"Char"} flex={1} />
         </IconsBar>
         <SpeakInput onSend={this.handleSpeakSend} />
       </Container>

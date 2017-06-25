@@ -1,23 +1,23 @@
 // @flow
 
 import {SEND_MESSAGE} from '../actions/chat';
-import type {State} from '../types/State';
+import type {ChatAction} from '../actions/chat';
+import type {ChatState} from '../types/State';
 
-const initialState: State = {
+const initialState: ChatState = {
   asd: []
 };
 
-type uiAction = {
-  type: string,
-  room: string,
-  text: string,
-}
-export default (state: State = initialState, action: uiAction): State => {
+export default (state: ChatState = initialState, action: ChatAction): ChatState => {
   switch(action.type) {
     case SEND_MESSAGE:
-      const newState: State = {...state};
-      newState[action.room].push({text: action.text});
-      return newState;
+      return {
+        ...state,
+        [action.room]: [...state[action.room], {
+          kind: 'speach',
+          content: action.content,
+        }]
+      };
     default:
       return state;
   }

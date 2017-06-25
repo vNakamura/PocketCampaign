@@ -8,7 +8,7 @@ import type {Theme} from '../../theme';
 import Button from './Button';
 
 const Container = styled(Button) `
-  flex: 1;
+  flex: ${props => props.flex};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,6 +28,7 @@ type Props = {
   active?: boolean,
   theme?: Theme,
   icon?: *,
+  flex?: number,
   onClick?: () => void,
 }
 
@@ -35,6 +36,7 @@ export const IconButton = (props: Props) => (
   <Container
     active={props.active}
     onClick={props.onClick}
+    flex={props.flex}
   >
     {props.icon}
     <span>{props.text}</span>
@@ -42,6 +44,7 @@ export const IconButton = (props: Props) => (
 );
 IconButton.defaultProps = {
   icon: <FaQuestion/>,
+  flex: 0,
 };
 
 export default IconButton;

@@ -1,36 +1,32 @@
 // @flow
 
 import {TOGGLE_SIDEBAR, FIX_SIDEBAR} from '../actions/ui';
-import type {State} from '../types/State';
+import type {UIState} from '../types/State';
+import type {SideBarAction} from '../actions/ui';
 
-const initialState: State = {
+const initialState: UIState = {
   sidebar: {
     visible: false,
-    fixed: true,
+    fixed: false,
   },
 };
 
-type uiAction = {
-  type: string,
-  visible: ?boolean,
-  fixed: ?boolean,
-}
-export default (state: State = initialState, action: uiAction): State => {
+export default (state: UIState = initialState, action: SideBarAction): * => {
   switch(action.type) {
+  case FIX_SIDEBAR:
+    return {
+      ...state,
+      sidebar: {
+        ...state.sidebar,
+        fixed: action.fixed === undefined ? !state.sidebar.visible : action.fixed,
+      },
+    };
     case TOGGLE_SIDEBAR:
       return {
         ...state,
         sidebar: {
           ...state.sidebar,
           visible: action.visible === undefined ? !state.sidebar.visible : action.visible,
-        },
-      };
-    case FIX_SIDEBAR:
-      return {
-        ...state,
-        sidebar: {
-          ...state.sidebar,
-          fixed: action.fixed,
         },
       };
     default:

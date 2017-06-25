@@ -8,6 +8,7 @@ import defaultTheme from '../theme';
 import type {Theme} from '../theme';
 import SideBar from './SideBar';
 import TopBar from './TopBar';
+import ChatContainer from './Chat/ChatContainer';
 import ChatBar from './Chat/ChatBar';
 import Scrollable from './Scrollable';
 
@@ -32,7 +33,9 @@ class App extends Component {
             <SideBar breakpoint={defaultTheme.sidebar.breakpoint} />
             <Content>
               <TopBar text="Chat" />
-              <Scrollable>{window.navigator.userAgent}</Scrollable>
+              <Scrollable>
+                <ChatContainer room="asd" />
+              </Scrollable>
               <ChatBar />
             </Content>
           </Container>
