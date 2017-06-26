@@ -4,14 +4,15 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import PushToBottom from '../PushToBottom';
+import Speak from './Speak';
 import type {State} from '../../types/State';
 import type {Message} from '../../types/Chat';
 
 const renderMessages = (messages: Message[]):React$Element<*>[] => {
-  console.log(messages);
   return messages.map((message, index: number) => {
+    const MessageComponent = Speak;
     return (
-      <p key={index}>{message.content.text}</p>
+      <MessageComponent key={index} content={message.content} />
     );
   });
 };

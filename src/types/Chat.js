@@ -1,4 +1,4 @@
-export type SpeachMessage = {
+export type SpeakMessage = {
   text: string,
   as?: string,
 };
@@ -9,8 +9,8 @@ export type RollMessage = {
 
 export type Message =
 | {
-    kind: 'speach',
-    content: SpeachMessage
+    kind: 'speak',
+    content: SpeakMessage
   }
 | {
     kind: 'roll',

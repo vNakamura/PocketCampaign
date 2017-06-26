@@ -14,7 +14,7 @@ export default (state: ChatState = initialState, action: ChatAction): ChatState 
       return {
         ...state,
         [action.room]: [...state[action.room], {
-          kind: 'speach',
+          kind: 'speak',
           content: action.content,
         }]
       };

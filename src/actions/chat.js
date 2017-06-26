@@ -13,7 +13,7 @@ export function send_message(room: string, text: string): ChatAction {
   return {
     type: SEND_MESSAGE,
     room,
-    kind: 'speach',
+    kind: 'speak',
     content: {
       text,
     },

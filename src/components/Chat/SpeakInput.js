@@ -13,7 +13,7 @@ import IconButton from '../Buttons/IconButton';
 const Container = styled.div`
   display: flex;
   align-items: flex-end;
-  padding: .5rem;
+  padding: ${props => props.theme.spacing.margin};
 `;
 const hotkeys: string[] = [
   'command+enter',

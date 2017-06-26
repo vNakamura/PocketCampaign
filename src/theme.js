@@ -10,7 +10,7 @@ type Palette = {
   accent1: string,
   accent2: string
 };
-const darkPallete: Palette = {
+const darkPalette: Palette = {
   text: '#e6e5f1',
   canvas: '#2a2932',
   primary1: '#e05858',
@@ -20,16 +20,23 @@ const darkPallete: Palette = {
 };
 type Fonts = {
   display: string,
-  copy: string
+  copy: string,
 };
 const basicFonts = {
   display: 'Dosis',
   copy: 'Open Sans',
 };
+type Spacing = {
+  margin: string,
+};
+const basicSpacing = {
+  margin: '.5rem',
+};
 
 export type Theme = {
   palette: Palette,
   fonts: Fonts,
+  spacing: Spacing,
   button: {
     color: string,
     focusColor: string,
@@ -48,27 +55,36 @@ export type Theme = {
     textColor: string,
     invertedTextColor: string,
   },
+  chat: {
+    speakBorder: string,
+    speakBorderRadius: string,
+  },
 };
 const darkTheme: Theme = {
-  palette: darkPallete,
+  palette: darkPalette,
   fonts: basicFonts,
+  spacing: basicSpacing,
   button: {
-    color: darkPallete.accent1,
-    focusColor: darkPallete.text,
-    activeColor: darkPallete.primary1,
+    color: darkPalette.accent1,
+    focusColor: darkPalette.text,
+    activeColor: darkPalette.primary1,
   },
   sidebar: {
-    bg: `linear-gradient(11deg, ${darkPallete.canvas} 25%, ${darken(.05, darkPallete.canvas)} 82%);`,
+    bg: `linear-gradient(11deg, ${darkPalette.canvas} 25%, ${darken(.05, darkPalette.canvas)} 82%);`,
     width: 320,
     breakpoint: 768,
-    textColor: darkPallete.text,
-    overlayColor: darkPallete.canvas,
-    itemHighlight: darkPallete.accent2,
+    textColor: darkPalette.text,
+    overlayColor: darkPalette.canvas,
+    itemHighlight: darkPalette.accent2,
   },
   topbar: {
     height: '3rem',
-    textColor: darkPallete.text,
-    invertedTextColor: darkPallete.canvas,
+    textColor: darkPalette.text,
+    invertedTextColor: darkPalette.canvas,
+  },
+  chat: {
+    speakBorder: `solid 4px ${darkPalette.accent1}`,
+    speakBorderRadius: '16px',
   },
 };
 
