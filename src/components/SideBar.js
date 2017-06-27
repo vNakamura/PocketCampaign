@@ -58,7 +58,8 @@ const fadeOut = keyframes`
 const selectSlideAnimation = (props) => {
   if (props.fixed) return 'none';
   if (props.animatingExit) return (slideRight(props));
-  return slideLeft(props);
+  if (props.visible) return slideLeft(props);
+  return 'none';
 };
 
 const Container = styled.div `
@@ -68,6 +69,7 @@ const Container = styled.div `
   width: 16rem;
   min-width: ${props => props.theme.sidebar.width}px;
   color: ${props => props.theme.sidebar.textColor};
+  transform: translateX(-${props => props.fixed || props.visible? 0 : props.theme.sidebar.width}px);
   animation: ${selectSlideAnimation} .3s ease-out;
   animation-fill-mode: forwards;
 
@@ -125,9 +127,12 @@ class SideBar extends Component {
     });
   };
   render() {
-    if(!this.props.visible && !this.props.fixed) return null;
     return (
-      <Container fixed={this.props.fixed} animatingExit={this.state.animatingExit}>
+      <Container
+        visible={this.props.visible}
+        fixed={this.props.fixed}
+        animatingExit={this.state.animatingExit}
+      >
         <TopBar
           text="Pocket Campaign"
         />
@@ -144,7 +149,7 @@ class SideBar extends Component {
           <Name>Nome do Usuário</Name>
           {this.props.fixed ? null : <Button onClick={this.handleClose}><FaClose /></Button>}
         </UserBar>
-        {this.props.fixed ? null : <Overlay onClick={this.handleClose} animatingExit={this.state.animatingExit} />}
+        {!this.props.fixed && this.props.visible ? <Overlay onClick={this.handleClose} animatingExit={this.state.animatingExit} /> : null}
       </Container>
     );
   };
