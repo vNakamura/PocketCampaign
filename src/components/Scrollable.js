@@ -21,7 +21,7 @@ export default class Scrollable extends Component {
   };
   static defaultProps = {
     startFromBottom: false,
-    startFromBottom: false,
+    autoScroll: false,
   }
 
   componentDidMount = () => {

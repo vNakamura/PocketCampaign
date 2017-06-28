@@ -15,7 +15,7 @@ const renderMessages = (messages: Message[]):React$Element<*>[] => {
   return messages.map((message, index: number) => {
     const MessageComponent = Speak;
     return (
-      <MessageComponent key={index} content={message.content} />
+      <MessageComponent key={index} content={message.content} byMe={index % 2 > 0} />
     );
   });
 };
