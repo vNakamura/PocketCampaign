@@ -136,7 +136,7 @@ class SideBar extends Component {
         <TopBar
           text="Pocket Campaign"
         />
-        <Scrollable startFromBottom={true}>
+        <Scrollable startFromBottom>
           <PushToBottom>
             <MenuItem to="sign-out" icon={FaSignOut} text="Sign Out"/>
             <MenuItem to="settings" icon={FaCog} text="Settings"/>

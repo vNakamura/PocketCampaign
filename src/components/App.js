@@ -9,8 +9,6 @@ import type {Theme} from '../theme';
 import SideBar from './SideBar';
 import TopBar from './TopBar';
 import ChatContainer from './Chat/ChatContainer';
-import ChatBar from './Chat/ChatBar';
-import Scrollable from './Scrollable';
 
 const Container = styled.div`
   display: flex;
@@ -33,10 +31,7 @@ class App extends Component {
             <SideBar breakpoint={defaultTheme.sidebar.breakpoint} />
             <Content>
               <TopBar text="Chat" />
-              <Scrollable>
-                <ChatContainer room="asd" />
-              </Scrollable>
-              <ChatBar />
+              <ChatContainer room="asd" />
             </Content>
           </Container>
         </ThemeProvider>

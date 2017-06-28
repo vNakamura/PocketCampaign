@@ -8,20 +8,28 @@ const Container = styled.div`
   flex: 1;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+  display: ${props => props.isFlex? 'flex': 'block'};
+  flex-direction: column;
 `;
 
 export default class Scrollable extends Component {
   container: *;
   props: {
     children?: React.Element<*>,
-    startFromBottom: boolean
+    startFromBottom?: boolean,
+    autoScroll?: boolean,
   };
   static defaultProps = {
-    startFromBottom: false
+    startFromBottom: false,
+    startFromBottom: false,
   }
 
   componentDidMount = () => {
     if(this.props.startFromBottom) this.goToBottom();
+  }
+
+  componentDidUpdate = () => {
+    if(this.props.autoScroll) this.goToBottom();
   }
 
   goToBottom = () => {
@@ -35,7 +43,10 @@ export default class Scrollable extends Component {
 
   render() {
     return (
-      <Container ref={(container: *) => {this.container = container;}}>
+      <Container
+        ref={(container: *) => {this.container = container;}}
+        isFlex={this.props.startFromBottom}
+      >
         {this.props.children}
       </Container>
     );
