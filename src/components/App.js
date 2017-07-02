@@ -10,6 +10,7 @@ import SideBar from './SideBar';
 import TopBar from './TopBar';
 import ChatContainer from './Chat/ChatContainer';
 
+// eslint-disable-next-line
 injectGlobal `
   html {
     box-sizing: border-box;
