@@ -23,7 +23,7 @@ const hotkeys: string[] = [
 ];
 const Textarea = styled(TextareaAutosize)`
   flex: 1;
-  font-family: ${props => props.theme.fonts.copy}
+  font-family: ${props => props.theme.fonts.copy};
   font-size: 1rem;
   resize: none;
   padding: .4em;

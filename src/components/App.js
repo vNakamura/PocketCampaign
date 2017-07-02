@@ -1,7 +1,7 @@
 // @flow
 
 import React, {Component} from 'react';
-import styled, {ThemeProvider} from 'styled-components';
+import styled, {ThemeProvider, injectGlobal} from 'styled-components';
 import {BrowserRouter as Router} from 'react-router-dom';
 
 import defaultTheme from '../theme';
@@ -9,6 +9,31 @@ import type {Theme} from '../theme';
 import SideBar from './SideBar';
 import TopBar from './TopBar';
 import ChatContainer from './Chat/ChatContainer';
+
+injectGlobal `
+  html {
+    box-sizing: border-box;
+    user-select: none;
+    font-size: 16px;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-y: hidden;
+  }
+  body {
+    font-family: 'Open Sans', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family:  'Dosis', sans-serif;
+    font-weight: 400;
+  }
+`;
 
 const Container = styled.div`
   display: flex;

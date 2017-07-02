@@ -24,7 +24,7 @@ type Fonts = {
 };
 const basicFonts = {
   display: 'Dosis',
-  copy: 'Open Sans',
+  copy: '"Open Sans"',
 };
 type Spacing = {
   margin: string,
