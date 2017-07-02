@@ -16,6 +16,7 @@ export default (state: ChatState = initialState, action: ChatAction): ChatState 
         [action.room]: [...state[action.room], {
           kind: 'speak',
           content: action.content,
+          createdAt: Date.now(),
         }]
       };
     default:

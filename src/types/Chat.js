@@ -7,7 +7,7 @@ export type RollMessage = {
   notation: string,
 };
 
-export type Message =
+type MessageKind =
 | {
     kind: 'speak',
     content: SpeakMessage
@@ -17,3 +17,5 @@ export type Message =
     content: RollMessage
   }
 ;
+
+export type Message = {createdAt: number} & MessageKind;
