@@ -3,26 +3,33 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import type {Theme} from '../../theme';
+
+type Props = {
+  active?: boolean
+};
+type StyledProps = Props & {theme: Theme};
+
 const StyledButton = styled.button `
   background: none;
   border: none;
   cursor: pointer;
-  color: ${props => props.active? props.theme.button.activeColor : props.theme.button.color};
-  font-family: ${props => props.theme.fonts.display};
+  color: ${(props: StyledProps) => props.active? props.theme.button.activeColor : props.theme.button.color};
+  font-family: ${(props: StyledProps) => props.theme.fonts.display};
   font-size: 1rem;
 
   &:focus {
     outline: none;
   }
   &:hover, &:focus {
-    color: ${props => props.theme.button.focusColor};
+    color: ${(props: StyledProps) => props.theme.button.focusColor};
   }
 `;
-const handleMouseUp = (e: MouseEvent) => {
+const handleMouseUp = (e: MouseEvent): void => {
   const target: EventTarget = e.currentTarget;
-  if (target instanceof HTMLInputElement) target.blur();
+  if (target instanceof HTMLButtonElement) target.blur();
 }
 
-const Button = (props: *) => <StyledButton {...props} onMouseUp={handleMouseUp} />;
+const Button = (props: Props) => <StyledButton {...props} onMouseUp={handleMouseUp} />;
 
 export default Button;

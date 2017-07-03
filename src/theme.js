@@ -1,6 +1,7 @@
 // @flow
 
 import darken from 'polished/lib/color/darken';
+import mix from 'polished/lib/color/mix';
 
 type Palette = {
   text: string,
@@ -81,6 +82,7 @@ const darkTheme: Theme = {
     height: '3rem',
     textColor: darkPalette.text,
     invertedTextColor: darkPalette.canvas,
+    border: `1px solid ${mix(.8, darkPalette.canvas, darkPalette.text)}`
   },
   chat: {
     speakBorder: `solid 4px ${darkPalette.accent1}`,

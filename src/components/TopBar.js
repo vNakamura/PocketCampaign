@@ -15,6 +15,7 @@ const Container = styled.div `
   align-items: center;
   min-height: ${(props: Props) => props.theme.topbar.height};
   margin-top: ${(props: Props) => props.marginTop}px;
+  border-bottom: ${props => props.theme.topbar.border};
 `;
 const Title = styled.h2 `
   text-align: center;

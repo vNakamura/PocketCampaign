@@ -17,13 +17,41 @@ const Container = styled.div``;
 const IconsBar = styled.div`
   display: flex;
   align-items: stretch;
+  border-top: ${props => props.theme.topbar.border};
 `;
 
+type InputType = 'speak' | 'roll';
+type State = {
+  currentInput: InputType,
+};
+
 class ChatBar extends Component {
-  handleMenuClick = () => this.props.dispatch(toggle_sidebar(true));
-  handleSpeakSend = (text: string) => {
+  state: State = {
+    currentInput: 'speak',
+  };
+
+  handleMenuClick = (): void => this.props.dispatch(toggle_sidebar(true));
+  handleSpeakSend = (text: string): void => {
     this.props.dispatch(send_message('asd', text));
   };
+
+  setInput = (input: InputType): void => {
+    this.setState({currentInput: input});
+  };
+  handleSpeakClick = (): void => this.setInput('speak');
+  handleRollClick = (): void => this.setInput('roll');
+
+  renderInput = (input: InputType): ?React.Element<any> => {
+    switch (input) {
+      case 'speak':
+        return <SpeakInput onSend={this.handleSpeakSend} />;
+      case 'roll':
+        return <p>Teste</p>;
+      default:
+        return null;
+    }
+  }
+
   render() {
     return (
       <Container>
@@ -34,11 +62,22 @@ class ChatBar extends Component {
             onClick={this.handleMenuClick}
             flex={1}
           />}
-          <IconButton icon={<FaComment/>} active text={"Talk"} flex={1} />
-          <IconButton text={"Roll"} flex={1} />
+          <IconButton
+            icon={<FaComment/>}
+            active={this.state.currentInput === 'speak'}
+            text={"Talk"}
+            onClick={this.handleSpeakClick}
+            flex={1}
+          />
+          <IconButton
+            active={this.state.currentInput === 'roll'}
+            text={"Roll"}
+            onClick={this.handleRollClick}
+            flex={1}
+          />
           <IconButton icon={<FaUser/>} text={"Char"} flex={1} />
         </IconsBar>
-        <SpeakInput onSend={this.handleSpeakSend} />
+        {this.renderInput(this.state.currentInput)}
       </Container>
     );
   }
