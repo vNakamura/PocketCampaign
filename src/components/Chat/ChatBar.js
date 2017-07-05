@@ -1,7 +1,7 @@
 // @flow
 
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import FaChevronLeft from 'react-icons/lib/fa/chevron-left';
@@ -10,8 +10,8 @@ import FaUser from 'react-icons/lib/fa/user';
 
 import IconButton from '../Buttons/IconButton';
 import SpeakInput from './SpeakInput';
-import {toggle_sidebar} from '../../actions/ui';
-import {send_message} from '../../actions/chat';
+import { toggleSidebar } from '../../actions/ui';
+import { sendMessage } from '../../actions/chat';
 
 const Container = styled.div``;
 const IconsBar = styled.div`
@@ -26,17 +26,27 @@ type State = {
 };
 
 class ChatBar extends Component {
+  static defaultProps = {
+    sidebarFixed: false,
+  };
+
   state: State = {
     currentInput: 'speak',
   };
 
-  handleMenuClick = (): void => this.props.dispatch(toggle_sidebar(true));
-  handleSpeakSend = (text: string): void => {
-    this.props.dispatch(send_message('asd', text));
+  setInput = (input: InputType): void => {
+    this.setState({ currentInput: input });
   };
 
-  setInput = (input: InputType): void => {
-    this.setState({currentInput: input});
+  props: {
+    dispatch: Function,
+    sidebarFixed?: boolean,
+  };
+
+
+  handleMenuClick = (): void => this.props.dispatch(toggleSidebar(true));
+  handleSpeakSend = (text: string): void => {
+    this.props.dispatch(sendMessage('asd', text));
   };
   handleSpeakClick = (): void => this.setInput('speak');
   handleRollClick = (): void => this.setInput('roll');
@@ -50,32 +60,34 @@ class ChatBar extends Component {
       default:
         return null;
     }
-  }
+  };
 
   render() {
     return (
       <Container>
         <IconsBar>
-          {this.props.sidebarFixed ? null : <IconButton
-            icon={<FaChevronLeft/>}
-            text={"Menu"}
-            onClick={this.handleMenuClick}
-            flex={1}
-          />}
+          {this.props.sidebarFixed
+            ? null
+            : <IconButton
+              icon={<FaChevronLeft />}
+              text={'Menu'}
+              onClick={this.handleMenuClick}
+              flex={1}
+            />}
           <IconButton
-            icon={<FaComment/>}
+            icon={<FaComment />}
             active={this.state.currentInput === 'speak'}
-            text={"Talk"}
+            text={'Talk'}
             onClick={this.handleSpeakClick}
             flex={1}
           />
           <IconButton
             active={this.state.currentInput === 'roll'}
-            text={"Roll"}
+            text={'Roll'}
             onClick={this.handleRollClick}
             flex={1}
           />
-          <IconButton icon={<FaUser/>} text={"Char"} flex={1} />
+          <IconButton icon={<FaUser />} text={'Char'} flex={1} />
         </IconsBar>
         {this.renderInput(this.state.currentInput)}
       </Container>
@@ -84,7 +96,7 @@ class ChatBar extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const {fixed: sidebarFixed} = state.ui.sidebar;
+  const { fixed: sidebarFixed } = state.ui.sidebar;
 
   return {
     sidebarFixed,

@@ -1,6 +1,6 @@
 // @flow
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
 import styled from 'styled-components';
 
@@ -8,29 +8,31 @@ const Container = styled.div`
   flex: 1;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
-  display: ${props => props.isFlex? 'flex': 'block'};
+  display: ${props => (props.isFlex ? 'flex' : 'block')};
   flex-direction: column;
 `;
 
 export default class Scrollable extends Component {
-  container: *;
+  static defaultProps = {
+    startFromBottom: false,
+    autoScroll: false,
+    children: undefined,
+  };
+
+  componentDidMount = () => {
+    if (this.props.startFromBottom) this.goToBottom();
+  };
+
+  componentDidUpdate = () => {
+    if (this.props.autoScroll) this.goToBottom();
+  };
+
   props: {
     children?: React.Element<*>,
     startFromBottom?: boolean,
     autoScroll?: boolean,
   };
-  static defaultProps = {
-    startFromBottom: false,
-    autoScroll: false,
-  }
-
-  componentDidMount = () => {
-    if(this.props.startFromBottom) this.goToBottom();
-  }
-
-  componentDidUpdate = () => {
-    if(this.props.autoScroll) this.goToBottom();
-  }
+  container: *;
 
   goToBottom = () => {
     window.requestAnimationFrame(() => {
@@ -39,12 +41,14 @@ export default class Scrollable extends Component {
         node.scrollTop = node.scrollHeight;
       }
     });
-  }
+  };
 
   render() {
     return (
       <Container
-        ref={(container: *) => {this.container = container;}}
+        ref={(container: *) => {
+          this.container = container;
+        }}
         isFlex={this.props.startFromBottom}
       >
         {this.props.children}

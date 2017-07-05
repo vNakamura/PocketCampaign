@@ -9,7 +9,7 @@ type Palette = {
   primary1: string,
   primary2: string,
   accent1: string,
-  accent2: string
+  accent2: string,
 };
 const darkPalette: Palette = {
   text: '#e6e5f1',
@@ -17,7 +17,7 @@ const darkPalette: Palette = {
   primary1: '#e05858',
   primary2: '#c73661',
   accent1: '#817b9e',
-  accent2: '#443a53'
+  accent2: '#443a53',
 };
 type Fonts = {
   display: string,
@@ -71,7 +71,10 @@ const darkTheme: Theme = {
     activeColor: darkPalette.primary1,
   },
   sidebar: {
-    bg: `linear-gradient(11deg, ${darkPalette.canvas} 25%, ${darken(.05, darkPalette.canvas)} 82%);`,
+    bg: `linear-gradient(11deg, ${darkPalette.canvas} 25%, ${darken(
+      0.05,
+      darkPalette.canvas,
+    )} 82%);`,
     width: 320,
     breakpoint: 768,
     textColor: darkPalette.text,
@@ -82,7 +85,7 @@ const darkTheme: Theme = {
     height: '3rem',
     textColor: darkPalette.text,
     invertedTextColor: darkPalette.canvas,
-    border: `1px solid ${mix(.8, darkPalette.canvas, darkPalette.text)}`
+    border: `1px solid ${mix(0.8, darkPalette.canvas, darkPalette.text)}`,
   },
   chat: {
     speakBorder: `solid 4px ${darkPalette.accent1}`,
@@ -90,5 +93,5 @@ const darkTheme: Theme = {
   },
 };
 
-export const defaultTheme: Theme = darkTheme;
-export default {...defaultTheme};
+export const mainTheme: Theme = darkTheme;
+export default { ...mainTheme };

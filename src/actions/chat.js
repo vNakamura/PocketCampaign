@@ -1,6 +1,6 @@
 // @flow
 
-import type {Message} from '../types/Chat';
+import type { Message } from '../types/Chat';
 
 export const SEND_MESSAGE: string = 'SEND_MESSAGE';
 
@@ -9,7 +9,7 @@ export type ChatAction = {
   room: string,
 } & Message;
 
-export function send_message(room: string, text: string): ChatAction {
+export function sendMessage(room: string, text: string): ChatAction {
   return {
     type: SEND_MESSAGE,
     room,
@@ -18,4 +18,4 @@ export function send_message(room: string, text: string): ChatAction {
       text,
     },
   };
-};
+}

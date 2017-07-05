@@ -1,28 +1,32 @@
 // @flow
 
 import React from 'react';
-import typeof {Component} from 'react';
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import BlankIcon from 'react-icon-base';
 
-import type {Theme} from '../theme';
+import type { Theme } from '../theme';
 
-const MenuItem = (props: {to: string, text: string, icon?: Component}) => {
-  return (<StyledLink to={props.to}>
-    {React.createElement(props.icon? props.icon: BlankIcon)}
+const MenuItem = (props: { to: string, text: string, icon?: React.Component<*, *, *> }) => (
+  <StyledLink to={props.to}>
+    {React.createElement(props.icon ? props.icon : BlankIcon)}
     {props.text}
-  </StyledLink>);
+  </StyledLink>
+  );
+
+MenuItem.defaultProps = {
+  icon: undefined,
 };
 
-const StyledLink = styled(Link) `
-  color: ${(props: {theme: Theme}) => props.theme.sidebar.textColor};
+const StyledLink = styled(Link)`
+  color: ${(props: { theme: Theme }) => props.theme.sidebar.textColor};
   display: block;
   padding: .8rem;
   text-decoration: none;
 
   &:hover {
-    background-color: ${(props: {theme: {sidebar: {itemHighlight: string}}}) => props.theme.sidebar.itemHighlight}
+    background-color: ${(props: { theme: { sidebar: { itemHighlight: string } } }) =>
+      props.theme.sidebar.itemHighlight}
   }
 
   svg {

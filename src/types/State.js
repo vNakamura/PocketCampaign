@@ -1,6 +1,6 @@
 // @flow
 
-import type {Message} from './Chat';
+import type { Message } from './Chat';
 
 export type UIState = {
   +sidebar: {

@@ -4,10 +4,9 @@ import React from 'react';
 import styled from 'styled-components';
 import FaQuestion from 'react-icons/lib/fa/question';
 
-import type {Theme} from '../../theme';
 import Button from './Button';
 
-const Container = styled(Button) `
+const Container = styled(Button)`
   flex: ${props => props.flex};
   display: flex;
   flex-direction: column;
@@ -26,25 +25,26 @@ const Container = styled(Button) `
 type Props = {
   text: string,
   active?: boolean,
-  theme?: Theme,
   icon?: *,
   flex?: number,
   onClick?: () => void,
-}
+};
 
-export const IconButton = (props: Props) => (
-  <Container
-    active={props.active}
-    onClick={props.onClick}
-    flex={props.flex}
-  >
+const IconButton = (props: Props) =>
+  (<Container active={props.active} onClick={props.onClick} flex={props.flex}>
     {props.icon}
-    <span>{props.text}</span>
-  </Container>
-);
+    <span>
+      {props.text}
+    </span>
+  </Container>);
 IconButton.defaultProps = {
-  icon: <FaQuestion/>,
+  icon: <FaQuestion />,
   flex: 0,
+};
+
+IconButton.defaultProps = {
+  active: false,
+  onClick: undefined,
 };
 
 export default IconButton;

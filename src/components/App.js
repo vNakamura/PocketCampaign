@@ -1,17 +1,17 @@
 // @flow
 
-import React, {Component} from 'react';
-import styled, {ThemeProvider, injectGlobal} from 'styled-components';
-import {BrowserRouter as Router} from 'react-router-dom';
+import React from 'react';
+import styled, { ThemeProvider, injectGlobal } from 'styled-components';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-import defaultTheme from '../theme';
-import type {Theme} from '../theme';
+import theme from '../theme';
+import type { Theme } from '../theme';
 import SideBar from './SideBar';
 import TopBar from './TopBar';
 import ChatContainer from './Chat/ChatContainer';
 
 // eslint-disable-next-line
-injectGlobal `
+injectGlobal`
   html {
     box-sizing: border-box;
     user-select: none;
@@ -45,31 +45,27 @@ const Container = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
-  color: ${props => props.theme.palette.text}
+  color: ${props => props.theme.palette.text};
 `;
 
-class App extends Component {
-  render() {
-    return (
-      <Router>
-        <ThemeProvider theme={defaultTheme}>
-          <Container>
-            <SideBar breakpoint={defaultTheme.sidebar.breakpoint} />
-            <Content>
-              <TopBar text="Chat" />
-              <ChatContainer room="asd" />
-            </Content>
-          </Container>
-        </ThemeProvider>
-      </Router>
-    );
-  };
-}
+const App = () => (
+  <Router>
+    <ThemeProvider theme={theme}>
+      <Container>
+        <SideBar breakpoint={theme.sidebar.breakpoint} />
+        <Content>
+          <TopBar text="Chat" />
+          <ChatContainer room="asd" />
+        </Content>
+      </Container>
+    </ThemeProvider>
+  </Router>
+  );
 
 export default App;
 
 const Content = styled.div`
-  background-color: ${(props: {theme: Theme}) => props.theme.palette.canvas};
+  background-color: ${(props: { theme: Theme }) => props.theme.palette.canvas};
   flex: 1;
   display: flex;
   flex-direction: column;

@@ -5,25 +5,23 @@ export const FIX_SIDEBAR: string = 'FIX_SIDEBAR';
 
 export type ToggleSideBarAction = {
   type: string,
-  visible: boolean
+  visible: boolean,
 };
 export type FixSideBarAction = {
   type: string,
-  fixed: boolean
+  fixed: boolean,
 };
-export type SideBarAction =
-| ToggleSideBarAction
-| FixSideBarAction;
+export type SideBarAction = ToggleSideBarAction | FixSideBarAction;
 
-export function toggle_sidebar(visible: boolean): ToggleSideBarAction {
+export function toggleSidebar(visible: boolean): ToggleSideBarAction {
   return {
     type: TOGGLE_SIDEBAR,
-    visible
+    visible,
   };
-};
-export function fix_sidebar(fixed: boolean = true): FixSideBarAction {
+}
+export function fixSidebar(fixed: boolean = true): FixSideBarAction {
   return {
     type: FIX_SIDEBAR,
-    fixed
+    fixed,
   };
-};
+}

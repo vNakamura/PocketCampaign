@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Avatar = styled.img `
+const Avatar = styled.img`
   width: 10vmin;
   max-width: 50px;
   height: 10vmin;

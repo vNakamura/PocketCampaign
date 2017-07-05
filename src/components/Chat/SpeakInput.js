@@ -1,6 +1,6 @@
 // @flow
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
 import styled from 'styled-components';
 import TextareaAutosize from 'react-autosize-textarea';
@@ -15,12 +15,7 @@ const Container = styled.div`
   align-items: flex-end;
   padding: ${props => props.theme.spacing.margin};
 `;
-const hotkeys: string[] = [
-  'command+enter',
-  'command+return',
-  'ctrl+enter',
-  'ctrl+return',
-];
+const hotkeys: string[] = ['command+enter', 'command+return', 'ctrl+enter', 'ctrl+return'];
 const Textarea = styled(TextareaAutosize)`
   flex: 1;
   font-family: ${props => props.theme.fonts.copy};
@@ -31,24 +26,24 @@ const Textarea = styled(TextareaAutosize)`
 `;
 
 export default class SpeakInput extends Component {
-  props: {
-    onSend: (string) => void,
-  };
   state = {
     text: '',
+  };
+  props: {
+    onSend: string => void,
   };
   textarea: HTMLTextAreaElement;
 
   handleFocus = () => {
     MouseTrap.bind(hotkeys, this.handleSend);
   };
-  handleBlur() {
+  handleBlur = () => {
     MouseTrap.unbind(hotkeys);
-  };
-  handleTextChange = (e:Event) => {
+  }
+  handleTextChange = (e: Event) => {
     const target: EventTarget = e.currentTarget;
     if (target instanceof HTMLTextAreaElement) this.setState({ text: target.value });
-  }
+  };
 
   handleSend = (e?: Event) => {
     if (e) e.preventDefault();
@@ -72,21 +67,15 @@ export default class SpeakInput extends Component {
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           value={this.state.text}
-          ref={ref => {
+          ref={(ref) => {
             const node = findDOMNode(ref);
             if (node instanceof HTMLTextAreaElement) this.textarea = node;
           }}
-         />
-        {
-          this.state.text.length ?
-            <IconButton
-              onClick={this.handleSend}
-              text="Send"
-              icon={<FaArrowCircleUp />}
-            />
-            : null
-          }
+        />
+        {this.state.text.length
+          ? <IconButton onClick={this.handleSend} text="Send" icon={<FaArrowCircleUp />} />
+          : null}
       </Container>
     );
-  };
-};
+  }
+}

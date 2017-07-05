@@ -8,14 +8,13 @@ export type RollMessage = {
 };
 
 type MessageKind =
-| {
-    kind: 'speak',
-    content: SpeakMessage
-  }
-| {
-    kind: 'roll',
-    content: RollMessage
-  }
-;
+  | {
+      kind: 'speak',
+      content: SpeakMessage,
+    }
+  | {
+      kind: 'roll',
+      content: RollMessage,
+    };
 
-export type Message = {createdAt: number} & MessageKind;
+export type Message = { createdAt: number } & MessageKind;
