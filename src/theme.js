@@ -60,6 +60,10 @@ export type Theme = {
     speakBorder: string,
     speakBorderRadius: string,
   },
+  inputs: {
+    backgroundColor: string,
+    textColor: string,
+  },
 };
 const darkTheme: Theme = {
   palette: darkPalette,
@@ -90,6 +94,10 @@ const darkTheme: Theme = {
   chat: {
     speakBorder: `solid 4px ${darkPalette.accent1}`,
     speakBorderRadius: '16px',
+  },
+  inputs: {
+    backgroundColor: darkPalette.text,
+    textColor: darkPalette.canvas,
   },
 };
 

@@ -40,9 +40,6 @@ const IconButton = (props: Props) =>
 IconButton.defaultProps = {
   icon: <FaQuestion />,
   flex: 0,
-};
-
-IconButton.defaultProps = {
   active: false,
   onClick: undefined,
 };

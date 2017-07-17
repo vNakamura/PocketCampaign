@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import initReactFastclick from 'react-fastclick';
 
 import App from './components/App';
 import store from './config/store';
@@ -15,6 +16,7 @@ function render(Component) {
   );
 }
 
+initReactFastclick();
 render(App);
 
 if (module.hot) {

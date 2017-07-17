@@ -1,6 +1,6 @@
 // @flow
 
-import { toggleSidebar, FIX_SIDEBAR } from '../actions/ui';
+import { TOGGLE_SIDEBAR, FIX_SIDEBAR } from '../actions/ui';
 import type { UIState } from '../types/State';
 import type { SideBarAction } from '../actions/ui';
 
@@ -21,7 +21,7 @@ export default (state: UIState = initialState, action: SideBarAction): * => {
           fixed: action.fixed === undefined ? !state.sidebar.visible : action.fixed,
         },
       };
-    case toggleSidebar:
+    case TOGGLE_SIDEBAR:
       return {
         ...state,
         sidebar: {

@@ -10,6 +10,7 @@ import FaUser from 'react-icons/lib/fa/user';
 
 import IconButton from '../Buttons/IconButton';
 import SpeakInput from './SpeakInput';
+import RollInput from './RollInput';
 import { toggleSidebar } from '../../actions/ui';
 import { sendMessage } from '../../actions/chat';
 
@@ -45,18 +46,21 @@ class ChatBar extends Component {
 
 
   handleMenuClick = (): void => this.props.dispatch(toggleSidebar(true));
+  handleSpeakClick = (): void => this.setInput('speak');
   handleSpeakSend = (text: string): void => {
     this.props.dispatch(sendMessage('asd', text));
   };
-  handleSpeakClick = (): void => this.setInput('speak');
   handleRollClick = (): void => this.setInput('roll');
+  handleRollSend = (notation: string): void => {
+    this.props.dispatch(sendMessage('asd', notation));
+  };
 
   renderInput = (input: InputType): ?React.Element<any> => {
     switch (input) {
       case 'speak':
         return <SpeakInput onSend={this.handleSpeakSend} />;
       case 'roll':
-        return <p>Teste</p>;
+        return <RollInput onSend={this.handleSpeakSend} />;
       default:
         return null;
     }
