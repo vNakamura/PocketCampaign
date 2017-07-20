@@ -8,16 +8,23 @@ import ChatBar from './ChatBar';
 import Scrollable from '../Scrollable';
 import PushToBottom from '../PushToBottom';
 import Speak from './Speak';
+import DiceRoll from './DiceRoll';
 import type { State } from '../../types/State';
 import type { Message } from '../../types/Chat';
 
+const componentsByKind = {
+  speak: Speak,
+  roll: DiceRoll,
+};
+
 const renderMessages = (messages: Message[]): React.Element<*>[] =>
   messages.map((message, index: number) => {
-    const MessageComponent = Speak;
+    const MessageComponent = componentsByKind[message.kind];
     return (
       <MessageComponent
-        key={message.createdAt}
+        key={message.createdAt.toString()}
         content={message.content}
+        createdAt={message.createdAt}
         byMe={index % 2 > 0}
       />
     );

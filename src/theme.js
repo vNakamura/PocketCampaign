@@ -59,6 +59,13 @@ export type Theme = {
   chat: {
     speakBorder: string,
     speakBorderRadius: string,
+    rollResultBg: string,
+    rollResultText: string,
+    rollModifierBg: string,
+    rollModifierText: string,
+    rollTotalBg: string,
+    rollTotalText: string,
+    rollRadius: string,
   },
   inputs: {
     backgroundColor: string,
@@ -94,6 +101,13 @@ const darkTheme: Theme = {
   chat: {
     speakBorder: `solid 4px ${darkPalette.accent1}`,
     speakBorderRadius: '16px',
+    rollResultBg: darkPalette.text,
+    rollResultText: darkPalette.canvas,
+    rollModifierBg: darkPalette.accent1,
+    rollModifierText: darkPalette.text,
+    rollTotalBg: darkPalette.primary2,
+    rollTotalText: darkPalette.text,
+    rollRadius: '8px',
   },
   inputs: {
     backgroundColor: darkPalette.text,

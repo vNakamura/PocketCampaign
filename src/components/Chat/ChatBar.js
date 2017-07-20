@@ -12,7 +12,7 @@ import IconButton from '../Buttons/IconButton';
 import SpeakInput from './SpeakInput';
 import RollInput from './RollInput';
 import { toggleSidebar } from '../../actions/ui';
-import { sendMessage } from '../../actions/chat';
+import { speak, rollDice } from '../../actions/chat';
 
 const Container = styled.div``;
 const IconsBar = styled.div`
@@ -48,11 +48,11 @@ class ChatBar extends Component {
   handleMenuClick = (): void => this.props.dispatch(toggleSidebar(true));
   handleSpeakClick = (): void => this.setInput('speak');
   handleSpeakSend = (text: string): void => {
-    this.props.dispatch(sendMessage('asd', text));
+    this.props.dispatch(speak('asd', text));
   };
   handleRollClick = (): void => this.setInput('roll');
   handleRollSend = (notation: string): void => {
-    this.props.dispatch(sendMessage('asd', notation));
+    this.props.dispatch(rollDice('asd', notation));
   };
 
   renderInput = (input: InputType): ?React.Element<any> => {
@@ -60,7 +60,7 @@ class ChatBar extends Component {
       case 'speak':
         return <SpeakInput onSend={this.handleSpeakSend} />;
       case 'roll':
-        return <RollInput onSend={this.handleSpeakSend} />;
+        return <RollInput onSend={this.handleRollSend} />;
       default:
         return null;
     }

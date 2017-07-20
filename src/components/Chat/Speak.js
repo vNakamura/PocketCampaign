@@ -3,9 +3,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { addLinksToText } from '../../helpers/dice';
 import type { SpeakMessage } from '../../types/Chat';
 import type { Theme } from '../../theme';
-import Avatar from '../Avatar';
+import CommonLayoutWithAvatar from './CommonLayoutWithAvatar';
 
 type Props = {
   byMe: ?boolean,
@@ -14,12 +15,7 @@ type Props = {
 
 const Container = styled.div`
   display: flex;
-  margin: ${(props: Props) => props.theme.spacing.margin};
   flex-direction: ${(props: Props) => (props.byMe ? 'row-reverse' : 'row')};
-`;
-
-const AvatarAtBottom = styled(Avatar)`
-  align-self: flex-end;
 `;
 
 const Line = styled.div`
@@ -43,17 +39,16 @@ const Text = styled.p`
   text-align: ${(props: Props) => (props.byMe ? 'right' : 'left')};
 `;
 
-const Margin = styled.div`flex: 1;`;
 
 const Speak = (props: {content: SpeakMessage, byMe: boolean}) => (
-  <Container byMe={props.byMe}>
-    <AvatarAtBottom src="https://api.adorable.io/avatars/128/asd" />
-    <Line byMe={props.byMe} />
-    <Text byMe={props.byMe}>
-      {props.content.text}
-    </Text>
-    <Margin byMe={props.byMe} />
-  </Container>
+  <CommonLayoutWithAvatar byMe={props.byMe}>
+    <Container byMe={props.byMe}>
+      <Line byMe={props.byMe} />
+      <Text byMe={props.byMe}>
+        {addLinksToText(props.content.text)}
+      </Text>
+    </Container>
+  </CommonLayoutWithAvatar>
 );
 
 export default Speak;

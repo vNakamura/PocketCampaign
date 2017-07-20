@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import droll from 'droll';
 import FaArrowCircleUp from 'react-icons/lib/fa/arrow-circle-up';
 
+import { notationLimits } from '../../helpers/dice';
 import NumberInput from '../Inputs/NumberInput';
 import IconButton from '../Buttons/IconButton';
 
@@ -87,15 +88,15 @@ export default class RollInput extends Component {
         <Notation>
           <NumberInput
             defaultValue={this.state.numDice}
-            min={1}
-            max={20}
+            min={notationLimits.minNumDice}
+            max={notationLimits.maxNumDice}
             onChange={this.handleNumDiceChange}
           />
           <Label>d</Label>
           <NumberInput
             defaultValue={this.state.numSides}
-            min={2}
-            max={100}
+            min={notationLimits.minNumSides}
+            max={notationLimits.maxNumSides}
             onChange={this.handleNumSidesChange}
           />
           <ToggleableLabel onClick={this.handleModifierSignClick}>
@@ -103,8 +104,8 @@ export default class RollInput extends Component {
           </ToggleableLabel>
           <NumberInput
             defaultValue={this.state.modifier}
-            min={-100}
-            max={100}
+            min={notationLimits.minModifier}
+            max={notationLimits.maxModifier}
             onChange={this.handleModifierChange}
             hideSign
           />
