@@ -1,13 +1,9 @@
 import { combineReducers } from 'redux';
-import { firebaseStateReducer } from 'react-redux-firebase';
 
-import sidebarVisible from './sidebar';
-import modal from './modal';
+import ui from './ui';
+import chat from './chat';
 
-const rootReducer = combineReducers({
-  sidebarVisible,
-  modal,
-  firebase: firebaseStateReducer,
+export default combineReducers({
+  ui,
+  chat,
 });
-
-export default rootReducer;

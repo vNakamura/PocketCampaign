@@ -1,115 +1,72 @@
-import React, { PropTypes, Component } from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+// @flow
+
+import React from 'react';
+import styled, { ThemeProvider, injectGlobal } from 'styled-components';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { pathToJS, firebaseConnect } from 'react-redux-firebase';
 
-import { toggleSidebar } from '../actions/actionCreators';
-import style from './App.styl';
-import sidebarStyle from './Sidebar.styl';
+import theme from '../theme';
+import type { Theme } from '../theme';
+import SideBar from './SideBar';
+import TopBar from './TopBar';
+import ChatContainer from './Chat/ChatContainer';
 
-// Components
-import Sidebar from './Sidebar';
-import Content from './Content';
-import LoginForm from './LoginForm';
+// eslint-disable-next-line
+injectGlobal`
+  html {
+    box-sizing: border-box;
+    user-select: none;
+    font-size: 16px;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
 
-function renderLoginForm() {
-  return (
-    <div className={style.fullHeight}>
-      <LoginForm />
-    </div>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-y: hidden;
+  }
+  body {
+    font-family: 'Open Sans', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family:  'Dosis', sans-serif;
+    font-weight: 400;
+  }
+`;
+
+const Container = styled.div`
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  color: ${props => props.theme.palette.text};
+`;
+
+const App = () => (
+  <Router>
+    <ThemeProvider theme={theme}>
+      <Container>
+        <SideBar breakpoint={theme.sidebar.breakpoint} />
+        <Content>
+          <TopBar text="Chat" />
+          <ChatContainer room="asd" />
+        </Content>
+      </Container>
+    </ThemeProvider>
+  </Router>
   );
-}
 
-export class App extends Component {
-  static propTypes = {
-    sidebarVisible: PropTypes.bool,
-    toggleSidebar: PropTypes.func,
-    modal: PropTypes.object,
-    auth: PropTypes.object,
-  }
-  static defaultProps = {
-    sidebarVisible: false,
-    toggleSidebar: null,
-    modal: null,
-    auth: null,
-  }
+export default App;
 
-  componentWillMount = () => {
-    const mql = window.matchMedia('(min-width: 800px)');
-    mql.addListener(this.mediaQueryChanged);
-    this.setState({
-      mql,
-      sidebarDocked: mql.matches,
-    });
-  }
-
-  componentWillUnmount = () => {
-    this.state.mql.removeListener(this.mediaQueryChanged);
-  }
-
-  mediaQueryChanged = () => {
-    this.setState({
-      sidebarDocked: this.state.mql.matches,
-    });
-  }
-
-  renderSidebar = () => {
-    if (this.state.sidebarDocked || this.props.sidebarVisible) {
-      const cba = this.state.sidebarDocked ? null : this.props.toggleSidebar;
-      return (
-        <Sidebar
-          key="sb"
-          closeButtonAction={cba}
-        />
-      );
-    }
-    return null;
-  }
-
-  renderApp() {
-    return (
-      <Router>
-        <div className={style.fullHeight}>
-          <ReactCSSTransitionGroup
-            transitionName={sidebarStyle}
-            transitionEnterTimeout={300}
-            transitionLeaveTimeout={200}
-          >
-            {this.renderSidebar()}
-          </ReactCSSTransitionGroup>
-          <Content
-            menuButtonAction={this.props.sidebarVisible || this.state.sidebarDocked ?
-              null : this.props.toggleSidebar
-            }
-            modal={this.props.modal}
-          />
-        </div>
-      </Router>
-    );
-  }
-
-  render() {
-    if (this.props.auth) {
-      return this.renderApp();
-    }
-    return renderLoginForm();
-  }
-}
-
-function mapStateToProps({ firebase, sidebarVisible, modal }) {
-  return {
-    sidebarVisible,
-    modal,
-    authError: pathToJS(firebase, 'authError'),
-    auth: pathToJS(firebase, 'auth'),
-    profile: pathToJS(firebase, 'profile'),
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ toggleSidebar }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(firebaseConnect()(App));
+const Content = styled.div`
+  background-color: ${(props: { theme: Theme }) => props.theme.palette.canvas};
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+`;
