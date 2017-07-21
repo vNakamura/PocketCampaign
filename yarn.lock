@@ -5135,6 +5135,10 @@ react-fastclick@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/react-fastclick/-/react-fastclick-3.0.2.tgz#2994c60088cda90b0b2cbfac4b6e7c6bc73d6a3a"
 
+react-flow-types@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/react-flow-types/-/react-flow-types-0.1.1.tgz#e7a2f7784d5c234f73dd1173b354f1c86be23179"
+
 react-icon-base@2.0.7:
   version "2.0.7"
   resolved "https://registry.yarnpkg.com/react-icon-base/-/react-icon-base-2.0.7.tgz#0bd18736bd6ce79ca6d69ce8387a07fb8d4ceffe"

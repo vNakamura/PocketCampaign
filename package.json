@@ -24,6 +24,7 @@
     "react-autosize-textarea": "^0.4.4",
     "react-dom": "^15.5.4",
     "react-fastclick": "^3.0.2",
+    "react-flow-types": "^0.1.1",
     "react-icon-base": "^2.0.8",
     "react-icons": "^2.2.5",
     "react-redux": "^5.0.5",

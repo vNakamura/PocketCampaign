@@ -1,13 +1,18 @@
 // @flow
 
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import styled, { ThemeProvider, injectGlobal } from 'styled-components';
 import { BrowserRouter as Router } from 'react-router-dom';
 
+import FaChevronLeft from 'react-icons/lib/fa/chevron-left';
+
+import { toggleSidebar } from '../actions/ui';
 import theme from '../theme';
 import type { Theme } from '../theme';
 import SideBar from './SideBar';
 import TopBar from './TopBar';
+import IconButton from './Buttons/IconButton';
 import ChatContainer from './Chat/ChatContainer';
 
 // eslint-disable-next-line
@@ -48,21 +53,52 @@ const Container = styled.div`
   color: ${props => props.theme.palette.text};
 `;
 
-const App = () => (
-  <Router>
-    <ThemeProvider theme={theme}>
-      <Container>
-        <SideBar breakpoint={theme.sidebar.breakpoint} />
-        <Content>
-          <TopBar text="Chat" />
-          <ChatContainer room="asd" />
-        </Content>
-      </Container>
-    </ThemeProvider>
-  </Router>
-  );
+class App extends Component {
+  static defaultProps = {
+    sidebarFixed: false,
+  };
+  props: {
+    dispatch: Function,
+    sidebarFixed?: boolean,
+  }
+  handleMenuClick = (): void => this.props.dispatch(toggleSidebar(true));
 
-export default App;
+  render() {
+    return (
+      <Router>
+        <ThemeProvider theme={theme}>
+          <Container>
+            <SideBar breakpoint={theme.sidebar.breakpoint} />
+            <Content>
+              <TopBar
+                text="Demo"
+                leftContent={
+                  this.props.sidebarFixed ? undefined
+                  : <IconButton
+                    text={'Menu'}
+                    icon={<FaChevronLeft />}
+                    onClick={this.handleMenuClick}
+                    flex={1}
+                    textAtSide
+                  />}
+              />
+              <ChatContainer room="asd" />
+            </Content>
+          </Container>
+        </ThemeProvider>
+      </Router>
+    );
+  }
+}
+
+const mapStateToProps = (state) => {
+  const { fixed: sidebarFixed } = state.ui.sidebar;
+
+  return {
+    sidebarFixed,
+  };
+};
+export default connect(mapStateToProps)(App);
 
 const Content = styled.div`
   background-color: ${(props: { theme: Theme }) => props.theme.palette.canvas};

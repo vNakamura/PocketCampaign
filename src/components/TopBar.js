@@ -3,8 +3,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+import type { ReactChildren } from 'react-flow-types';
 import type { Theme } from '../theme';
-import Button from './Buttons/Button';
 
 type Props = {
   theme: Theme,
@@ -19,20 +19,24 @@ const Container = styled.div`
 const Title = styled.h2`
   text-align: center;
   line-height: 2;
-  flex: 1;
   margin: 0;
   color: ${(props: Props) =>
     (props.inverted ? props.theme.topbar.invertedTextColor : props.theme.topbar.textColor)};
+  display: inline-block;
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+`;
+const Spacer = styled.div`
+  flex: 1 0 0;
 `;
 
 class TopBar extends Component {
 
   static defaultProps = {
     text: '',
-    leftButtonContent: null,
-    rightButtonContent: null,
-    leftButtonAction: null,
-    rightButtonAction: null,
     inverted: false,
   };
   state = {
@@ -48,35 +52,27 @@ class TopBar extends Component {
   };
   props: {
     text: string,
-    leftButtonContent: ?React.Element<*>,
-    rightButtonContent: ?React.Element<*>,
-    leftButtonAction: ?Function,
-    rightButtonAction: ?Function,
+    /* eslint-disable react/require-default-props */
+    leftContent?: ReactChildren,
+    rightContent?: ReactChildren,
+    /* eslint-enable react/require-default-props */
     inverted: boolean,
   };
 
   render() {
     const {
       text,
-      leftButtonAction,
-      leftButtonContent,
-      rightButtonAction,
-      rightButtonContent,
+      leftContent,
+      rightContent,
       inverted,
     } = this.props;
     return (
       <Container marginTop={this.state.marginTop}>
-        {leftButtonAction &&
-          <Button onClick={leftButtonAction}>
-            {leftButtonContent}
-          </Button>}
+        <Spacer>{leftContent}</Spacer>
         <Title inverted={inverted}>
           {text}
         </Title>
-        {rightButtonAction &&
-          <Button onClick={rightButtonAction}>
-            {rightButtonContent}
-          </Button>}
+        <Spacer>{rightContent}</Spacer>
       </Container>
     );
   }
