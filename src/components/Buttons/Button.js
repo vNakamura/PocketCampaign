@@ -19,6 +19,7 @@ const StyledButton = styled.button`
     )};
   font-family: ${(props: StyledProps) => props.theme.fonts.display};
   font-size: 1rem;
+  padding: .2em .4em;
 
   &:focus {
     outline: none;

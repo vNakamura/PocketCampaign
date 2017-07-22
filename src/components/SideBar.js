@@ -137,7 +137,14 @@ class SideBar extends Component {
         fixed={this.props.fixed}
         animatingExit={this.state.animatingExit}
       >
-        <TopBar text="Pocket Campaign" />
+        <TopBar
+          text="Pocket Campaign"
+          rightContent={this.props.fixed
+            ? undefined
+            : <Button onClick={this.handleClose}>
+              <FaClose />
+            </Button>}
+        />
         <Scrollable startFromBottom>
           <PushToBottom>
             <MenuItem to="sign-out" icon={FaSignOut} text="Sign Out" />
@@ -149,11 +156,6 @@ class SideBar extends Component {
         <UserBar>
           <Avatar src="https://api.adorable.io/avatars/128/asd" />
           <Name>Nome do Usuário</Name>
-          {this.props.fixed
-            ? null
-            : <Button onClick={this.handleClose}>
-              <FaClose />
-            </Button>}
         </UserBar>
         {!this.props.fixed && this.props.visible
           ? <Overlay onClick={this.handleClose} animatingExit={this.state.animatingExit} />

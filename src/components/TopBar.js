@@ -31,6 +31,8 @@ const Title = styled.h2`
 `;
 const Spacer = styled.div`
   flex: 1 0 0;
+  align-items: center;
+  text-align: ${props => (props.right ? 'right' : 'left')};
 `;
 
 class TopBar extends Component {
@@ -72,7 +74,7 @@ class TopBar extends Component {
         <Title inverted={inverted}>
           {text}
         </Title>
-        <Spacer>{rightContent}</Spacer>
+        <Spacer right>{rightContent}</Spacer>
       </Container>
     );
   }
