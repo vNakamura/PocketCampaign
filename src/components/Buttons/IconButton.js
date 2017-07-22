@@ -11,14 +11,14 @@ import Button from './Button';
 const Container = styled(Button)`
   flex: ${props => props.flex};
   display: flex;
-  flex-direction: ${props => props.textAtSide ? 'row' : 'column'};
+  flex-direction: ${props => (props.textAtSide ? 'row' : 'column')};
   align-items: center;
   span {
     display: block;
     font-size: .8rem;
   }
   svg {
-    font-size: ${props => props.textAtSide ? '1rem' : '1.6rem'};;
+    font-size: ${props => (props.textAtSide ? '1rem' : '1.6rem')};
     margin: 4px;
   }
   transition: color .5s, border-color .5s;

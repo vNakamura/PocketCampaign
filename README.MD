@@ -1,8 +1,11 @@
-#Pocket Campaign
+# Pocket Campaign
 
 A self-hosted chat app to let you play your tabletop RPG adventures anywhere.
 
 [![Build Status](https://travis-ci.org/vNakamura/pocket-campaign.svg)](https://travis-ci.org/vNakamura/pocket-campaign)
+
+![Pocket Campaign logo](./public/logo.svg)
+
 
 ## Contributing
 
