@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 import FaComment from 'react-icons/lib/fa/comment';
 import FaUser from 'react-icons/lib/fa/user';
+import DiceIcon from '../Icons/DiceIcon';
 
 import IconButton from '../Buttons/IconButton';
 import SpeakInput from './SpeakInput';
@@ -70,6 +71,7 @@ class ChatBar extends Component {
           />
           <IconButton
             active={this.state.currentInput === 'roll'}
+            icon={<DiceIcon />}
             text={'Roll'}
             onClick={this.handleRollClick}
             flex={1}
