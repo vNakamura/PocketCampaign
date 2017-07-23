@@ -36,14 +36,18 @@ type Props = {
 };
 
 const IconButton = (props: Props) =>
-  (<StyledButton flex={props.flex}><Container
+  (<StyledButton
+    flex={props.flex}
     active={props.active}
     onClick={props.onClick}
-    textAtSide={props.textAtSide}
   >
-    {props.icon}
-    {props.text ? <span>{props.text}</span> : null}
-  </Container></StyledButton>);
+    <Container
+      textAtSide={props.textAtSide}
+    >
+      {props.icon}
+      {props.text ? <span>{props.text}</span> : null}
+    </Container>
+  </StyledButton>);
 IconButton.defaultProps = {
   icon: <FaQuestion />,
   flex: 0,

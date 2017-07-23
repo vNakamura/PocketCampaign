@@ -35,12 +35,21 @@ export default class Scrollable extends Component {
   container: *;
 
   goToBottom = () => {
-    window.requestAnimationFrame(() => {
-      const node = findDOMNode(this.container);
-      if (node instanceof HTMLElement) {
-        node.scrollTop = node.scrollHeight;
-      }
-    });
+    if (window && window.requestAnimationFrame) {
+      window.requestAnimationFrame(() => {
+        const node = findDOMNode(this.container);
+        if (node instanceof HTMLElement) {
+          const intervalId = setInterval(() => {
+            node.scrollTop += Math.ceil((
+              node.scrollHeight - (node.scrollTop + node.offsetHeight)
+            ) / 2);
+            if ((node.scrollTop + node.offsetHeight) >= node.scrollHeight) {
+              clearInterval(intervalId);
+            }
+          }, 20);
+        }
+      });
+    }
   };
 
   render() {
