@@ -7,6 +7,10 @@ export type UIState = {
     +visible: boolean,
     +fixed: boolean,
   },
+  +chatbar: {
+    +currentInput: string,
+    +lastNotation: string,
+  },
 };
 
 export type ChatState = {

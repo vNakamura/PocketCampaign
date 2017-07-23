@@ -12,6 +12,8 @@ import IconButton from '../Buttons/IconButton';
 import SpeakInput from './SpeakInput';
 import RollInput from './RollInput';
 import { speak, rollDice } from '../../actions/chat';
+import { changeChatInput, saveLastNotation } from '../../actions/ui';
+import type { State } from '../../types/State';
 
 const Container = styled.div``;
 const IconsBar = styled.div`
@@ -21,21 +23,16 @@ const IconsBar = styled.div`
 `;
 
 type InputType = 'speak' | 'roll';
-type State = {
-  currentInput: InputType,
-};
 
 class ChatBar extends Component {
-  state: State = {
-    currentInput: 'speak',
-  };
-
   setInput = (input: InputType): void => {
-    this.setState({ currentInput: input });
+    this.props.dispatch(changeChatInput(input));
   };
 
   props: {
     dispatch: Function,
+    currentInput: InputType,
+    lastNotation: string,
   };
 
   handleSpeakClick = (): void => this.setInput('speak');
@@ -45,6 +42,7 @@ class ChatBar extends Component {
   handleRollClick = (): void => this.setInput('roll');
   handleRollSend = (notation: string): void => {
     this.props.dispatch(rollDice('asd', notation));
+    this.props.dispatch(saveLastNotation(notation));
   };
 
   renderInput = (input: InputType): ?React.Element<any> => {
@@ -52,7 +50,12 @@ class ChatBar extends Component {
       case 'speak':
         return <SpeakInput onSend={this.handleSpeakSend} />;
       case 'roll':
-        return <RollInput onSend={this.handleRollSend} />;
+        return (
+          <RollInput
+            onSend={this.handleRollSend}
+            defaultNotation={this.props.lastNotation}
+          />
+        );
       default:
         return null;
     }
@@ -64,24 +67,32 @@ class ChatBar extends Component {
         <IconsBar>
           <IconButton
             icon={<FaComment />}
-            active={this.state.currentInput === 'speak'}
+            active={this.props.currentInput === 'speak'}
             text={'Talk'}
             onClick={this.handleSpeakClick}
             flex={1}
           />
           <IconButton
-            active={this.state.currentInput === 'roll'}
             icon={<DiceIcon />}
+            active={this.props.currentInput === 'roll'}
             text={'Roll'}
             onClick={this.handleRollClick}
             flex={1}
           />
           <IconButton icon={<FaUser />} text={'Char'} flex={1} />
         </IconsBar>
-        {this.renderInput(this.state.currentInput)}
+        {this.renderInput(this.props.currentInput)}
       </Container>
     );
   }
 }
 
-export default connect()(ChatBar);
+const mapStateToProps = (state: State) => {
+  const { currentInput, lastNotation } = state.ui.chatbar;
+
+  return {
+    currentInput,
+    lastNotation,
+  };
+};
+export default connect(mapStateToProps)(ChatBar);
