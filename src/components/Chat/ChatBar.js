@@ -19,6 +19,7 @@ const Container = styled.div``;
 const IconsBar = styled.div`
   display: flex;
   align-items: stretch;
+  justify-content: space-around;
   border-top: ${props => props.theme.topbar.border};
 `;
 
@@ -70,16 +71,14 @@ class ChatBar extends Component {
             active={this.props.currentInput === 'speak'}
             text={'Talk'}
             onClick={this.handleSpeakClick}
-            flex={1}
           />
           <IconButton
             icon={<DiceIcon />}
             active={this.props.currentInput === 'roll'}
             text={'Roll'}
             onClick={this.handleRollClick}
-            flex={1}
           />
-          <IconButton icon={<FaUser />} text={'Char'} flex={1} />
+          <IconButton icon={<FaUser />} text={'Char'} />
         </IconsBar>
         {this.renderInput(this.props.currentInput)}
       </Container>

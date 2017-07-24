@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import type { Theme } from '../../theme';
 import Avatar from '../Avatar';
@@ -11,6 +11,23 @@ type Props = {
   theme: Theme,
 };
 
+const scaleY = keyframes`
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+`;
+const scaleBoth = keyframes`
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+`;
+
 const Container = styled.div`
   display: flex;
   margin: ${(props: Props) => props.theme.spacing.margin};
@@ -19,10 +36,15 @@ const Container = styled.div`
 
 const ChildrenContainer = styled.div`
   flex: 9;
+  transform-origin: bottom;
+  animation: ${scaleY} .2s ease-in-out;
+  animation-delay: .1s;
+  animation-fill-mode: both;
 `;
 
 const AvatarAtBottom = styled(Avatar)`
   align-self: flex-end;
+  animation: ${scaleBoth} .3s ease-in-out;
 `;
 
 const Margin = styled.div`flex: 1;`;
