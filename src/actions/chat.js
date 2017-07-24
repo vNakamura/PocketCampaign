@@ -8,11 +8,12 @@ export type ChatAction = {
   message: SpeakMessage | RollMessage,
 };
 
-export function speak(room: string, text: string): ChatAction {
+export function speak(room: string, text: string, author: string = 'demoUser'): ChatAction {
   const message: SpeakMessage = {
     kind: 'speak',
     text,
     createdAt: Date.now(),
+    author,
   };
   return {
     type: 'SPEAK',
@@ -21,11 +22,12 @@ export function speak(room: string, text: string): ChatAction {
   };
 }
 
-export function rollDice(room: string, notation: string): ChatAction {
+export function rollDice(room: string, notation: string, author: string = 'demoUser'): ChatAction {
   const message: RollMessage = {
     kind: 'roll',
     notation,
     createdAt: Date.now(),
+    author,
   };
   return {
     type: 'ROLL_DICE',

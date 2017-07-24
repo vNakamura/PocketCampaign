@@ -3,8 +3,7 @@
 import type { ChatAction } from '../actions/chat';
 import type { ChatState } from '../types/State';
 
-const initialState: ChatState = {
-};
+const initialState: ChatState = {};
 
 const updateState = (kind: string, state: ChatState, action: ChatAction): ChatState => ({
   ...state,

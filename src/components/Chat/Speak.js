@@ -40,11 +40,11 @@ const Text = styled.p`
 `;
 
 
-const Speak = (props: {message: SpeakMessage}) => (
-  <CommonLayoutWithAvatar byMe>
-    <Container byMe>
-      <Line byMe />
-      <Text byMe>
+const Speak = (props: {message: SpeakMessage, byMe: boolean}) => (
+  <CommonLayoutWithAvatar byMe={props.byMe}>
+    <Container byMe={props.byMe}>
+      <Line byMe={props.byMe} />
+      <Text byMe={props.byMe}>
         {addLinksToText(props.message.text)}
       </Text>
     </Container>

@@ -78,9 +78,9 @@ const renderRoll = (notation: string, seed: string) => {
   return styledResult;
 };
 
-const DiceRoll = (props: {message: RollMessage}) => (
-  <CommonLayoutWithAvatar byMe>
-    <Container byMe>
+const DiceRoll = (props: {message: RollMessage, byMe: boolean}) => (
+  <CommonLayoutWithAvatar byMe={props.byMe}>
+    <Container byMe={props.byMe}>
       <Text>
         Rolling {props.message.notation}:
       </Text>
