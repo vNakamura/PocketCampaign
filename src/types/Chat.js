@@ -1,20 +1,15 @@
+// @flow
+
 export type SpeakMessage = {
+  kind: 'speak',
   text: string,
-  as?: string,
+  createdAt: number,
 };
 
 export type RollMessage = {
+  kind: 'roll',
   notation: string,
+  createdAt: number,
 };
 
-type MessageKind =
-  | {
-      kind: 'speak',
-      content: SpeakMessage,
-    }
-  | {
-      kind: 'roll',
-      content: RollMessage,
-    };
-
-export type Message = { createdAt: number } & MessageKind;
+export type Message = SpeakMessage | RollMessage;

@@ -3,8 +3,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { addLinksToText } from '../../helpers/dice';
 import type { SpeakMessage } from '../../types/Chat';
+import { addLinksToText } from '../../helpers/dice';
 import type { Theme } from '../../theme';
 import CommonLayoutWithAvatar from './CommonLayoutWithAvatar';
 
@@ -40,12 +40,12 @@ const Text = styled.p`
 `;
 
 
-const Speak = (props: {content: SpeakMessage, byMe: boolean}) => (
-  <CommonLayoutWithAvatar byMe={props.byMe}>
-    <Container byMe={props.byMe}>
-      <Line byMe={props.byMe} />
-      <Text byMe={props.byMe}>
-        {addLinksToText(props.content.text)}
+const Speak = (props: {message: SpeakMessage}) => (
+  <CommonLayoutWithAvatar byMe>
+    <Container byMe>
+      <Line byMe />
+      <Text byMe>
+        {addLinksToText(props.message.text)}
       </Text>
     </Container>
   </CommonLayoutWithAvatar>

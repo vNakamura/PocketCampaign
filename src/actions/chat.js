@@ -1,33 +1,35 @@
 // @flow
 
-import type { Message } from '../types/Chat';
-
-export const SPEAK: string = 'SPEAK';
-export const ROLL_DICE: string = 'ROLL_DICE';
+import type { SpeakMessage, RollMessage } from '../types/Chat';
 
 export type ChatAction = {
   type: string,
   room: string,
-} & Message;
+  message: SpeakMessage | RollMessage,
+};
 
 export function speak(room: string, text: string): ChatAction {
-  return {
-    type: SPEAK,
-    room,
+  const message: SpeakMessage = {
     kind: 'speak',
-    content: {
-      text,
-    },
+    text,
+    createdAt: Date.now(),
+  };
+  return {
+    type: 'SPEAK',
+    room,
+    message,
   };
 }
 
 export function rollDice(room: string, notation: string): ChatAction {
+  const message: RollMessage = {
+    kind: 'roll',
+    notation,
+    createdAt: Date.now(),
+  };
   return {
-    type: ROLL_DICE,
+    type: 'ROLL_DICE',
     room,
-    kind: 'roll,',
-    content: {
-      notation,
-    },
+    message,
   };
 }

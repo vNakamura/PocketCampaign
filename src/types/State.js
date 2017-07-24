@@ -14,7 +14,9 @@ export type UIState = {
 };
 
 export type ChatState = {
-  +[string]: Message,
+  [room: string]: {
+    [key: string]: Message,
+  },
 };
 
 export type State = {

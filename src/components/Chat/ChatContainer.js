@@ -12,23 +12,32 @@ import DiceRoll from './DiceRoll';
 import type { State } from '../../types/State';
 import type { Message } from '../../types/Chat';
 
-const componentsByKind = {
-  speak: Speak,
-  roll: DiceRoll,
+const renderMessageComponent = (message: Message, key: string) => {
+  switch (message.kind) {
+    case 'speak':
+      return (<Speak
+        key={key}
+        message={message}
+      />);
+    case 'roll':
+      return (<DiceRoll
+        key={key}
+        message={message}
+      />);
+    default:
+      return null;
+  }
 };
 
-const renderMessages = (messages: Message[]): React.Element<*>[] =>
-  messages.map((message, index: number) => {
-    const MessageComponent = componentsByKind[message.kind];
-    return (
-      <MessageComponent
-        key={message.createdAt.toString()}
-        content={message.content}
-        createdAt={message.createdAt}
-        byMe={index % 2 > 0}
-      />
-    );
+const renderMessages = (messages: {[key: string]: Message}) => {
+  const elements = [];
+  Object.keys(messages).forEach((key:string) => {
+    const message: Message = messages[key];
+    const component = renderMessageComponent(message, key);
+    if (component) elements.push(component);
   });
+  return elements;
+};
 
 const Container = styled.div`
   flex: 1;
@@ -38,7 +47,7 @@ const Container = styled.div`
 `;
 
 type Props = {
-  messages: Message[],
+  messages: { [key: string]: Message },
 };
 const ChatContainer = (props: Props) => (
   <Container>

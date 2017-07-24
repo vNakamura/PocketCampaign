@@ -3,9 +3,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import type { RollMessage } from '../../types/Chat';
 import { roll } from '../../helpers/dice';
 import type { RollResult } from '../../helpers/dice';
-import type { SpeakMessage } from '../../types/Chat';
 import type { Theme } from '../../theme';
 import CommonLayoutWithAvatar from './CommonLayoutWithAvatar';
 
@@ -78,13 +78,13 @@ const renderRoll = (notation: string, seed: string) => {
   return styledResult;
 };
 
-const DiceRoll = (props: {content: SpeakMessage, byMe: boolean, createdAt: string}) => (
-  <CommonLayoutWithAvatar byMe={props.byMe}>
-    <Container byMe={props.byMe}>
+const DiceRoll = (props: {message: RollMessage}) => (
+  <CommonLayoutWithAvatar byMe>
+    <Container byMe>
       <Text>
-        Rolling {props.content.notation}:
+        Rolling {props.message.notation}:
       </Text>
-      {renderRoll(props.content.notation, props.createdAt)}
+      {renderRoll(props.message.notation, props.message.createdAt.toString())}
     </Container>
   </CommonLayoutWithAvatar>
 );
