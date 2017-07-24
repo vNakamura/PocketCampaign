@@ -13,19 +13,26 @@ import type { State, UserState } from '../../types/State';
 import type { Message } from '../../types/Chat';
 
 
-const renderMessageComponent = (message: Message, key: string, byMe: boolean) => {
+const renderMessageComponent = (
+  message: Message,
+  key: string,
+  hideAvatar: boolean,
+  byMe: boolean,
+) => {
   switch (message.kind) {
     case 'speak':
       return (<Speak
         key={key}
         message={message}
         byMe={byMe}
+        hideAvatar={hideAvatar}
       />);
     case 'roll':
       return (<DiceRoll
         key={key}
         message={message}
         byMe={byMe}
+        hideAvatar={hideAvatar}
       />);
     default:
       return null;
@@ -34,11 +41,18 @@ const renderMessageComponent = (message: Message, key: string, byMe: boolean) =>
 
 const renderMessages = (messages: {[key: string]: Message}, currentUser: UserState) => {
   const elements = [];
+  let lastUser: string;
+  let lastKind: string;
   Object.keys(messages).forEach((key:string) => {
     const message: Message = messages[key];
     const byMe: boolean = currentUser && message.author === currentUser.key;
-    const component = renderMessageComponent(message, key, byMe);
-    if (component) elements.push(component);
+    const hideAvatar = lastUser === message.author && lastKind === message.kind;
+    const component = renderMessageComponent(message, key, hideAvatar, byMe);
+    if (component) {
+      elements.push(component);
+      lastUser = message.author;
+      lastKind = message.kind;
+    }
   });
   return elements;
 };

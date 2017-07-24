@@ -9,4 +9,11 @@ const Avatar = styled.img`
   margin: .4rem;
 `;
 
+export const EmptyAvatar = styled.div`
+  display: inline-block;
+  width: 10vmin;
+  max-width: 50px;
+  margin: .4rem;
+`;
+
 export default Avatar;

@@ -10,6 +10,7 @@ import CommonLayoutWithAvatar from './CommonLayoutWithAvatar';
 
 type Props = {
   byMe: ?boolean,
+  hideAvatar: ?boolean,
   theme: Theme,
 };
 
@@ -29,22 +30,31 @@ const Line = styled.div`
   margin: 0 ${(props: Props) => (props.byMe ? 0 : props.theme.spacing.margin)}
     ${(props: Props) => props.theme.chat.speakBorderRadius}
     ${(props: Props) => (props.byMe ? props.theme.spacing.margin : 0)};
+
+  ${(props: Props) => (props.hideAvatar ? 'transform: scaleY(-1)' : '')}
 `;
 
 const Text = styled.p`
   margin: 0 0 ${(props: Props) => props.theme.chat.speakBorderRadius} 0;
-  padding-bottom: ${(props: Props) => props.theme.chat.speakBorderRadius};
+  padding: ${(props: Props) => (props.hideAvatar
+    ? `${props.theme.chat.speakBorderRadius} 0 0 0`
+    : `0 0 ${props.theme.chat.speakBorderRadius} 0`
+  )};
   white-space: pre-line;
   flex: 8;
   text-align: ${(props: Props) => (props.byMe ? 'right' : 'left')};
 `;
 
-
-const Speak = (props: {message: SpeakMessage, byMe: boolean}) => (
-  <CommonLayoutWithAvatar byMe={props.byMe}>
+type CompProps = {
+  message: SpeakMessage,
+  byMe: boolean,
+  hideAvatar: boolean,
+};
+const Speak = (props: CompProps) => (
+  <CommonLayoutWithAvatar byMe={props.byMe} hideAvatar={props.hideAvatar}>
     <Container byMe={props.byMe}>
-      <Line byMe={props.byMe} />
-      <Text byMe={props.byMe}>
+      <Line byMe={props.byMe} hideAvatar={props.hideAvatar} />
+      <Text byMe={props.byMe} hideAvatar={props.hideAvatar}>
         {addLinksToText(props.message.text)}
       </Text>
     </Container>
