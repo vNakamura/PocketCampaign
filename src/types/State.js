@@ -22,10 +22,16 @@ export type ChatState = {
 export type UserState = {|
   key: string,
   name: string,
+  avatar?: string,
 |};
+
+export type UserList = { [key: string]: UserState };
 
 export type State = {|
   ui: UIState,
   chat: ChatState,
   currentUser: UserState,
+  users: {
+    [key: string]: UserState,
+  }
 |};

@@ -17,7 +17,7 @@ import Avatar from './Avatar';
 import Button from './Buttons/Button';
 import MenuItem from './MenuItem';
 import { toggleSidebar, fixSidebar } from '../actions/ui';
-import type { State } from '../types/State';
+import type { State, UserState } from '../types/State';
 
 const slideLeft = props => keyframes`
   from {
@@ -115,6 +115,7 @@ class SideBar extends Component {
     breakpoint: number,
     fixed: boolean,
     dispatch: Function,
+    currentUser: UserState,
   };
   updateDimensions = debounce(() => {
     const shouldBeFixed: boolean = window.innerWidth > this.props.breakpoint;
@@ -149,13 +150,12 @@ class SideBar extends Component {
           <PushToBottom>
             <MenuItem to="sign-out" icon={FaSignOut} text="Sign Out" />
             <MenuItem to="settings" icon={FaCog} text="Settings" />
-            <MenuItem to="asd" text="Asd" />
-            <MenuItem to="asd" text="Asd" />
+            <MenuItem to="tutorial" text="Introduction Tutorial" />
           </PushToBottom>
         </Scrollable>
         <UserBar>
-          <Avatar src="https://api.adorable.io/avatars/128/asd" />
-          <Name>Nome do Usuário</Name>
+          <Avatar user={this.props.currentUser} />
+          <Name>{this.props.currentUser.name}</Name>
         </UserBar>
         {!this.props.fixed && this.props.visible
           ? <Overlay onClick={this.handleClose} animatingExit={this.state.animatingExit} />
@@ -166,10 +166,11 @@ class SideBar extends Component {
 }
 const mapStateToProps = (state: State) => {
   const { visible, fixed } = state.ui.sidebar;
-
+  const { currentUser } = state;
   return {
     visible,
     fixed,
+    currentUser,
   };
 };
 export default connect(mapStateToProps)(SideBar);

@@ -4,6 +4,7 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
 import type { Theme } from '../../theme';
+import type { UserState } from '../../types/State';
 import Avatar, { EmptyAvatar } from '../Avatar';
 
 type Props = {
@@ -57,13 +58,14 @@ const Margin = styled.div`flex: 1;`;
 type CompProps = {
   byMe: boolean,
   hideAvatar?: boolean,
+  user: UserState,
   children: *,
 };
 const CommonLayoutWithAvatar = (props: CompProps) => (
   <Container byMe={props.byMe} hideAvatar={props.hideAvatar}>
     {
       props.hideAvatar ? <EmptyAvatar /> :
-      <AvatarAtBottom src="https://api.adorable.io/avatars/128/asd" />
+      <AvatarAtBottom user={props.user} />
     }
 
     <ChildrenContainer>{props.children}</ChildrenContainer>

@@ -4,6 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import type { SpeakMessage } from '../../types/Chat';
+import type { UserState } from '../../types/State';
 import { addLinksToText } from '../../helpers/dice';
 import type { Theme } from '../../theme';
 import CommonLayoutWithAvatar from './CommonLayoutWithAvatar';
@@ -49,9 +50,14 @@ type CompProps = {
   message: SpeakMessage,
   byMe: boolean,
   hideAvatar: boolean,
+  user: UserState,
 };
 const Speak = (props: CompProps) => (
-  <CommonLayoutWithAvatar byMe={props.byMe} hideAvatar={props.hideAvatar}>
+  <CommonLayoutWithAvatar
+    byMe={props.byMe}
+    hideAvatar={props.hideAvatar}
+    user={props.user}
+  >
     <Container byMe={props.byMe}>
       <Line byMe={props.byMe} hideAvatar={props.hideAvatar} />
       <Text byMe={props.byMe} hideAvatar={props.hideAvatar}>

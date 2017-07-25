@@ -2,10 +2,11 @@ import { combineReducers } from 'redux';
 
 import ui from './ui';
 import chat from './chat';
-import user from './user';
+import users, { currentUser } from './users';
 
 export default combineReducers({
   ui,
   chat,
-  currentUser: user,
+  currentUser,
+  users,
 });

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import { rollDice } from '../../actions/chat';
+import type { State, UserState } from '../../types/State';
 
 const StyledAnchor = styled.a`
   color: ${props => props.theme.palette.text};
@@ -13,11 +14,12 @@ const StyledAnchor = styled.a`
 class NotationLink extends Component {
   props: {
     notation: string,
-    dispatch: Function
+    dispatch: Function,
+    currentUser: UserState,
   }
   handleClick = (e: MouseEvent) => {
     e.preventDefault();
-    this.props.dispatch(rollDice('asd', this.props.notation));
+    this.props.dispatch(rollDice('tutorial', this.props.notation, this.props.currentUser.key));
   };
   render() {
     return (
@@ -26,4 +28,11 @@ class NotationLink extends Component {
   }
 }
 
-export default connect()(NotationLink);
+const mapStateToProps = (state: State) => {
+  const { currentUser } = state;
+
+  return {
+    currentUser,
+  };
+};
+export default connect(mapStateToProps)(NotationLink);

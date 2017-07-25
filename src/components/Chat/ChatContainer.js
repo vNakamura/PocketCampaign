@@ -1,6 +1,6 @@
 // @flow
 
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
@@ -8,16 +8,19 @@ import ChatBar from './ChatBar';
 import Scrollable from '../Scrollable';
 import PushToBottom from '../PushToBottom';
 import Speak from './Speak';
+import { speak, clearTutorialHistory } from '../../actions/chat';
+import { tutorialMaster } from '../../reducers/users';
 import DiceRoll from './DiceRoll';
-import type { State, UserState } from '../../types/State';
+import type { State, UserState, UserList } from '../../types/State';
 import type { Message } from '../../types/Chat';
-
+import tutorial from '../../tutorial';
 
 const renderMessageComponent = (
   message: Message,
   key: string,
   hideAvatar: boolean,
   byMe: boolean,
+  user: UserState,
 ) => {
   switch (message.kind) {
     case 'speak':
@@ -26,6 +29,7 @@ const renderMessageComponent = (
         message={message}
         byMe={byMe}
         hideAvatar={hideAvatar}
+        user={user}
       />);
     case 'roll':
       return (<DiceRoll
@@ -33,21 +37,27 @@ const renderMessageComponent = (
         message={message}
         byMe={byMe}
         hideAvatar={hideAvatar}
+        user={user}
       />);
     default:
       return null;
   }
 };
 
-const renderMessages = (messages: {[key: string]: Message}, currentUser: UserState) => {
+const renderMessages = (
+  messages: {[key: string]: Message},
+  currentUser: UserState,
+  users: UserList,
+) => {
   const elements = [];
   let lastUser: string;
   let lastKind: string;
   Object.keys(messages).forEach((key:string) => {
     const message: Message = messages[key];
+    const author: UserState = users[message.author];
     const byMe: boolean = currentUser && message.author === currentUser.key;
     const hideAvatar = lastUser === message.author && lastKind === message.kind;
-    const component = renderMessageComponent(message, key, hideAvatar, byMe);
+    const component = renderMessageComponent(message, key, hideAvatar, byMe, author);
     if (component) {
       elements.push(component);
       lastUser = message.author;
@@ -67,21 +77,44 @@ const Container = styled.div`
 type Props = {
   messages: { [key: string]: Message },
   currentUser: UserState,
+  dispatch: Function,
+  users: UserList,
 };
-const ChatContainer = (props: Props) => (
-  <Container>
-    <Scrollable startFromBottom autoScroll>
-      <PushToBottom>
-        {props.messages ? renderMessages(props.messages, props.currentUser) : null}
-      </PushToBottom>
-    </Scrollable>
-    <ChatBar />
-  </Container>
-);
+class ChatContainer extends Component {
+  componentWillMount = () => {
+    this.props.dispatch(clearTutorialHistory);
+  }
+  componentDidMount = () => {
+    tutorial(this.tutorialSpeak);
+  }
+
+  props: Props;
+
+  tutorialSpeak = (text: string) => {
+    this.props.dispatch(speak('tutorial', text, tutorialMaster.key));
+  };
+
+  render() {
+    return (<Container>
+      <Scrollable startFromBottom autoScroll>
+        <PushToBottom>
+          {this.props.messages
+            ? renderMessages(
+              this.props.messages,
+              this.props.currentUser,
+              this.props.users,
+            ) : null}
+        </PushToBottom>
+      </Scrollable>
+      <ChatBar />
+    </Container>);
+  }
+}
 
 const mapStateToProps = (state: State, ownProps: { room: string }) => ({
   messages: state.chat[ownProps.room] || {},
   currentUser: state.currentUser,
+  users: state.users,
 });
 
 export default connect(mapStateToProps)(ChatContainer);

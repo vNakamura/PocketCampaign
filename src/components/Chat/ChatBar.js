@@ -13,7 +13,7 @@ import SpeakInput from './SpeakInput';
 import RollInput from './RollInput';
 import { speak, rollDice } from '../../actions/chat';
 import { changeChatInput, saveLastNotation } from '../../actions/ui';
-import type { State } from '../../types/State';
+import type { State, UserState } from '../../types/State';
 
 const Container = styled.div``;
 const IconsBar = styled.div`
@@ -34,15 +34,16 @@ class ChatBar extends Component {
     dispatch: Function,
     currentInput: InputType,
     lastNotation: string,
+    currentUser: UserState,
   };
 
   handleSpeakClick = (): void => this.setInput('speak');
   handleSpeakSend = (text: string): void => {
-    this.props.dispatch(speak('asd', text));
+    this.props.dispatch(speak('tutorial', text, this.props.currentUser.key));
   };
   handleRollClick = (): void => this.setInput('roll');
   handleRollSend = (notation: string): void => {
-    this.props.dispatch(rollDice('asd', notation));
+    this.props.dispatch(rollDice('tutorial', notation, this.props.currentUser.key));
     this.props.dispatch(saveLastNotation(notation));
   };
 
@@ -88,10 +89,12 @@ class ChatBar extends Component {
 
 const mapStateToProps = (state: State) => {
   const { currentInput, lastNotation } = state.ui.chatbar;
+  const { currentUser } = state;
 
   return {
     currentInput,
     lastNotation,
+    currentUser,
   };
 };
 export default connect(mapStateToProps)(ChatBar);

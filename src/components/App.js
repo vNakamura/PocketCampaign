@@ -71,7 +71,7 @@ class App extends Component {
             <SideBar breakpoint={theme.sidebar.breakpoint} />
             <Content>
               <TopBar
-                text="Demo"
+                text="Introduction Tutorial"
                 leftContent={
                   this.props.sidebarFixed ? undefined
                   : <IconButton
@@ -82,7 +82,7 @@ class App extends Component {
                     textAtSide
                   />}
               />
-              <ChatContainer room="asd" />
+              <ChatContainer room="tutorial" />
             </Content>
           </Container>
         </ThemeProvider>

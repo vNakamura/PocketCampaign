@@ -6,8 +6,10 @@ import styled from 'styled-components';
 import type { RollMessage } from '../../types/Chat';
 import { roll } from '../../helpers/dice';
 import type { RollResult } from '../../helpers/dice';
+import type { UserState } from '../../types/State';
 import type { Theme } from '../../theme';
 import CommonLayoutWithAvatar from './CommonLayoutWithAvatar';
+import NotationLink from './NotationLink';
 
 type Props = {
   byMe: ?boolean,
@@ -82,12 +84,19 @@ type CompProps = {
   message: RollMessage,
   byMe: boolean,
   hideAvatar: boolean,
+  user: UserState,
 };
 const DiceRoll = (props: CompProps) => (
-  <CommonLayoutWithAvatar byMe={props.byMe} hideAvatar={props.hideAvatar}>
+  <CommonLayoutWithAvatar
+    byMe={props.byMe}
+    hideAvatar={props.hideAvatar}
+    user={props.user}
+  >
     <Container byMe={props.byMe}>
       <Text>
-        Rolling {props.message.notation}:
+        Rolling <NotationLink notation={props.message.notation}>
+          {props.message.notation}
+        </NotationLink>:
       </Text>
       {renderRoll(props.message.notation, props.message.createdAt.toString())}
     </Container>

@@ -19,6 +19,11 @@ export default (state: ChatState = initialState, action: ChatAction): ChatState 
       return updateState('speak', state, action);
     case 'ROLL_DICE':
       return updateState('roll', state, action);
+    case 'CLEAR_TUTORIAL_HISTORY':
+      return ({
+        ...state,
+        tutorial: {},
+      });
     default:
       return state;
   }

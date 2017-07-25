@@ -8,7 +8,7 @@ export type ChatAction = {
   message: SpeakMessage | RollMessage,
 };
 
-export function speak(room: string, text: string, author: string = 'demoUser'): ChatAction {
+export function speak(room: string, text: string, author: string): ChatAction {
   const message: SpeakMessage = {
     kind: 'speak',
     text,
@@ -22,7 +22,7 @@ export function speak(room: string, text: string, author: string = 'demoUser'): 
   };
 }
 
-export function rollDice(room: string, notation: string, author: string = 'demoUser'): ChatAction {
+export function rollDice(room: string, notation: string, author: string): ChatAction {
   const message: RollMessage = {
     kind: 'roll',
     notation,
@@ -35,3 +35,5 @@ export function rollDice(room: string, notation: string, author: string = 'demoU
     message,
   };
 }
+
+export const clearTutorialHistory = { type: 'CLEAR_TUTORIAL_HISTORY' };
