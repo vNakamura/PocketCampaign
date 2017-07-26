@@ -6,7 +6,7 @@ import type { UserAction } from '../actions/user';
 export const demoUser: UserState = {
   key: 'demoUser',
   name: 'Demo User',
-  avatar: 'https://api.adorable.io/avatars/128/asd',
+  avatar: './demoUser.png', // https://api.adorable.io/avatars/128/asd
 };
 
 export const currentUser = (state: UserState = demoUser, action: UserAction) => {
@@ -19,7 +19,7 @@ export const currentUser = (state: UserState = demoUser, action: UserAction) => 
 export const tutorialMaster: UserState = {
   key: 'tutorialMaster',
   name: 'Tutorial Master',
-  avatar: 'https://robohash.org/tutorialMaster?size=128x128&bgset=bg2',
+  avatar: './tutorialMaster.png', // https://robohash.org/tutorialMaster?size=128x128&bgset=bg2
 };
 
 const initialUsers: UserList = {

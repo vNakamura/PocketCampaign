@@ -74,6 +74,16 @@ const Container = styled.div`
   justify-content: flex-end;
 `;
 
+const LimitWidth = styled(PushToBottom)`
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+
+  @media (max-width: 480px) {
+    font-size: 0.8em;
+  }
+`;
+
 type Props = {
   messages: { [key: string]: Message },
   currentUser: UserState,
@@ -97,14 +107,14 @@ class ChatContainer extends Component {
   render() {
     return (<Container>
       <Scrollable startFromBottom autoScroll>
-        <PushToBottom>
+        <LimitWidth>
           {this.props.messages
             ? renderMessages(
               this.props.messages,
               this.props.currentUser,
               this.props.users,
             ) : null}
-        </PushToBottom>
+        </LimitWidth>
       </Scrollable>
       <ChatBar />
     </Container>);
