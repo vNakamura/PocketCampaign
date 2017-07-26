@@ -14,6 +14,7 @@
   },
   "author": "Vinicius Nakamura",
   "license": "ISC",
+  "homepage": "http://vnakamura.github.io/pocket-campaign/",
   "dependencies": {
     "droll": "^0.2.1",
     "gsap": "^1.20.2",
