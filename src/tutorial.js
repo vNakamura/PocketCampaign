@@ -13,7 +13,7 @@ export default (speak: (text:string) => void) => {
   .call(speak, [`Wellcome to Pocket Campaign!
     The app is not complete yet, but I'll show you what we have.`], null, '+=3')
   .call(speak, ['First, you can send text messages just like any chat app.'], null, '+=6')
-  .call(speak, [`Beside that, you can roll some dice.
+  .call(speak, [`Besides that, you can roll some dice.
     We're here to play RPG, right?`], null, '+=12')
   .call(speak, [`Why don't you try it for yourself?
     Tap the "Roll" button down there and select the notation you want to roll.`], null, '+=6')

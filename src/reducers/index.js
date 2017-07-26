@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { routerReducer } from 'react-router-redux';
 
 import ui from './ui';
 import chat from './chat';
@@ -9,4 +10,5 @@ export default combineReducers({
   chat,
   currentUser,
   users,
+  router: routerReducer,
 });

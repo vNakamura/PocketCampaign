@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 import initReactFastclick from 'react-fastclick';
+import { Provider } from 'react-redux';
 
-import App from './components/App';
 import store from './config/store';
+import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 
 function render(Component) {

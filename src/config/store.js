@@ -3,9 +3,14 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import logger from 'redux-logger';
 
+import createHistory from 'history/createBrowserHistory';
+import { routerMiddleware } from 'react-router-redux';
+
 import reducer from '../reducers';
 
-const middleware: Array<mixed> = [];
+export const history = createHistory();
+const middleware: Array<mixed> = [routerMiddleware(history)];
+
 if (process.env.NODE_ENV === 'development') {
   middleware.push(logger);
 }

@@ -3,13 +3,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled, { ThemeProvider, injectGlobal } from 'styled-components';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { ConnectedRouter } from 'react-router-redux';
 
 import FaChevronLeft from 'react-icons/lib/fa/chevron-left';
 
+import { history } from '../config/store';
 import { toggleSidebar } from '../actions/ui';
-import theme from '../theme';
-import type { Theme } from '../theme';
+import theme, { type Theme } from '../theme';
 import SideBar from './SideBar';
 import TopBar from './TopBar';
 import IconButton from './Buttons/IconButton';
@@ -65,7 +65,7 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
+      <ConnectedRouter history={history}>
         <ThemeProvider theme={theme}>
           <Container>
             <SideBar breakpoint={theme.sidebar.breakpoint} />
@@ -86,7 +86,7 @@ class App extends Component {
             </Content>
           </Container>
         </ThemeProvider>
-      </Router>
+      </ConnectedRouter>
     );
   }
 }
