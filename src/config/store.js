@@ -3,7 +3,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import logger from 'redux-logger';
 
-import createHistory from 'history/createBrowserHistory';
+import createHistory from 'history/createHashHistory';
 import { routerMiddleware } from 'react-router-redux';
 
 import reducer from '../reducers';

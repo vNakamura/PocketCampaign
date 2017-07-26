@@ -6,6 +6,7 @@ import styled, { keyframes } from 'styled-components';
 import type { Theme } from '../../theme';
 import type { UserState } from '../../types/State';
 import Avatar, { EmptyAvatar } from '../Avatar';
+import PushToBottom from '../PushToBottom';
 
 type Props = {
   byMe: ?boolean,
@@ -48,8 +49,7 @@ const ChildrenContainer = styled.div`
   animation-fill-mode: both;
 `;
 
-const AvatarAtBottom = styled(Avatar)`
-  align-self: flex-end;
+const AnimatedAvatar = styled(Avatar)`
   animation: ${scaleBoth} .3s ease-in-out;
 `;
 
@@ -63,10 +63,10 @@ type CompProps = {
 };
 const CommonLayoutWithAvatar = (props: CompProps) => (
   <Container byMe={props.byMe} hideAvatar={props.hideAvatar}>
-    {
+    <PushToBottom flex={0}>{
       props.hideAvatar ? <EmptyAvatar /> :
-      <AvatarAtBottom user={props.user} />
-    }
+      <AnimatedAvatar user={props.user} />
+    }</PushToBottom>
 
     <ChildrenContainer>{props.children}</ChildrenContainer>
     <Margin byMe={props.byMe} />
