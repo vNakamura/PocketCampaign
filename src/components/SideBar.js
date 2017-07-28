@@ -148,9 +148,9 @@ class SideBar extends Component {
         />
         <Scrollable startFromBottom>
           <PushToBottom>
-            <MenuItem to="sign-out" icon={FaSignOut} text="Sign Out" />
-            <MenuItem to="settings" icon={FaCog} text="Settings" />
-            <MenuItem to="tutorial" text="Introduction Tutorial" />
+            <MenuItem to="/sign-out" icon={FaSignOut} text="Sign Out" />
+            <MenuItem to="/settings" icon={FaCog} text="Settings" />
+            <MenuItem to="/r/tutorial" text="Introduction Tutorial" />
           </PushToBottom>
         </Scrollable>
         <UserBar>

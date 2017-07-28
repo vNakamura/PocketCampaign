@@ -121,8 +121,15 @@ class ChatContainer extends Component {
   }
 }
 
-const mapStateToProps = (state: State, ownProps: { room: string }) => ({
-  messages: state.chat[ownProps.room] || {},
+type OwnProps = {
+  match: {
+    params: {
+      room: string,
+    }
+  },
+};
+const mapStateToProps = (state: State, ownProps: OwnProps) => ({
+  messages: state.chat[ownProps.match.params.room] || {},
   currentUser: state.currentUser,
   users: state.users,
 });

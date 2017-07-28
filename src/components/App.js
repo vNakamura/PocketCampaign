@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled, { ThemeProvider, injectGlobal } from 'styled-components';
 import { ConnectedRouter } from 'react-router-redux';
+import { Route } from 'react-router';
 
 import FaChevronLeft from 'react-icons/lib/fa/chevron-left';
 
@@ -14,6 +15,7 @@ import SideBar from './SideBar';
 import TopBar from './TopBar';
 import IconButton from './Buttons/IconButton';
 import ChatContainer from './Chat/ChatContainer';
+import Home from './Home';
 
 // eslint-disable-next-line
 injectGlobal`
@@ -82,7 +84,8 @@ class App extends Component {
                     textAtSide
                   />}
               />
-              <ChatContainer room="tutorial" />
+              <Route exact path="/" component={Home} />
+              <Route path="/r/:room" component={ChatContainer} />
             </Content>
           </Container>
         </ThemeProvider>
