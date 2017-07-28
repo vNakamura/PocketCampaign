@@ -3,12 +3,22 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Container = styled.div`
+import Logo from '../logo-mono';
 
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    g {fill: ${props => props.theme.palette.accent2};}
+    width: 100%;
+    max-width: 300px;
+
+  }
 `;
 
 const Home = () => (<Container>
-  <img src="./logo.svg" alt="Pocket Campaig logo" />
+  <Logo />
 </Container>);
 
 export default Home;
