@@ -1,8 +1,10 @@
 // @flow
 
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
+import { setContentTitle } from '../actions/ui';
 import Logo from '../logo-mono';
 
 const Container = styled.div`
@@ -17,8 +19,20 @@ const Container = styled.div`
   }
 `;
 
-const Home = () => (<Container>
-  <Logo />
-</Container>);
+class Home extends Component {
+  componentWillMount = () => {
+    this.props.dispatch(setContentTitle(''));
+  }
+  props: {
+    dispatch: Function,
+  }
+  render() {
+    return (
+      <Container>
+        <Logo />
+      </Container>
+    );
+  }
+}
 
-export default Home;
+export default connect()(Home);

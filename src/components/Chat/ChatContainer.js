@@ -9,6 +9,7 @@ import Scrollable from '../Scrollable';
 import PushToBottom from '../PushToBottom';
 import Speak from './Speak';
 import { speak, clearTutorialHistory } from '../../actions/chat';
+import { setContentTitle } from '../../actions/ui';
 import { tutorialMaster } from '../../reducers/users';
 import DiceRoll from './DiceRoll';
 import type { State, UserState, UserList } from '../../types/State';
@@ -93,6 +94,7 @@ type Props = {
 class ChatContainer extends Component {
   componentWillMount = () => {
     this.props.dispatch(clearTutorialHistory);
+    this.props.dispatch(setContentTitle('Introduction Tutorial'));
   }
   componentDidMount = () => {
     tutorial(this.tutorialSpeak);

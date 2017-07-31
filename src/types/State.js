@@ -11,6 +11,7 @@ export type UIState = {|
     currentInput: string,
     lastNotation: string,
   |},
+  contentTitle: string,
 |};
 
 export type ChatState = {

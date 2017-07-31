@@ -12,6 +12,7 @@ const initialState: UIState = {
     currentInput: 'speak',
     lastNotation: '1d6',
   },
+  contentTitle: '',
 };
 
 export default (state: UIState = initialState, action: UIAction): * => {
@@ -47,6 +48,11 @@ export default (state: UIState = initialState, action: UIAction): * => {
           ...state.chatbar,
           lastNotation: action.notation,
         },
+      };
+    case 'SET_CONTENT_TITLE':
+      return {
+        ...state,
+        contentTitle: action.title,
       };
     default:
       return state;

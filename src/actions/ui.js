@@ -47,4 +47,15 @@ export function saveLastNotation(notation: string): ChatBarAction {
   };
 }
 
-export type UIAction = SideBarAction | ChatBarAction;
+export type SetContentTitleAction = {
+  type: 'SET_CONTENT_TITLE',
+  title: string,
+};
+export function setContentTitle(title: string): SetContentTitleAction {
+  return {
+    type: 'SET_CONTENT_TITLE',
+    title,
+  };
+}
+
+export type UIAction = SideBarAction | ChatBarAction | SetContentTitleAction;

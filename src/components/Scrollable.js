@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   flex: 1;
-  overflow-y: scroll;
+  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   display: ${props => (props.isFlex ? 'flex' : 'block')};
   flex-direction: column;

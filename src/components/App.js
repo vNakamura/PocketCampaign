@@ -8,6 +8,7 @@ import { Route } from 'react-router';
 
 import FaChevronLeft from 'react-icons/lib/fa/chevron-left';
 
+import type { State } from '../types/State';
 import { history } from '../config/store';
 import { toggleSidebar } from '../actions/ui';
 import theme, { type Theme } from '../theme';
@@ -62,6 +63,7 @@ class App extends Component {
   props: {
     dispatch: Function,
     sidebarFixed?: boolean,
+    contentTitle: string,
   }
   handleMenuClick = (): void => this.props.dispatch(toggleSidebar(true));
 
@@ -73,7 +75,7 @@ class App extends Component {
             <SideBar breakpoint={theme.sidebar.breakpoint} />
             <Content>
               <TopBar
-                text="Introduction Tutorial"
+                text={this.props.contentTitle}
                 leftContent={
                   this.props.sidebarFixed ? undefined
                   : <IconButton
@@ -94,11 +96,13 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: State) => {
   const { fixed: sidebarFixed } = state.ui.sidebar;
+  const { contentTitle } = state.ui;
 
   return {
     sidebarFixed,
+    contentTitle,
   };
 };
 export default connect(mapStateToProps)(App);
