@@ -3,7 +3,7 @@
 import type { UIState } from '../types/State';
 import type { UIAction } from '../actions/ui';
 
-const initialState: UIState = {
+export const initialState: UIState = {
   sidebar: {
     visible: false,
     fixed: false,
@@ -22,7 +22,7 @@ export default (state: UIState = initialState, action: UIAction): * => {
         ...state,
         sidebar: {
           ...state.sidebar,
-          fixed: action.fixed === undefined ? !state.sidebar.visible : action.fixed,
+          fixed: action.fixed === undefined ? !state.sidebar.fixed : action.fixed,
         },
       };
     case 'TOGGLE_SIDEBAR':
