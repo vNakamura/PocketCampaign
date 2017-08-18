@@ -2,6 +2,7 @@
 
 A self-hosted chat app to let you play your tabletop RPG adventures anywhere.
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3ba171015b544e3c8bcc5d145ffd143d)](https://www.codacy.com/app/vNakamura/pocket-campaign?utm_source=github.com&utm_medium=referral&utm_content=vNakamura/pocket-campaign&utm_campaign=badger)
 [![Build Status](https://travis-ci.org/vNakamura/pocket-campaign.svg)](https://travis-ci.org/vNakamura/pocket-campaign)
 
 ![Pocket Campaign logo](./public/logo.png?raw=true)
