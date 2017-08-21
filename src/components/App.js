@@ -17,6 +17,7 @@ import TopBar from './TopBar';
 import IconButton from './Buttons/IconButton';
 import ChatContainer from './Chat/ChatContainer';
 import Home from './Home';
+import WIP from './WIP';
 
 // eslint-disable-next-line
 injectGlobal`
@@ -87,6 +88,8 @@ class App extends Component {
                   />}
               />
               <Route exact path="/" component={Home} />
+              <Route exact path="/settings" component={WIP} />
+              <Route exact path="/sign-out" component={WIP} />
               <Route path="/r/:room" component={ChatContainer} />
             </Content>
           </Container>
