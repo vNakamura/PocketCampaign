@@ -10,6 +10,8 @@
     "lint": "eslint src",
     "flow": "flow",
     "jest": "react-scripts test --env=jsdom",
+    "coverage": "npm jest --coverage",
+    "codacy": "cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage",
     "eject": "react-scripts eject"
   },
   "author": "Vinicius Nakamura",
@@ -41,6 +43,7 @@
     "styled-components": "^2.1.0"
   },
   "devDependencies": {
+    "codacy-coverage": "^2.0.3",
     "cross-env": "^5.0.1",
     "deep-freeze": "^0.0.1",
     "enzyme": "^2.9.1",
