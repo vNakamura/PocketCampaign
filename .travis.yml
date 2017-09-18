@@ -3,5 +3,5 @@ node_js:
   - "node"
   - "lts/*"
 after_success:
-  - yarn coverage
-  - yarn codacy
+  - npm run coverage
+  - npm run codacy
