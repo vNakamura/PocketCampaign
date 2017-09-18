@@ -26,7 +26,6 @@ const validateRoll = (notation:string): ValidateResult => {
   const p = droll.parse(notation);
   if (!p) return { ok: false, message: 'Invalid dice notation' };
   if (p.numDice > notationLimits.maxNumDice) return { ok: false, message: 'Invalid dice notation. Too many dice!' };
-  if (p.numSides < notationLimits.minNumDice) return { ok: false, message: 'Invalid dice notation. You need at least one die!' };
   if (p.numSides > notationLimits.maxNumSides) return { ok: false, message: 'Invalid dice notation. Too many sides!' };
   if (p.numSides < notationLimits.minNumSides) return { ok: false, message: 'Invalid dice notation. Too few sides!' };
   if (p.modifier > notationLimits.maxModifier) return { ok: false, message: 'Invalid dice notation. Modifier is too big!' };

@@ -11,8 +11,10 @@ describe('helpers: dice', () => {
       expect(parseRoll('1da').ok).toBe(false);
       expect(parseRoll('1d20b').ok).toBe(false);
     });
-    it('should reject notations with too big values', () => {
+    it('should reject notations with extreme values', () => {
+      expect(parseRoll('0d6').ok).toBe(false);
       expect(parseRoll('50d6').ok).toBe(false);
+      expect(parseRoll('2d1').ok).toBe(false);
       expect(parseRoll('2d500').ok).toBe(false);
       expect(parseRoll('2d20+99999').ok).toBe(false);
       expect(parseRoll('2d20-99999').ok).toBe(false);
