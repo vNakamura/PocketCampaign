@@ -29,6 +29,8 @@ const validateRoll = (notation:string): ValidateResult => {
   if (p.numSides < notationLimits.minNumDice) return { ok: false, message: 'Invalid dice notation. You need at least one die!' };
   if (p.numSides > notationLimits.maxNumSides) return { ok: false, message: 'Invalid dice notation. Too many sides!' };
   if (p.numSides < notationLimits.minNumSides) return { ok: false, message: 'Invalid dice notation. Too few sides!' };
+  if (p.modifier > notationLimits.maxModifier) return { ok: false, message: 'Invalid dice notation. Modifier is too big!' };
+  if (p.modifier < notationLimits.minModifier) return { ok: false, message: 'Invalid dice notation. Modifier is too big!' };
   return { ok: true };
 };
 
@@ -56,11 +58,11 @@ export type RollResult = ResultError | {
   modifier: number,
   total: number,
 };
-export const roll = (notation: string, seed: string): RollResult => {
+export const roll = (notation: string, seed?: string): RollResult => {
   const v = validateRoll(notation);
   if (!v.ok) return v;
 
-  seedrandom(seed, { global: true });
+  if (seed !== undefined) seedrandom(seed, { global: true });
   const result = droll.roll(notation);
   return {
     ok: true,

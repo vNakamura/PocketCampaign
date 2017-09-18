@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`helpers: dice addLinksToText should NOT add the NotationLink component to texts when notation has too big values 1`] = `
+Array [
+  "Roll ",
+  "d200+3",
+  " for initiative.",
+]
+`;
+
+exports[`helpers: dice addLinksToText should accept multiple notations 1`] = `
+Array [
+  <Connect(NotationLink)
+    notation="2d10+10"
+/>,
+  ", ",
+  <Connect(NotationLink)
+    notation="5D6"
+/>,
+  ", ",
+  "100d20",
+  "; 1d or ",
+  <Connect(NotationLink)
+    notation="d100"
+/>,
+  ".",
+]
+`;
+
+exports[`helpers: dice addLinksToText should add the NotationLink component to texts with notation 1`] = `
+Array [
+  "Roll ",
+  <Connect(NotationLink)
+    notation="d20+3"
+/>,
+  " for initiative.",
+]
+`;
