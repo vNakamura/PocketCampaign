@@ -53,6 +53,7 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
     "flow-bin": "^0.49.1",
+    "jest-styled-components": "^4.6.0",
     "random-string": "^0.2.0",
     "react-scripts": "^1.0.7",
     "react-test-renderer": "^15.6.1",

@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components: Buttons/Button should render correctly 1`] = `
+.c0 {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #817b9e;
+  font-family: Dosis;
+  font-size: 1rem;
+  padding: .2em .4em;
+}
+
+.c0:focus {
+  outline: none;
+}
+
+.c0:hover,
+.c0:focus {
+  color: #e6e5f1;
+}
+
+<button
+  className="c0"
+  onMouseUp={[Function]}
+/>
+`;
+
+exports[`components: Buttons/Button should render correctly 2`] = `
+.c0 {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #817b9e;
+  font-family: Dosis;
+  font-size: 1rem;
+  padding: .2em .4em;
+}
+
+.c0:focus {
+  outline: none;
+}
+
+.c0:hover,
+.c0:focus {
+  color: #e6e5f1;
+}
+
+<button
+  className="c0"
+  onMouseUp={[Function]}
+/>
+`;

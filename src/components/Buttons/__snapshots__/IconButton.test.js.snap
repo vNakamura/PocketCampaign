@@ -1,0 +1,170 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components: Buttons/IconButton should render correctly 1`] = `
+.c0 {
+  -webkit-flex: 0;
+  -ms-flex: 0;
+  flex: 0;
+  -webkit-transition: color .5s, border-color .5s;
+  transition: color .5s, border-color .5s;
+}
+
+.c1 {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #817b9e;
+  font-family: Dosis;
+  font-size: 1rem;
+  padding: .2em .4em;
+}
+
+.c1:focus {
+  outline: none;
+}
+
+.c1:hover,
+.c1:focus {
+  color: #e6e5f1;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 span {
+  display: block;
+  font-size: .8rem;
+}
+
+.c2 svg {
+  font-size: 1.6rem;
+  margin: 4px;
+}
+
+<button
+  className="c0 c1"
+  onClick={undefined}
+  onMouseUp={[Function]}
+>
+  <div
+    className="c2"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      preserveAspectRatio="xMidYMid meet"
+      style={
+        Object {
+          "color": undefined,
+          "verticalAlign": "middle",
+        }
+      }
+      viewBox="0 0 40 40"
+      width="1em"
+    >
+      <g>
+        <path
+          d="m23.2 28v5.4q0 0.4-0.3 0.6t-0.6 0.3h-5.3q-0.4 0-0.7-0.3t-0.2-0.6v-5.4q0-0.3 0.2-0.6t0.7-0.3h5.3q0.4 0 0.6 0.3t0.3 0.6z m7.1-13.4q0 1.2-0.4 2.3t-0.8 1.7-1.2 1.3-1.3 1-1.3 0.8q-0.9 0.5-1.6 1.4t-0.6 1.5q0 0.4-0.2 0.8t-0.7 0.3h-5.3q-0.4 0-0.6-0.4t-0.2-0.8v-1q0-1.9 1.4-3.5t3.2-2.5q1.3-0.6 1.9-1.2t0.5-1.7q0-0.9-1-1.7t-2.4-0.7q-1.4 0-2.4 0.7-0.8 0.5-2.4 2.5-0.3 0.4-0.7 0.4-0.2 0-0.5-0.2l-3.7-2.8q-0.3-0.2-0.3-0.5t0.1-0.6q3.5-6 10.3-6 1.8 0 3.6 0.7t3.3 1.9 2.4 2.8 0.9 3.5z"
+        />
+      </g>
+    </svg>
+  </div>
+</button>
+`;
+
+exports[`components: Buttons/IconButton should render correctly 2`] = `
+.c0 {
+  -webkit-flex: 0;
+  -ms-flex: 0;
+  flex: 0;
+  -webkit-transition: color .5s, border-color .5s;
+  transition: color .5s, border-color .5s;
+}
+
+.c1 {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #817b9e;
+  font-family: Dosis;
+  font-size: 1rem;
+  padding: .2em .4em;
+}
+
+.c1:focus {
+  outline: none;
+}
+
+.c1:hover,
+.c1:focus {
+  color: #e6e5f1;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 span {
+  display: block;
+  font-size: .8rem;
+}
+
+.c2 svg {
+  font-size: 1.6rem;
+  margin: 4px;
+}
+
+<button
+  className="c0 c1"
+  onClick={undefined}
+  onMouseUp={[Function]}
+>
+  <div
+    className="c2"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      preserveAspectRatio="xMidYMid meet"
+      style={
+        Object {
+          "color": undefined,
+          "verticalAlign": "middle",
+        }
+      }
+      viewBox="0 0 40 40"
+      width="1em"
+    >
+      <g>
+        <path
+          d="m23.2 28v5.4q0 0.4-0.3 0.6t-0.6 0.3h-5.3q-0.4 0-0.7-0.3t-0.2-0.6v-5.4q0-0.3 0.2-0.6t0.7-0.3h5.3q0.4 0 0.6 0.3t0.3 0.6z m7.1-13.4q0 1.2-0.4 2.3t-0.8 1.7-1.2 1.3-1.3 1-1.3 0.8q-0.9 0.5-1.6 1.4t-0.6 1.5q0 0.4-0.2 0.8t-0.7 0.3h-5.3q-0.4 0-0.6-0.4t-0.2-0.8v-1q0-1.9 1.4-3.5t3.2-2.5q1.3-0.6 1.9-1.2t0.5-1.7q0-0.9-1-1.7t-2.4-0.7q-1.4 0-2.4 0.7-0.8 0.5-2.4 2.5-0.3 0.4-0.7 0.4-0.2 0-0.5-0.2l-3.7-2.8q-0.3-0.2-0.3-0.5t0.1-0.6q3.5-6 10.3-6 1.8 0 3.6 0.7t3.3 1.9 2.4 2.8 0.9 3.5z"
+        />
+      </g>
+    </svg>
+    <span>
+      abcdef
+    </span>
+  </div>
+</button>
+`;

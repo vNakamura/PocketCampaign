@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components: Inputs/Input should render correctly 1`] = `
+.c0 {
+  font-family: "Open Sans";
+  font-size: 1rem;
+  padding: .4em;
+  border: none;
+  border-radius: 0;
+  text-align: center;
+}
+
+<input
+  className="c0"
+  size={50}
+  type="tel"
+  value={1}
+/>
+`;
+
+exports[`components: Inputs/Input should render correctly 2`] = `
+.c0 {
+  font-family: "Open Sans";
+  font-size: 1rem;
+  padding: .4em;
+  border: none;
+  border-radius: 0;
+  text-align: left;
+}
+
+<input
+  className="c0"
+  size={100}
+  type="text"
+  value="asd"
+/>
+`;

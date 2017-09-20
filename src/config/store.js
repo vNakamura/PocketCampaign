@@ -11,6 +11,9 @@ import reducer from '../reducers';
 export const history = createHistory();
 const middleware: Array<mixed> = [routerMiddleware(history)];
 
+// The block bellow is removed by Webpack on build.
+// So it don't need to be checked in converage report
+/* istanbul ignore if */
 if (process.env.NODE_ENV === 'development') {
   middleware.push(logger);
 }

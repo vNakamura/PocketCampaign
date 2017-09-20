@@ -1,0 +1,285 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components: Inputs/NumberInput should render correctly 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  padding: .2em;
+}
+
+.c1 {
+  font-size: 1em;
+  margin: 0;
+  padding: .1em .4em;
+}
+
+.c2 {
+  font-family: "Open Sans";
+  font-size: 1rem;
+  padding: .4em;
+  border: none;
+  border-radius: 0;
+  text-align: center;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+
+.c4 {
+  background-color: #e6e5f1;
+  color: #2a2932;
+  margin: 0;
+  padding: .1em .4em;
+}
+
+.c4:hover {
+  background-color: #e05858;
+}
+
+.c5 {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #817b9e;
+  font-family: Dosis;
+  font-size: 1rem;
+  padding: .2em .4em;
+}
+
+.c5:focus {
+  outline: none;
+}
+
+.c5:hover,
+.c5:focus {
+  color: #e6e5f1;
+}
+
+<div
+  className="c0"
+>
+  <input
+    className="c1 c2"
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    size={1}
+    type="tel"
+    value={0}
+  />
+  <div
+    className="c3"
+  >
+    <button
+      className="c4 c5"
+      onClick={[Function]}
+      onMouseUp={[Function]}
+      tabIndex="-1"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style={
+          Object {
+            "color": undefined,
+            "verticalAlign": "middle",
+          }
+        }
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m31 26.4q0 0.3-0.2 0.5l-1.1 1.2q-0.3 0.2-0.6 0.2t-0.5-0.2l-8.7-8.8-8.8 8.8q-0.2 0.2-0.5 0.2t-0.5-0.2l-1.2-1.2q-0.2-0.2-0.2-0.5t0.2-0.5l10.4-10.4q0.3-0.2 0.6-0.2t0.5 0.2l10.4 10.4q0.2 0.2 0.2 0.5z"
+          />
+        </g>
+      </svg>
+    </button>
+    <button
+      className="c4 c5"
+      onClick={[Function]}
+      onMouseUp={[Function]}
+      tabIndex="-1"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style={
+          Object {
+            "color": undefined,
+            "verticalAlign": "middle",
+          }
+        }
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m31 16.4q0 0.3-0.2 0.5l-10.4 10.4q-0.3 0.3-0.5 0.3t-0.6-0.3l-10.4-10.4q-0.2-0.2-0.2-0.5t0.2-0.5l1.2-1.1q0.2-0.2 0.5-0.2t0.5 0.2l8.8 8.8 8.7-8.8q0.3-0.2 0.5-0.2t0.6 0.2l1.1 1.1q0.2 0.2 0.2 0.5z"
+          />
+        </g>
+      </svg>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`components: Inputs/NumberInput should render correctly 2`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  padding: .2em;
+}
+
+.c1 {
+  font-size: 1em;
+  margin: 0;
+  padding: .1em .4em;
+}
+
+.c2 {
+  font-family: "Open Sans";
+  font-size: 1rem;
+  padding: .4em;
+  border: none;
+  border-radius: 0;
+  text-align: center;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+
+.c4 {
+  background-color: #e6e5f1;
+  color: #2a2932;
+  margin: 0;
+  padding: .1em .4em;
+}
+
+.c4:hover {
+  background-color: #e05858;
+}
+
+.c5 {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #817b9e;
+  font-family: Dosis;
+  font-size: 1rem;
+  padding: .2em .4em;
+}
+
+.c5:focus {
+  outline: none;
+}
+
+.c5:hover,
+.c5:focus {
+  color: #e6e5f1;
+}
+
+<div
+  className="c0"
+>
+  <input
+    className="c1 c2"
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    size={1}
+    type="tel"
+    value={0}
+  />
+  <div
+    className="c3"
+  >
+    <button
+      className="c4 c5"
+      onClick={[Function]}
+      onMouseUp={[Function]}
+      tabIndex="-1"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style={
+          Object {
+            "color": undefined,
+            "verticalAlign": "middle",
+          }
+        }
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m31 26.4q0 0.3-0.2 0.5l-1.1 1.2q-0.3 0.2-0.6 0.2t-0.5-0.2l-8.7-8.8-8.8 8.8q-0.2 0.2-0.5 0.2t-0.5-0.2l-1.2-1.2q-0.2-0.2-0.2-0.5t0.2-0.5l10.4-10.4q0.3-0.2 0.6-0.2t0.5 0.2l10.4 10.4q0.2 0.2 0.2 0.5z"
+          />
+        </g>
+      </svg>
+    </button>
+    <button
+      className="c4 c5"
+      onClick={[Function]}
+      onMouseUp={[Function]}
+      tabIndex="-1"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style={
+          Object {
+            "color": undefined,
+            "verticalAlign": "middle",
+          }
+        }
+        viewBox="0 0 40 40"
+        width="1em"
+      >
+        <g>
+          <path
+            d="m31 16.4q0 0.3-0.2 0.5l-10.4 10.4q-0.3 0.3-0.5 0.3t-0.6-0.3l-10.4-10.4q-0.2-0.2-0.2-0.5t0.2-0.5l1.2-1.1q0.2-0.2 0.5-0.2t0.5 0.2l8.8 8.8 8.7-8.8q0.3-0.2 0.5-0.2t0.6 0.2l1.1 1.1q0.2 0.2 0.2 0.5z"
+          />
+        </g>
+      </svg>
+    </button>
+  </div>
+</div>
+`;
