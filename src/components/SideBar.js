@@ -92,7 +92,15 @@ const Overlay = styled.div`
   animation-fill-mode: forwards;
 `;
 
-class SideBar extends Component {
+type Props = {
+  visible: boolean,
+  breakpoint: number,
+  fixed: boolean,
+  dispatch: Function,
+  currentUser: UserState,
+};
+
+export class SideBar extends Component {
   state: {
     animatingExit: boolean,
   } = {
@@ -102,7 +110,7 @@ class SideBar extends Component {
     this.updateDimensions();
     window.addEventListener('resize', this.updateDimensions);
   };
-  componentWillReceiveProps = (nextProps) => {
+  componentWillReceiveProps = (nextProps: Props) => {
     if (nextProps.visible !== this.props.visible) {
       this.setState({ animatingExit: false });
     }
@@ -110,13 +118,7 @@ class SideBar extends Component {
   componentWillUnmount = () => {
     window.removeEventListener('resize', this.updateDimensions);
   };
-  props: {
-    visible: boolean,
-    breakpoint: number,
-    fixed: boolean,
-    dispatch: Function,
-    currentUser: UserState,
-  };
+  props: Props;
   updateDimensions = debounce(() => {
     const shouldBeFixed: boolean = window.innerWidth > this.props.breakpoint;
     if (this.props.fixed !== shouldBeFixed) {

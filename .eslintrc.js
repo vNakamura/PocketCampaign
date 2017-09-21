@@ -8,5 +8,6 @@ module.exports = {
   },
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'import/no-named-as-default': 'off',
   },
 };
