@@ -36,4 +36,11 @@ export function rollDice(room: string, notation: string, author: string): ChatAc
   };
 }
 
+export function charChange(payload: { [string]: string }) {
+  return {
+    type: 'CHAR_CHANGE',
+    payload,
+  };
+}
+
 export const clearTutorialHistory = { type: 'CLEAR_TUTORIAL_HISTORY' };

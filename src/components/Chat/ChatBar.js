@@ -11,6 +11,7 @@ import DiceIcon from '../Icons/DiceIcon';
 import IconButton from '../Buttons/IconButton';
 import SpeakInput from './SpeakInput';
 import RollInput from './RollInput';
+import CharacterSheet from '../CharacterSheet';
 import { speak, rollDice } from '../../actions/chat';
 import { changeChatInput, saveLastNotation } from '../../actions/ui';
 import type { State, UserState } from '../../types/State';
@@ -23,7 +24,7 @@ const IconsBar = styled.div`
   border-top: ${props => props.theme.topbar.border};
 `;
 
-type InputType = 'speak' | 'roll';
+type InputType = 'speak' | 'roll' | 'char';
 
 class ChatBar extends Component {
   setInput = (input: InputType): void => {
@@ -46,6 +47,7 @@ class ChatBar extends Component {
     this.props.dispatch(rollDice('tutorial', notation, this.props.currentUser.key));
     this.props.dispatch(saveLastNotation(notation));
   };
+  handleCharClick = (): void => this.setInput('char');
 
   renderInput = (input: InputType): ?React.Element<any> => {
     switch (input) {
@@ -58,6 +60,8 @@ class ChatBar extends Component {
             defaultNotation={this.props.lastNotation}
           />
         );
+      case 'char':
+        return <CharacterSheet />;
       default:
         return null;
     }
@@ -79,7 +83,12 @@ class ChatBar extends Component {
             text={'Roll'}
             onClick={this.handleRollClick}
           />
-          <IconButton icon={<FaUser />} text={'Char'} />
+          <IconButton
+            icon={<FaUser />}
+            active={this.props.currentInput === 'char'}
+            text={'Char'}
+            onClick={this.handleCharClick}
+          />
         </IconsBar>
         {this.renderInput(this.props.currentInput)}
       </Container>

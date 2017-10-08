@@ -120,7 +120,7 @@ export class SideBar extends Component {
   };
   props: Props;
   updateDimensions = debounce(() => {
-    const shouldBeFixed: boolean = window.innerWidth > this.props.breakpoint;
+    const shouldBeFixed: boolean = window.innerWidth >= this.props.breakpoint;
     if (this.props.fixed !== shouldBeFixed) {
       this.props.dispatch(fixSidebar(shouldBeFixed));
     }

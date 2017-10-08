@@ -8,10 +8,10 @@ const changeHandler = jest.fn();
 
 describe('components: Inputs/NumberInput', () => {
   it('should render correctly', () => {
-    const signed = renderWithTheme(<NumberInput hideSign />);
-    expect(signed).toMatchSnapshot();
-    const NotSigned = renderWithTheme(<NumberInput />);
+    const NotSigned = renderWithTheme(<NumberInput hideSign />);
     expect(NotSigned).toMatchSnapshot();
+    const signed = renderWithTheme(<NumberInput />);
+    expect(signed).toMatchSnapshot();
   });
 
   it('should change value when buttons are pressed', () => {
